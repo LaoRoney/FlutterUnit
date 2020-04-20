@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_unit/app/convert.dart';
 import 'package:flutter_unit/app/res/cons.dart';
 import 'package:flutter_unit/app/router.dart';
+import 'package:flutter_unit/blocs/collect/collect_bloc.dart';
+import 'package:flutter_unit/blocs/collect/collect_event.dart';
 import 'package:flutter_unit/blocs/detail/detail_bloc.dart';
 import 'package:flutter_unit/blocs/detail/detail_event.dart';
 import 'package:flutter_unit/blocs/global/global_bloc.dart';
@@ -123,6 +125,7 @@ class _HomePageState extends State<HomePage> {
 
   _toDetailPage(WidgetModel model) async {
     BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(model));
+    BlocProvider.of<CollectBloc>(context).add(CheckCollectEvent(id: model.id));
     Navigator.pushNamed(context, Router.widget_detail, arguments: model);
   }
 }

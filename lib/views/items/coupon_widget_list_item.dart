@@ -81,21 +81,23 @@ class CouponWidgetListItem extends StatelessWidget {
     return Positioned(
         top: 0,
         left: 20,
-        child: BlocBuilder<CollectBloc, CollectState>(builder: (_, s) {
-          var show = s.widgets.contains(data);
-          return Opacity(
-            opacity: show ? 1.0 : 0.0,
-            child: SizedOverflowBox(
-              alignment: Alignment.bottomCenter,
-              size: Size(0, 30 - 8.0),
-              child: Tag(
-                color: color,
-                shadowHeight: 8.0,
-                size: Size(20, 30),
-              ),
-            ),
-          );
-        }));
+        child: Container()
+//        BlocBuilder<CollectBloc, CollectState>(builder: (_, s) {
+//          var show = s.widgets.contains(data);
+//          return Opacity(
+//            opacity: show ? 1.0 : 0.0,
+//            child: SizedOverflowBox(
+//              alignment: Alignment.bottomCenter,
+//              size: Size(0, 30 - 8.0),
+//              child: Tag(
+//                color: color,
+//                shadowHeight: 8.0,
+//                size: Size(20, 30),
+//              ),
+//            ),
+//          );
+//        })
+    );
   }
 
   Widget _buildTitle() {

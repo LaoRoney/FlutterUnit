@@ -48,7 +48,7 @@ class _EditPanelState extends State<EditPanel> {
       controller: TextEditingController(text: _text),//输入控制器
       keyboardType: TextInputType.text,//键盘类型
       textAlign: TextAlign.start,//文字居左
-      cursorColor: Colors.black,//游标颜色
+//      cursorColor: Theme.of(context).primaryColor,//游标颜色
       minLines: widget.minLines,//最小行数
       maxLines: widget.maxLines,//最大行数
       style: TextStyle(//文字样式

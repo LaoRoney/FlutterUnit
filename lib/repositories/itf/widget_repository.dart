@@ -5,6 +5,7 @@ import 'package:flutter_unit/model/collect_model.dart';
 import 'package:flutter_unit/storage/dao/widget_dao.dart';
 import 'package:flutter_unit/model/node_model.dart';
 import 'package:flutter_unit/model/widget_model.dart';
+import 'package:flutter_unit/storage/po/collect_po.dart';
 
 /// create by 张风捷特烈 on 2020-03-03
 /// contact me by email 1981462002@qq.com
@@ -19,13 +20,13 @@ abstract class WidgetRepository {
   Future<List<WidgetModel>> searchWidgets(SearchArgs args);
   Future<List<NodeModel>> loadNode(WidgetModel widgetModel);
 
-  Future<void> toggleCollect(int id);
-
-  Future<List<WidgetModel>> loadCollectWidgets();
 
 
-  Future<List<CollectModel>> loadCollects();
 
-
+//  Future<List<CollectModel>> loadCollects();
+//
+//  Future<bool> addCollect(CollectPo collectPo);
+//
+//  Future<void> deleteCollect(int id);
 
 }

@@ -29,6 +29,7 @@ dependencies:
   flutter_star: ^0.1.2 # 星星组件
   shared_preferences: ^0.5.6+3 # xml 固化
   url_launcher: ^5.4.2 # url
+  intl: ^0.16.1 # 格式化
   share: ^0.6.3+6
 dev_dependencies:
   flutter_test:

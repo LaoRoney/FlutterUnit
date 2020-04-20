@@ -26,7 +26,15 @@ class CollectPo extends Equatable {
   final String image;
   final int priority;
 
-  const CollectPo({this.id, this.name, this.color, this.created, this.updated,this.priority,this.info,this.image});
+  const CollectPo(
+      {this.id,
+      this.name,
+      this.color = '#FF2196F3',
+      this.created,
+      this.updated,
+      this.priority = 0,
+      this.info = "",
+      this.image = ''});
 
   factory CollectPo.fromJson(Map<String, dynamic> map) {
     return CollectPo(
@@ -40,7 +48,6 @@ class CollectPo extends Equatable {
         info: map["info"]);
   }
 
-
   @override
   String toString() {
     return 'CollectPo{id: $id, name: $name, color: $color, info: $info, created: $created, updated: $updated, image: $image, priority: $priority}';
@@ -48,5 +55,5 @@ class CollectPo extends Equatable {
 
   @override
   List<Object> get props =>
-      [id, name, color, created, image, info,updated,priority];
+      [id, name, color, created, image, info, updated, priority];
 }

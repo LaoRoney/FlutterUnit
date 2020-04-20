@@ -5,6 +5,7 @@ import 'package:flutter_star/flutter_star.dart';
 import 'package:flutter_unit/app/res/cons.dart';
 import 'package:flutter_unit/app/style/shape/techno_shape.dart';
 import 'package:flutter_unit/blocs/collect/collect_bloc.dart';
+import 'package:flutter_unit/blocs/collect/collect_event.dart';
 import 'package:flutter_unit/blocs/collect/collect_state.dart';
 import 'package:flutter_unit/components/permanent/circle_image.dart';
 import 'package:flutter_unit/components/permanent/circle_text.dart';
@@ -64,10 +65,14 @@ class TechnoWidgetListItem extends StatelessWidget {
     return Positioned(
         top: 0,
         right: 40,
-        child: BlocBuilder<CollectBloc, CollectState>(builder: (_, s) {
-          var show = s.widgets.contains(data);
+        child:
+        BlocBuilder<CollectBloc, CollectState>(builder: (_, s) {
+          var checked = false;
+          if(s is CheckCollectSuccess){
+            checked = s.collected ;
+          }
           return Opacity(
-            opacity: show ? 1.0 : 0.0,
+            opacity: checked ? 1.0 : 0.0,
             child: SizedOverflowBox(
               alignment: Alignment.bottomCenter,
               size: Size(0, 30 - 8.0),
@@ -78,7 +83,8 @@ class TechnoWidgetListItem extends StatelessWidget {
               ),
             ),
           );
-        }));
+        })
+    );
   }
 
   Widget _buildLeading() => Padding(

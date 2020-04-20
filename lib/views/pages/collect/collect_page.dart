@@ -8,7 +8,7 @@ import 'package:flutter_unit/blocs/detail/detail_bloc.dart';
 import 'package:flutter_unit/blocs/detail/detail_event.dart';
 import 'package:flutter_unit/blocs/widgets/home_bloc.dart';
 import 'package:flutter_unit/model/widget_model.dart';
-import 'package:flutter_unit/views/items/collect_widget_list_item.dart';
+import 'package:flutter_unit/views/items/collect_detaile_list_item.dart';
 
 class CollectPage extends StatelessWidget {
   final gridDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
@@ -20,9 +20,11 @@ class CollectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var homeColor=  BlocProvider.of<HomeBloc>(context).state.homeColor;
     return Scaffold(
+      backgroundColor: homeColor,
       appBar: AppBar(
-        backgroundColor: BlocProvider.of<HomeBloc>(context).state.homeColor,
+        backgroundColor: homeColor,
         title: Text('收藏集'),
         actions: <Widget>[_buildAddActionBuilder(context)],
       ),

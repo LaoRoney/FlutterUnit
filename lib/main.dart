@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_unit/app/enums.dart';
 import 'package:flutter_unit/blocs/collect/collect_event.dart';
 import 'package:flutter_unit/blocs/search/search_bloc.dart';
-import 'package:flutter_unit/repositorys/widget_db_repository.dart';
+import 'package:flutter_unit/repositories/impl/collect_db_repository.dart';
+import 'package:flutter_unit/repositories/impl/widget_db_repository.dart';
 import 'package:flutter_unit/storage/app_storage.dart';
 import 'package:flutter_unit/views/pages/splash/unit_splash.dart';
 
@@ -17,6 +18,7 @@ import 'blocs/widgets/home_bloc.dart';
 import 'blocs/widgets/home_event.dart';
 
 import 'app/router.dart';
+import 'repositories/itf/collect_repository.dart';
 import 'tools/widget_me_repository.dart';
 
 void main() async {
@@ -36,6 +38,8 @@ class BlocWrapper extends StatelessWidget {
   BlocWrapper({this.child});
 
   final repository = WidgetDbRepository(storage);
+  final collectRepository = CollectDbRepository(storage);
+
 //  final repository = WidgetMeRepository();
 
   @override
@@ -53,8 +57,8 @@ class BlocWrapper extends StatelessWidget {
           create: (_) => DetailBloc(repository: repository)),
 
       BlocProvider<CollectBloc>(
-          create: (_) =>
-              CollectBloc(repository: repository)..add(EventSetCollectData())),
+          create: (_) => CollectBloc(repository: collectRepository)
+            ..add(EventSetCollectData())),
       BlocProvider<SearchBloc>(
           create: (_) => SearchBloc(repository: repository)),
     ], child: child);

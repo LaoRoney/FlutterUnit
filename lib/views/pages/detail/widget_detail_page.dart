@@ -122,20 +122,29 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
     //监听 CollectBloc 伺机弹出toast
     return BlocListener<CollectBloc, CollectState>(
         listener: (ctx, st) {
-          bool collected = st.widgets.contains(model);
-          Toast.toast(ctx,
-              collected ? "收藏【${model.name}】组件成功!" : "已取消【${model.name}】组件收藏!");
+          if(st is ToggleCollectSuccess){
+            Toast.toast(ctx,
+                st.collected ? "收藏【${model.name}】组件成功!" : "已取消【${model.name}】组件收藏!");
+          }
         },
         child: FeedbackWidget(
-          onPressed: () => BlocProvider.of<CollectBloc>(context)
-              .add(ToggleCollectEvent(id: model.id)),
+          onPressed: () => BlocProvider.of<CollectBloc>(context).add(ToggleCollectEvent(id: model.id)),
           child: BlocBuilder<CollectBloc, CollectState>(builder: (_, s) {
+            var collected = model.collected;
+            if(s is ToggleCollectSuccess){
+               collected = s.collected;
+            }
+            if(s is CheckCollectSuccess){
+              collected = s.collected;
+            }
+
             return Padding(
               padding: const EdgeInsets.only(right: 20.0),
               child: Icon(
-                s.widgets.contains(model)
+                collected
                     ? TolyIcon.icon_star_ok
-                    : TolyIcon.icon_star_add,
+                    :
+                TolyIcon.icon_star_add,
                 size: 25,
               ),
             );
@@ -221,30 +230,30 @@ class WidgetDetailTitle extends StatelessWidget {
     ));
   }
 
-  Widget buildCollectButton(WidgetModel model, BuildContext context) {
-    //监听 CollectBloc 伺机弹出toast
-    return BlocListener<CollectBloc, CollectState>(
-        listener: (ctx, st) {
-          bool collected = st.widgets.contains(model);
-          Toast.toast(ctx,
-              collected ? "收藏【${model.name}】组件成功!" : "已取消【${model.name}】组件收藏!");
-        },
-        child: FeedbackWidget(
-          onPressed: () => BlocProvider.of<CollectBloc>(context)
-              .add(ToggleCollectEvent(id: model.id)),
-          child: BlocBuilder<CollectBloc, CollectState>(builder: (_, s) {
-            return Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: Icon(
-                s.widgets.contains(model)
-                    ? TolyIcon.icon_star_ok
-                    : TolyIcon.icon_star_add,
-                size: 25,
-              ),
-            );
-          }),
-        ));
-  }
+//  Widget buildCollectButton(WidgetModel model, BuildContext context) {
+//    //监听 CollectBloc 伺机弹出toast
+//    return BlocListener<CollectBloc, CollectState>(
+//        listener: (ctx, st) {
+//          bool collected = st.widgets.contains(model);
+//          Toast.toast(ctx,
+//              collected ? "收藏【${model.name}】组件成功!" : "已取消【${model.name}】组件收藏!");
+//        },
+//        child: FeedbackWidget(
+//          onPressed: () => BlocProvider.of<CollectBloc>(context)
+//              .add(ToggleCollectEvent(id: model.id)),
+//          child: BlocBuilder<CollectBloc, CollectState>(builder: (_, s) {
+//            return Padding(
+//              padding: const EdgeInsets.only(right: 20.0),
+//              child: Icon(
+//                s.widgets.contains(model)
+//                    ? TolyIcon.icon_star_ok
+//                    : TolyIcon.icon_star_add,
+//                size: 25,
+//              ),
+//            );
+//          }),
+//        ));
+//  }
 
   final List<int> colors = Cons.tabColors;
 

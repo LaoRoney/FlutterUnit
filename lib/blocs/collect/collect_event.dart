@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_unit/model/widget_model.dart';
 
 /// create by 张风捷特烈 on 2020-04-09
@@ -34,9 +35,39 @@ class ToggleCollectEvent extends CollectEvent {
   List<Object> get props => [id];
 }
 
+class CheckCollectEvent extends CollectEvent {
+  final int id;
+  CheckCollectEvent({this.id});
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [id];
+}
+
+
 class LoadCollectEvent extends CollectEvent{
   @override
   List<Object> get props => [];
 
 }
 
+
+class EventAddCollect extends CollectEvent{
+  final String name;
+  final String info;
+  final String color;
+
+  EventAddCollect({@required this.name, this.info, this.color});
+
+  @override
+  List<Object> get props => [name,info,color];
+}
+
+class EventDeleteCollect extends CollectEvent{
+  final int id;
+
+  EventDeleteCollect({@required this.id});
+
+  @override
+  List<Object> get props => [id];
+}

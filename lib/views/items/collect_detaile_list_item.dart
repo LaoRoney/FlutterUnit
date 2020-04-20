@@ -8,10 +8,10 @@ import 'package:flutter_unit/components/permanent/circle_text.dart';
 import 'package:flutter_unit/components/permanent/feedback_widget.dart';
 import 'package:flutter_unit/model/widget_model.dart';
 
-class CollectWidgetListItem extends StatelessWidget {
+class CollectDetailListItem extends StatelessWidget {
   final WidgetModel data;
   final Function(WidgetModel) onDelectItemClick;
-  CollectWidgetListItem({this.data,this.onDelectItemClick});
+  CollectDetailListItem({this.data,this.onDelectItemClick});
 
   @override
   Widget build(BuildContext context) {

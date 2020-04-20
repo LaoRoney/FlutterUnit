@@ -11,7 +11,7 @@ import 'package:flutter_unit/blocs/detail/detail_event.dart';
 import 'package:flutter_unit/components/permanent/animated_text.dart';
 import 'package:flutter_unit/components/permanent/circle_image.dart';
 import 'package:flutter_unit/model/widget_model.dart';
-import 'package:flutter_unit/views/items/collect_widget_list_item.dart';
+import 'package:flutter_unit/views/items/collect_detaile_list_item.dart';
 import 'package:flutter_unit/views/items/techno_widget_list_item.dart';
 
 import '../common/empty_page.dart';
