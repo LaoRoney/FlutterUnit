@@ -1,14 +1,13 @@
-import 'package:flutter_unit/model/collect_model.dart';
-import 'package:flutter_unit/storage/app_storage.dart';
-import 'package:flutter_unit/app/enums.dart';
-import 'package:flutter_unit/storage/dao/collect_dao.dart';
-import 'package:flutter_unit/storage/dao/node_dao.dart';
-import 'package:flutter_unit/storage/po/collect_po.dart';
-import 'package:flutter_unit/storage/po/widget_po.dart';
-import 'package:flutter_unit/storage/dao/widget_dao.dart';
-import 'package:flutter_unit/model/node_model.dart';
-import 'package:flutter_unit/model/widget_model.dart';
-import 'package:flutter_unit/repositories/itf/widget_repository.dart';
+
+import 'package:flutter_unit_mac/storage/app_storage.dart';
+import 'package:flutter_unit_mac/app/enums.dart';
+import 'package:flutter_unit_mac/storage/dao/node_dao.dart';
+
+import 'package:flutter_unit_mac/storage/po/widget_po.dart';
+import 'package:flutter_unit_mac/storage/dao/widget_dao.dart';
+import 'package:flutter_unit_mac/model/node_model.dart';
+import 'package:flutter_unit_mac/model/widget_model.dart';
+import 'package:flutter_unit_mac/repositories/itf/widget_repository.dart';
 
 /// create by 张风捷特烈 on 2020-03-03
 /// contact me by email 1981462002@qq.com
@@ -33,6 +32,14 @@ class WidgetDbRepository implements WidgetRepository {
   }
 
   @override
+  Future<List<WidgetModel>> loadCollectWidgets() async {
+    var data = await _widgetDao.queryCollect();
+    var widgets = data.map((e) => WidgetPo.fromJson(e)).toList();
+    var list = widgets.map(WidgetModel.fromPo).toList();
+    return list;
+  }
+
+  @override
   Future<List<WidgetModel>> searchWidgets(SearchArgs args) async {
     var data = await _widgetDao.search(args);
     var widgets = data.map((e) => WidgetPo.fromJson(e)).toList();
@@ -54,4 +61,16 @@ class WidgetDbRepository implements WidgetRepository {
     return null;
   }
 
+  @override
+  Future<void> toggleCollect(
+    int id,
+  ) {
+    return _widgetDao.toggleCollect(id);
+  }
+
+
+  @override
+  Future<bool> collected(int id) async{
+    return  await _widgetDao.collected(id);
+  }
 }

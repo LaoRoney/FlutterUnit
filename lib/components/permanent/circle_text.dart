@@ -37,7 +37,6 @@ class CircleText extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(3),
         child: Container(
-//          color: Colors.purpleAccent,
             alignment: Alignment.center,
             width: size,
             height: size,
@@ -46,18 +45,18 @@ class CircleText extends StatelessWidget {
               color: backgroundColor??Color(0xffD8F5FF),
             ),
             child: Text(
-              text.substring(0, 2),
+              text.length>2?text.substring(0, 2):text,
               style: TextStyle(
-                  fontSize: fontSize,
-                  color: color,
-                  fontWeight: FontWeight.bold,
-              shadows: [
-                Shadow(
-                  //阴影
-                  color: Colors.grey,
-                  offset: Offset(1.0, 1.0), blurRadius: 1.0,
-                )
-              ],
+                fontSize: fontSize,
+                color: color,
+                fontWeight: FontWeight.bold,
+                shadows: [
+                  Shadow(
+                    //阴影
+                    color: Colors.grey,
+                    offset: Offset(1.0, 1.0), blurRadius: 1.0,
+                  )
+                ],
               ),
             )),
       ),

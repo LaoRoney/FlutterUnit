@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unit/app/res/cons.dart';
+import 'package:flutter_unit_mac/app/res/cons.dart';
 
 class DialogAbout extends StatelessWidget {
   static show(BuildContext context){

@@ -1,45 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'ProxyWidget/InheritedWidget/ButtonTheme.dart';
-import 'ProxyWidget/InheritedWidget/DefaultTextStyle.dart';
-import 'ProxyWidget/InheritedWidget/DividerTheme.dart';
-import 'ProxyWidget/InheritedWidget/IconTheme.dart';
-import 'ProxyWidget/InheritedWidget/SliderTheme.dart';
-import 'RenderObjectWidget/SingleChildRenderObjectWidget/AbsorbPointer.dart';
-import 'RenderObjectWidget/SingleChildRenderObjectWidget/BackdropFilter.dart';
-import 'RenderObjectWidget/SingleChildRenderObjectWidget/IgnorePointer.dart';
-import 'RenderObjectWidget/SingleChildRenderObjectWidget/LayoutBuilder.dart';
-import 'RenderObjectWidget/SingleChildRenderObjectWidget/ShaderMask.dart';
-import 'StatefulWidget/stateful_unit.dart';
-import 'StatelessWidget/stateless_unit.dart';
 
-import 'ProxyWidget/DropdownButtonHideUnderline.dart';
-import 'ProxyWidget/Flexible.dart';
-import 'ProxyWidget/InheritedWidget/MediaQuery.dart';
-import 'ProxyWidget/InheritedWidget/ScrollConfiguration.dart';
-import 'ProxyWidget/Positioned.dart';
-import 'StatelessWidget/Spacer.dart';
-import 'RenderObjectWidget/ErrorWidget.dart';
-import 'RenderObjectWidget/MultiChildRenderObjectWidget/Column.dart';
-import 'ProxyWidget/Expanded.dart';
-import 'RenderObjectWidget/MultiChildRenderObjectWidget/IndexedStack.dart';
-import 'RenderObjectWidget/MultiChildRenderObjectWidget/Row.dart';
-import 'RenderObjectWidget/SingleChildRenderObjectWidget/AnimatedSize.dart';
-import 'RenderObjectWidget/SingleChildRenderObjectWidget/Center.dart';
-import 'RenderObjectWidget/SingleChildRenderObjectWidget/CustomPaint/CustomPaint.dart';
-import 'RenderObjectWidget/SingleChildRenderObjectWidget/CustomPaint/colck_page/colck_page.dart';
-import 'RenderObjectWidget/render_object_widget.dart';
-import 'Sliver/CustomScrollView.dart';
-import 'Sliver/FlexibleSpaceBar.dart';
-import 'Sliver/SliverAppBar.dart';
-import 'Sliver/SliverFillViewport.dart';
-import 'Sliver/SliverFixedExtentList.dart';
-import 'Sliver/SliverGrid.dart';
-import 'Sliver/SliverList.dart';
-import 'Sliver/SliverOpacity.dart';
-import 'Sliver/SliverPadding.dart';
-import 'Sliver/SliverPersistentHeader.dart';
-import 'Sliver/SliverToBoxAdapter.dart';
+import 'exp/stateful_unit.dart';
+import 'exp/stateless_unit.dart';
+import 'exp/render_object_unit.dart';
+import 'exp/proxy_unit.dart';
+import 'exp/other_unit.dart';
+import 'exp/sliver_unit.dart';
+
+
 
 /// create by 张风捷特烈 on 2020-03-04
 /// contact me by email 1981462002@qq.com
@@ -364,7 +332,12 @@ class WidgetsMap {
         ];
       case "DecoratedBox":
         return [
-          CustomDecoratedBox(),
+          BoxDecorationDemo(),
+          ShapeImageDemo(),
+          BorderDemo(),
+          ShapeDecorationDemo(),
+          UnderlineTabIndicatorDemo(),
+          FlutterLogoDecorationDemo(),
         ];
       case "Offstage":
         return [
@@ -380,7 +353,9 @@ class WidgetsMap {
         ];
       case "Padding":
         return [
-          CustomPadding(),
+          PaddingAll(),
+          PaddingOnly(),
+          PaddingSymmetric(),
         ];
       case "Baseline":
         return [
@@ -545,6 +520,10 @@ class WidgetsMap {
         return [
           CustomAlignTransition(),
         ];
+      case "SlideTransition":
+        return [
+          CustomSlideTransition(),
+        ];
       case "DecoratedBoxTransition":
         return [
           CustomDecoratedBoxTransition(),
@@ -676,6 +655,9 @@ class WidgetsMap {
       case "LicensePage":
         return [
           CustomLicensePage(),
+        ];      case "Builder":
+        return [
+          BuilderDemo(),
         ];
       case "GestureDetector":
         return [
@@ -690,6 +672,11 @@ class WidgetsMap {
       case "Tab":
         return [
           CustomTab(),
+        ];
+        case "PreferredSize":
+        return [
+          CustomPreferredSize(),
+          AdapterPreferredSize(),
         ];
       case "InkResponse":
         return [

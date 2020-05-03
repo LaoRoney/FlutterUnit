@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_unit/app/style/TolyIcon.dart';
+import 'package:flutter_unit_mac/app/style/TolyIcon.dart';
 
-import 'package:flutter_unit/components/permanent/circle.dart';
-import 'package:flutter_unit/components/permanent/code/code_widget.dart';
-import 'package:flutter_unit/components/permanent/panel.dart';
+import 'package:flutter_unit_mac/components/permanent/circle.dart';
+import 'package:flutter_unit_mac/components/permanent/code/code_widget.dart';
+import 'package:flutter_unit_mac/components/permanent/panel.dart';
 import 'package:share/share.dart';
 import 'package:toggle_rotate/toggle_rotate.dart';
 
@@ -130,12 +130,12 @@ class _WidgetNodePanelState extends State<WidgetNodePanel> {
           width: MediaQuery.of(context).size.width,
           child: CodeWidget(
             fontFamily: widget.codeFamily,
-            code: widget.code,
+            code: isFirst?'':widget.code,
             style: widget.codeStyle ??
                 HighlighterStyle.fromColors(HighlighterStyle.lightColor),
           ),
         ),
-        duration: Duration(milliseconds: 500),
+        duration: Duration(milliseconds: 200),
         crossFadeState: _crossFadeState,
       );
 

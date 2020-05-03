@@ -1,23 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit/app/convert.dart';
-import 'package:flutter_unit/app/res/cons.dart';
-import 'package:flutter_unit/app/router.dart';
-import 'package:flutter_unit/blocs/collect/collect_bloc.dart';
-import 'package:flutter_unit/blocs/collect/collect_event.dart';
-import 'package:flutter_unit/blocs/detail/detail_bloc.dart';
-import 'package:flutter_unit/blocs/detail/detail_event.dart';
-import 'package:flutter_unit/blocs/global/global_bloc.dart';
-import 'package:flutter_unit/blocs/widgets/home_bloc.dart';
-import 'package:flutter_unit/blocs/widgets/home_event.dart';
-import 'package:flutter_unit/blocs/widgets/home_state.dart';
-import 'package:flutter_unit/components/permanent/feedback_widget.dart';
-import 'package:flutter_unit/model/widget_model.dart';
-import 'package:flutter_unit/views/pages/common/empty_page.dart';
-import 'package:flutter_unit/views/items/coupon_widget_list_item.dart';
-import 'package:flutter_unit/views/items/techno_widget_list_item.dart';
-import 'package:flutter_unit/views/pages/home/toly_app_bar.dart';
+import 'package:flutter_unit_mac/app/convert.dart';
+import 'package:flutter_unit_mac/app/res/cons.dart';
+import 'package:flutter_unit_mac/app/router.dart';
+import 'package:flutter_unit_mac/blocs/bloc_exp.dart';
+import 'package:flutter_unit_mac/components/permanent/feedback_widget.dart';
+import 'package:flutter_unit_mac/model/widget_model.dart';
+import 'package:flutter_unit_mac/views/common/empty_page.dart';
+import 'package:flutter_unit_mac/views/items/home_item_support.dart';
+import 'package:flutter_unit_mac/views/pages/home/toly_app_bar.dart';
 
 import 'background.dart';
 
@@ -40,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var color = BlocProvider.of<HomeBloc>(context).state.homeColor;
-
+    var showBg = BlocProvider.of<GlobalBloc>(context).state.showBackGround;
     return Scaffold(
       appBar: TolyAppBar(
         selectIndex: Cons.tabColors.indexOf(color.value),
@@ -49,29 +41,29 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Stack(
         children: <Widget>[
-          if (BlocProvider.of<GlobalBloc>(context).state.showBackGround)
-            Background(),
-          BlocBuilder<HomeBloc, HomeState>(
-              builder: (_, state) => _buildContent(state))
+          if (showBg) Background(),
+          BlocBuilder<HomeBloc, HomeState>(builder: _buildContent)
         ],
       ),
     );
   }
-
-  Widget _buildContent(HomeState state) {
+  final gridDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2,
+    mainAxisSpacing: 10,
+    crossAxisSpacing: 10,
+    childAspectRatio: 3.5,
+  );
+  Widget _buildContent(BuildContext context, HomeState state) {
     if (state is WidgetsLoaded) {
       var items = state.widgets;
+      print(items.length);
       if (items.isEmpty) return EmptyPage();
-      return ListView.builder(
-          controller: _ctrl,
-          itemBuilder: (_, index) => Container(
-                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                child: FeedbackWidget(
-                    duration: Duration(milliseconds: 200),
-                    onPressed: () => _toDetailPage(items[index]),
-                    child: _mapItemByType(items[index])),
-              ),
-          itemCount: items.length);
+      return GridView.builder(
+        padding: EdgeInsets.all(10),
+        itemCount: items.length,
+        itemBuilder: (_, index) =>_buildHomeItem(items[index]),
+        gridDelegate: gridDelegate,
+      );
     }
     if (state is WidgetsLoadFailed) {
       return Container(
@@ -81,33 +73,14 @@ class _HomePageState extends State<HomePage> {
     return Container();
   }
 
-  Widget _mapItemByType(WidgetModel model) {
-    var index = BlocProvider.of<GlobalBloc>(context).state.itemStyleIndex;
-    switch (index) {
-      case 0:
-        return TechnoWidgetListItem(
-          data: model,
-        );
-      case 1:
-        return CouponWidgetListItem(
-          data: model,
-        );
-      case 2:
-        return CouponWidgetListItem(
-          hasTopHole: false,
-          data: model,
-        );
-      case 3:
-        return CouponWidgetListItem(
-          hasTopHole: true,
-          hasBottomHole: true,
-          data: model,
-        );
-    }
-    return TechnoWidgetListItem(
-      data: model,
-    );
-  }
+  Widget _buildHomeItem(
+    WidgetModel model,
+  ) =>
+      FeedbackWidget(
+          duration: const Duration(milliseconds: 200),
+          onPressed: () => _toDetailPage(model),
+          child: HomeItemSupport.get(model,
+              BlocProvider.of<GlobalBloc>(context).state.itemStyleIndex));
 
   _updateAppBarHeight() {
     if (_ctrl.offset < _limitY * 4) {
@@ -125,7 +98,6 @@ class _HomePageState extends State<HomePage> {
 
   _toDetailPage(WidgetModel model) async {
     BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(model));
-    BlocProvider.of<CollectBloc>(context).add(CheckCollectEvent(id: model.id));
     Navigator.pushNamed(context, Router.widget_detail, arguments: model);
   }
 }

@@ -3,9 +3,9 @@
 /// 说明:
 
 import 'package:flutter/material.dart';
-import 'package:flutter_unit/app/style/TolyIcon.dart';
-import 'package:flutter_unit/components/permanent/circle_image.dart';
-import 'package:flutter_unit/components/permanent/feedback_widget.dart';
+import 'package:flutter_unit_mac/app/style/TolyIcon.dart';
+import 'package:flutter_unit_mac/components/permanent/circle_image.dart';
+import 'package:flutter_unit_mac/components/permanent/feedback_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutMePage extends StatelessWidget {
@@ -43,16 +43,18 @@ class AboutMePage extends StatelessWidget {
             ],
           ),
           Expanded(
-            child: Container(
-              margin: EdgeInsets.all(24),
-              child: Stack(children: <Widget>[
-                Positioned(
-                  right: 10,
-                  top: 0,
-                  child: _buildLinkIcon(),
-                ),
-                _buildInfo()
-              ]),
+            child: SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.all(24),
+                child: Stack(children: <Widget>[
+                  Positioned(
+                    right: 10,
+                    top: 0,
+                    child: _buildLinkIcon(),
+                  ),
+                  _buildInfo()
+                ]),
+              ),
             ),
           ),
         ],

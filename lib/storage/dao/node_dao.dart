@@ -1,4 +1,4 @@
-import 'package:flutter_unit/storage/app_storage.dart';
+import 'package:flutter_unit_mac/storage/app_storage.dart';
 
 import '../po/node_po.dart';
 
@@ -37,7 +37,7 @@ class NodeDao {
     return await db.rawQuery(
         "SELECT name,subtitle,code "
         "FROM node "
-        "WHERE widgetId = ?",
+        "WHERE widgetId = ? ORDER BY priority",
         [id]);
   }
 }

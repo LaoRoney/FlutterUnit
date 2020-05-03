@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unit/components/permanent/circle.dart';
-import 'package:flutter_unit/components/permanent/feedback_widget.dart';
+import 'package:flutter_unit_mac/components/permanent/circle.dart';
+import 'package:flutter_unit_mac/components/permanent/feedback_widget.dart';
 
 typedef CheckCallback<T> = void Function(T color);
 

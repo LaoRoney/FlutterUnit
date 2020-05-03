@@ -83,7 +83,7 @@ class ColorUtils {
     return result;
   }
 
- static String colorString(Color color) =>
+  static String colorString(Color color) =>
       "#${color.value.toRadixString(16).padLeft(8, '0').toUpperCase()}";
 }
 

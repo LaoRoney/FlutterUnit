@@ -3,9 +3,9 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_unit/app/res/cons.dart';
-import 'package:flutter_unit/app/res/sp.dart';
-import 'package:flutter_unit/blocs/global/global_state.dart';
+import 'package:flutter_unit_mac/app/res/cons.dart';
+import 'package:flutter_unit_mac/app/res/sp.dart';
+import 'package:flutter_unit_mac/blocs/global/global_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
@@ -51,18 +51,16 @@ class AppStorage {
     var dbPath = path.join(databasesPath, "flutter.db");
     var exists = await databaseExists(dbPath);
     if (!exists) {
-      print("Creating new copy from asset");
       try {
         await Directory(path.dirname(dbPath)).create(recursive: true);
+        print("========= assets ======拷贝完成====");
       } catch (_) {}
-
       ByteData data = await rootBundle.load(path.join("assets", "flutter.db"));
       List<int> bytes =
       data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       await File(dbPath).writeAsBytes(bytes, flush: true);
-
     } else {
-      print("Opening existing database");
+      print("========= 数据库 ======已存在====");
     }
     return await openDatabase(dbPath, readOnly: false);
   }

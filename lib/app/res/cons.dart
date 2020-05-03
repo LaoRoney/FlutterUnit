@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unit/app/style/TolyIcon.dart';
-import 'package:flutter_unit/components/permanent/code/highlighter_style.dart';
+import 'package:flutter_unit_mac/app/style/TolyIcon.dart';
+import 'package:flutter_unit_mac/components/permanent/code/highlighter_style.dart';
 
 class Cons {
-  static String version = 'V1.0.0';
+  static String version = 'V1.1.0';
 
   static const MENU_INFO = <String>["关于", "帮助", "问题反馈"]; //菜单栏
   static const ICONS_MAP = {

@@ -2,19 +2,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit/app/router.dart';
-import 'package:flutter_unit/blocs/collect/collect_bloc.dart';
-import 'package:flutter_unit/blocs/collect/collect_event.dart';
-import 'package:flutter_unit/blocs/collect/collect_state.dart';
-import 'package:flutter_unit/blocs/detail/detail_bloc.dart';
-import 'package:flutter_unit/blocs/detail/detail_event.dart';
-import 'package:flutter_unit/components/permanent/animated_text.dart';
-import 'package:flutter_unit/components/permanent/circle_image.dart';
-import 'package:flutter_unit/model/widget_model.dart';
-import 'package:flutter_unit/views/items/collect_detaile_list_item.dart';
-import 'package:flutter_unit/views/items/techno_widget_list_item.dart';
+import 'package:flutter_unit_mac/app/router.dart';
+import 'package:flutter_unit_mac/blocs/collect/collect_bloc.dart';
+import 'package:flutter_unit_mac/blocs/collect/collect_event.dart';
+import 'package:flutter_unit_mac/blocs/collect/collect_state.dart';
+import 'package:flutter_unit_mac/blocs/detail/detail_bloc.dart';
+import 'package:flutter_unit_mac/blocs/detail/detail_event.dart';
+import 'package:flutter_unit_mac/components/permanent/animated_text.dart';
+import 'package:flutter_unit_mac/components/permanent/circle_image.dart';
+import 'package:flutter_unit_mac/model/widget_model.dart';
+import 'package:flutter_unit_mac/views/items/collect_widget_list_item.dart';
+import 'package:flutter_unit_mac/views/items/techno_widget_list_item.dart';
 
-import '../common/empty_page.dart';
+import '../../common/empty_page.dart';
 
 class LayoutUnitPage extends StatelessWidget {
   final info = '【Flutter布局集录】是Unit项目计划的第二阶段的功能之一。'
