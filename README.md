@@ -2,223 +2,172 @@
 [![GitHub stars](https://img.shields.io/github/stars/toly1994328/FlutterUnit)](https://github.com/toly1994328/FlutterUnit/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/toly1994328/FlutterUnit)](https://github.com/toly1994328/FlutterUnit/network)
 [![GitHub license](https://img.shields.io/github/license/toly1994328/FlutterUnit)](https://github.com/toly1994328/FlutterUnit/blob/master/LICENSE)
-### FlutterUnit apk 下载体验:
+
+### FlutterUnit 下载体验:
 
 
-![](https://user-gold-cdn.xitu.io/2020/4/19/171930c288fc7de5?w=300&h=390&f=png&s=22671)
+| FlutterUnit.apk 下载  | FlutterUnit mac版 下载 | Github仓库地址 | 
+|------|------------|------------|
+|![](http://photo.toly1994.com/ewm$flutter_unit.png)|![](http://photo.toly1994.com/ewm$flutter_unit_mac.png)| ![](http://photo.toly1994.com/ewm$flutter_unit_github.png)|     
 
 ---
 
 > 当前版本与分支
 
 ```
-a1@toly ~ % flutter --version
+---[• flutter --version
 Flutter 1.18.0-7.0.pre.46 • channel master •
 https://github.com/flutter/flutter.git
-Framework • revision 1f132e90f8 (10 days ago) • 2020-04-23 11:00:12 +0530
+Framework • revision 1f132e90f8 (11 days ago) • 2020-04-23 11:00:12 +0530
 Engine • revision d3f1c08f52
 Tools • Dart 2.9.0 (build 2.9.0-2.0.dev 64b8ded48b)
 ```
 
 
-### 一、组件的展示页面
+#### 一、如何运行出FlutterUnit mac
 
-#### 1. `210+组件收录`
+##### 1. 如何使用Flutter mac
 
-> Flutter源码中的可用的组件一共350个左右，纷繁复杂，也没有明确的分类标准
-FlutterUnit 对`大大小小，常用不常用`的组件能收的尽量收录。并`根据个人感觉进行评星 `
-`目前收录组件211个`，每个都有至少一个演示展现和代码展示。
 
-| . | . | . |
-|------|------------|------------|
-| ![](https://user-gold-cdn.xitu.io/2020/4/14/17175af35f63c8fb?w=1080&h=2340&f=jpeg&s=158267)|  ![](https://user-gold-cdn.xitu.io/2020/4/14/17175b0c1c92a004?w=1080&h=2340&f=jpeg&s=161619)|     ![](https://user-gold-cdn.xitu.io/2020/4/14/17175b0a95d5c549?w=1080&h=2340&f=jpeg&s=150406)       |
-|  ![](https://user-gold-cdn.xitu.io/2020/4/14/17175af9b09f76f6?w=1080&h=2340&f=jpeg&s=153575)   | ![](https://user-gold-cdn.xitu.io/2020/4/14/17175b0766ed455b?w=1080&h=2340&f=jpeg&s=166128)        |![](https://user-gold-cdn.xitu.io/2020/4/14/17175af6b9523083?w=1080&h=2340&f=jpeg&s=163290)      |
-
-
----
-
-#### 2. 组件详情页
-
-> `207个组件`全部都有详情页。对于重要的组件会详细展现
-一般都会有某个演示对应的组件和属性,尽量做到细致，如果有需要补充，欢迎联系我。
-`最重要的是: 所有的演示展现都是Flutter的组件形成的，而非图片，这就意味着可操作性更高。`
-
-| . | . | . |
-|------|------------|------------|
-| ![](https://user-gold-cdn.xitu.io/2020/4/14/17175c3f21476fc5?w=1080&h=2340&f=jpeg&s=67728)| ![](https://user-gold-cdn.xitu.io/2020/4/14/17175c44a1cfa94c?w=1080&h=2340&f=jpeg&s=92664)|    ![](https://user-gold-cdn.xitu.io/2020/4/14/17175c4a7cd90126?w=1080&h=2340&f=jpeg&s=114306) |
-|  ![](https://user-gold-cdn.xitu.io/2020/4/14/17175c5171d0373f?w=1080&h=2340&f=jpeg&s=159437)  | ![](https://user-gold-cdn.xitu.io/2020/4/14/17175c56ce136676?w=1080&h=2340&f=jpeg&s=87311)       |![](https://user-gold-cdn.xitu.io/2020/4/14/17175c61623c6462?w=1080&h=2340&f=jpeg&s=108215)|
-
-
-
-
-
----
-
-#### 3. 组件的可操作性
-
-> 对一些操作交互的组件或有可操作性的某些组件，`提供操作演示`
-
-| . | . | . |
-|------|------------|------------|
-| ![](https://user-gold-cdn.xitu.io/2020/4/14/17175df98f83e05c?w=362&h=724&f=gif&s=1061771)| ![](https://user-gold-cdn.xitu.io/2020/4/14/17175dcce9022ddc?w=362&h=724&f=gif&s=232124)|   ![](https://user-gold-cdn.xitu.io/2020/4/14/17175de9b348a26a?w=362&h=724&f=gif&s=946647)|
-
----
-
-#### 4. 相关组件的关联切换
-> `相关组件通过link to 可以进行切换, 满足你的探索欲。`
-如果有的关联未加入，欢迎联系我，对我来说，加个数字就行了。
-
-![](https://user-gold-cdn.xitu.io/2020/4/14/17175ea0ea610669?w=610&h=226&f=png&s=37961)
-
-| . | . | . |
-|------|------------|------------|
-|![](https://user-gold-cdn.xitu.io/2020/4/14/17175e8c2a46e1f3?w=362&h=724&f=gif&s=471182)|![](https://user-gold-cdn.xitu.io/2020/4/14/17175e921dfc5c81?w=362&h=724&f=gif&s=658708)|   ![](https://user-gold-cdn.xitu.io/2020/4/14/17175e968c4f68e4?w=362&h=724&f=gif&s=300803)|
-
----
-
-#### 5. 代码的查看和分享
-> 激动人心的是，你可以通过右侧的图标`展开/隐藏 实现下面效果的代码`
-并且`支持分享`，如果你想亲自体验，so，easy ! 而且`代码高亮样式可以自定义`。
-
-| . | . | . |
-|------|------------|------------|
-| ![](https://user-gold-cdn.xitu.io/2020/4/14/171760369b9ae9d6?w=362&h=724&f=gif&s=1207409)| ![](https://user-gold-cdn.xitu.io/2020/4/14/1717603ad9119f2a?w=362&h=724&f=gif&s=1064037)|   ![](https://user-gold-cdn.xitu.io/2020/4/14/1717604b10154271?w=362&h=724&f=gif&s=2849830)|
-
-
----
-
-
-### 二、全局配置
-
-#### 1. 颜色主题
-> 只提供八种颜色，可在`右滑菜单页`的`我的主题`配置,`可以拓展`
-
-| . | . | . |
-|------|------------|------------|
-| ![](https://user-gold-cdn.xitu.io/2020/4/14/171760c51633383d?w=1080&h=2340&f=jpeg&s=94977)| ![](https://user-gold-cdn.xitu.io/2020/4/14/171760cbc7d0ddba?w=1080&h=2340&f=jpeg&s=89001) |    ![](https://user-gold-cdn.xitu.io/2020/4/14/171760b8c24c188f?w=1080&h=2340&f=jpeg&s=168263) |
-
-
-
----
-
-
-#### 2.字体配置
-
-> 支持全局字体设置,`可以拓展`
-
-| . | . | . |
-|------|------------|------------|
-| ![](https://user-gold-cdn.xitu.io/2020/4/14/1717615741f8d2e3?w=1080&h=2340&f=png&s=167438)| ![](https://user-gold-cdn.xitu.io/2020/4/14/171761667bbf6051?w=1080&h=2340&f=png&s=808002) |   ![](https://user-gold-cdn.xitu.io/2020/4/14/1717617b8ab59421?w=1080&h=2340&f=png&s=796618)|
-
----
-
-
-#### 3.item样式设置
-
-> 支持item样式设置，`可以拓展，支持征集`，详见`Flutter Unit 1.0 征集方案`
-
-| . | . | . |
-|------|------------|------------|
-|![](https://user-gold-cdn.xitu.io/2020/4/14/1717620037fd9a50?w=1080&h=2340&f=jpeg&s=105051)| ![](https://user-gold-cdn.xitu.io/2020/4/14/1717620161fa89ec?w=1080&h=2340&f=jpeg&s=158327)| ![](https://user-gold-cdn.xitu.io/2020/4/14/171762026eb8656d?w=1080&h=2340&f=jpeg&s=146688)|
-
----
-
-#### 4.代码面板风格设置
-
-> 支持代码风格设置，`可以拓展，支持征集`，详见`Flutter Unit 1.0 征集方案`
-
-| . | . |
-|------|------------|
-|![](https://user-gold-cdn.xitu.io/2020/4/14/1717628b5fe1591c?w=1080&h=759&f=png&s=105023)| ![](https://user-gold-cdn.xitu.io/2020/4/14/1717629001ade9b0?w=1080&h=773&f=png&s=102672)|
-
----
-
-
-
-### 三、搜索与收藏功能
-
-
-#### 1.搜索功能
-
-> 由于Flutter中Widget比较杂乱，不太好分类，所以搜索是非常重要的
-另外可以根据星级进行过滤，支持多选。目前正在考虑根据功能分类，之后会有所完善。
-
-
-| . | . | . |
-|------|------------|------------|
-| ![](https://user-gold-cdn.xitu.io/2020/4/14/171775fc594e4605?w=1080&h=2340&f=png&s=265281)| ![](https://user-gold-cdn.xitu.io/2020/4/14/171775fd99268a78?w=1080&h=2340&f=png&s=424599)|    ![](https://user-gold-cdn.xitu.io/2020/4/14/171775fefef50fb9?w=1080&h=2340&f=png&s=414437) |
-
----
-
-#### 2.搜藏功能
-
-> 搜藏页做得比较简陋，后面打算做收藏夹，可以自己创建的那种。
-
-| . | . | . |
-|------|------------|------------|
-|![](https://user-gold-cdn.xitu.io/2020/4/14/17177668aa7fd135?w=1080&h=2340&f=png&s=640245)|![](https://user-gold-cdn.xitu.io/2020/4/14/17177665c53256b4?w=1080&h=2340&f=png&s=797902)|     ![](https://user-gold-cdn.xitu.io/2020/4/14/1717765ec688731c?w=1080&h=2340&f=png&s=272421)|
-
-> `FlutterUnit 1.0 `目前基本就是这么多功能，可以在Github中下载打包后的apk玩玩
-希望能对你的Flutter学习有所帮助。
-
----
-
-#### 3.关于我与项目
-> 不多说，都在图里。
-
-| . | . | . |
-|------|------------|------------|
-|![](https://user-gold-cdn.xitu.io/2020/4/14/171777c67ed0c205?w=1080&h=2340&f=png&s=1272888)|![](https://user-gold-cdn.xitu.io/2020/4/14/171777c8ccfce16b?w=1080&h=2340&f=png&s=1105006)|     ![](https://user-gold-cdn.xitu.io/2020/4/14/171777caed85b26a?w=1080&h=2340&f=png&s=1190414)
-|
-
-
-
-
----
-
-
-###  Flutter Unit  Bug - Feature
-
- - `2020-4-16`
-
-```
-fixed "     修改样式无法点击的问题。
-fixed "     一些已知文案的错误。
-fixed "     hero动画闪现不同步问题。
+```!
+目前稳定版(Stable)本并不支持macos,你可以切换到master分支进行体验。
 ```
 
----
 
- - `2020-4-17`
+- 环境: `重新准备一个FlutterSDK,并使用flutter master分支`
+- 开启macos 桌面支持: `flutter config --enable-macos-desktop`
+
 
 ```
-fixed "     进入收藏页，再回到首页，顶部显示不同步的问题。
-fixed "     主页item双击黑屏问题。
+---[• flutter config --enable-macos-desktop
 
-
-feature "   支持详情页【相关链接的栈管理】,
-        "   即: 点击多个链接，不直接返回主页.
+---[• flutter --version
+Flutter 1.18.0-7.0.pre.46 • channel master •
+https://github.com/flutter/flutter.git
+Framework • revision 1f132e90f8 (11 days ago) • 2020-04-23 11:00:12 +0530
+Engine • revision d3f1c08f52
+Tools • Dart 2.9.0 (build 2.9.0-2.0.dev 64b8ded48b)
 ```
 
----
-
- - `2020-4-18`
-
-```
-feature "   小彩蛋: 【长按】底部栏【最左侧按钮】,打开左边菜单栏
-        "   【长按】底部栏【最右侧按钮】,打开右边菜单栏
-
-fixed "     收藏集的AppBar背景色同主页选中色。
-```
 
 ---
 
+##### 2. 如何获取FlutterUnit mac代码
 
- - `2020-4-19`
+- [FlutterUnit的github项目](https://github.com/toly1994328/FlutterUnit)中新建了一个[flutter_unit_mac](https://github.com/toly1994328/FlutterUnit/tree/flutter_unit_mac)的分支  
+- FlutterUnit mac端，或说桌面端将在这个分支进行维护，和移动端独立。
 
+
+```!
+由于移动端和桌面端的情况有很大的不同，而且两者需要的SDK不同。
+所以我并不在原移动端代码中进行适配，而是新建分支进行两个独立的项目。
+其实两种完全不同的情景，并没有必要强行合一，否则会感觉到处束手束脚。
+判断起来也会让代码变的复杂和难以阅读，独立维护也许是更好的选择。
 ```
-optimize "   添加收录【LayoutBuilder】组件
-optimize "   添加收录【IgnorePointer】组件
-optimize "   添加收录【AbsorbPointer】组件
-optimize "   添加收录【BackdropFilter】组件
-```
+
+![](http://user-gold-cdn.xitu.io/2020/5/4/171e01af25f704cd?w=2206&h=1024&f=png&s=261719)
+
+---
+
+##### 3. 如何运行和打包
+
+- 获取依赖包: `flutter pub get`
+- 运行命令: `flutter run -d macos`， 或直接通过`AndroidStudio` 选择设备运行
+
+![](http://user-gold-cdn.xitu.io/2020/5/4/171e02c9d5ac5a77?w=1350&h=416&f=png&s=201897)
+
+---
+
+
+- 打包macos: `flutter build macos`,在`build/macos/Build/Release`中可以看到应用
+
+
+![](http://user-gold-cdn.xitu.io/2020/5/4/171e053343d30233?w=1938&h=710&f=png&s=232963)
+
+---
+
+#### 二、. FlutterUnit mac 功能简述
+
+> 由于mac端录屏出的gif太大了，就不放动图了，所有功能同`移动端`  
+使用详情可参见: [【 FlutterUnit 食用指南】 开源篇](https://juejin.im/post/5e94e4d3f265da480836b943)  
+本文会说一下我做FlutterUnit mac端的原因和一些界面的变动。
+
+---
+
+##### 1. FlutterUnit主页界面
+
+- 对于桌面来说，最麻烦的当属`导航栏`了，如果直接用底栏或顶栏，那会非常丑  
+- 通常需要左栏，当然这些对于`动手能力超强`的我，都是小菜。`有就用，没有就造。`
+- 桌面程序`一般都很宽`,可以用GridView根据情况分多栏显示item,这样会好看些。
+
+![](http://user-gold-cdn.xitu.io/2020/5/5/171e06fe81830630?w=1604&h=1248&f=png&s=1102121)
+
+---
+
+##### 2. 左滑菜单栏
+
+- 单击`右侧导航栏底部的设置`可以打开左侧的菜单
+- 也可以通过`左边滑`来打开左侧的菜单，菜单内容保持一致，功能保持一致
+
+![](http://user-gold-cdn.xitu.io/2020/5/5/171e07714a69ec75?w=1606&h=1248&f=png&s=1020192)
+
+---
+
+##### 3. 组件详情页
+
+- 调整`相关组件`和介绍的位置，同排显示，好看一些。
+
+![](http://user-gold-cdn.xitu.io/2020/5/5/171e07db1d9a76ca?w=1600&h=1252&f=png&s=335520)
+
+---
+
+- 由于`Share插件`还不支持macos,这里`代码分享的功能直接改成代码复制`。
+- 代码面板的展开功能依旧存在,可通过展开按钮进行展开。
+
+![](http://user-gold-cdn.xitu.io/2020/5/5/171e081d559218ca?w=2538&h=1250&f=png&s=810461)
+
+---
+
+#####  4.收藏集功能正常
+
+- 收藏集的`增删改查操作`和`移动端保持一致`
+
+![](http://user-gold-cdn.xitu.io/2020/5/4/171e013c38f568ab?w=1602&h=1248&f=png&s=1280615)
+
+![](http://user-gold-cdn.xitu.io/2020/5/5/171e0870a24a708a?w=1596&h=1252&f=png&s=1023631)
+
+
+![](http://user-gold-cdn.xitu.io/2020/5/5/171e08b3a4b4230d?w=1608&h=1246&f=png&s=1117612)
+
+
+![](http://user-gold-cdn.xitu.io/2020/5/5/171e08b52b960bbe?w=1616&h=1256&f=png&s=1145558)
+
+
+---
+
+##### 5. 组件详情页的添加收藏
+
+> 功能保持一致
+
+![](http://user-gold-cdn.xitu.io/2020/5/5/171e08d2c31a7c44?w=1608&h=1262&f=png&s=623031)
+
+![](http://user-gold-cdn.xitu.io/2020/5/5/171e08e573eb1217?w=1606&h=1248&f=png&s=341068)
+
+
+---
+
+##### 6. 搜索页
+
+- 模糊查询
+
+![](http://user-gold-cdn.xitu.io/2020/5/5/171e090788946055?w=1606&h=1262&f=png&s=401087)
+
+- 星级查询
+
+![](http://user-gold-cdn.xitu.io/2020/5/5/171e090303d1f3af?w=1602&h=1258&f=png&s=465011)
+
+
+> 其实适配到macos我就花了小半天的时间。主要就是主页右边栏的设计和实现。  
+这也得益于项目的清晰，我知道哪些文件是干嘛的，所以抽离是很重要的，酌情抽出变量、方法或类，不要什么东西都塞在一起，一旦代码变动就是灭顶之灾。另外bloc维护的业务逻辑可以丝毫不动，只需将相关页面的一些结构进行调整即可，这也是bloc的优势。
+
+---```
