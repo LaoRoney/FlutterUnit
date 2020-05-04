@@ -2,13 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_unit_mac/app/router.dart';
 import 'package:flutter_unit_mac/app/style/TolyIcon.dart';
-import 'package:flutter_unit_mac/blocs/collect/collect_bloc.dart';
-import 'package:flutter_unit_mac/blocs/collect/collect_event.dart';
-import 'package:flutter_unit_mac/blocs/detail/detail_bloc.dart';
-import 'package:flutter_unit_mac/blocs/detail/detail_event.dart';
-import 'package:flutter_unit_mac/blocs/search/search_bloc.dart';
-import 'package:flutter_unit_mac/blocs/search/search_event.dart';
-import 'package:flutter_unit_mac/blocs/search/search_state.dart';
+import 'package:flutter_unit_mac/blocs/bloc_exp.dart';
 import 'package:flutter_unit_mac/components/permanent/circle.dart';
 import 'package:flutter_unit_mac/storage/dao/widget_dao.dart';
 import 'package:flutter_unit_mac/model/widget_model.dart';
@@ -20,7 +14,6 @@ import 'package:flutter_unit_mac/views/pages/search/not_search_page.dart';
 import 'package:flutter_unit_mac/views/pages/search/start_filter.dart';
 
 import 'empty_page.dart';
-
 
 class SearchPage extends StatefulWidget {
   @override
@@ -34,14 +27,16 @@ class _SearchPageState extends State<SearchPage> {
       body: WillPopScope(
         onWillPop: () async {
           //返回时 情空搜索
-          BlocProvider.of<SearchBloc>(context).add(EventTextChanged(args: SearchArgs()));
+          BlocProvider.of<SearchBloc>(context)
+              .add(EventTextChanged(args: SearchArgs()));
           return true;
         },
         child: CustomScrollView(
           slivers: <Widget>[
-              _buildSliverAppBar(),
+            _buildSliverAppBar(),
             SliverToBoxAdapter(child: _buildStarFilter()),
-            BlocBuilder<SearchBloc, SearchState>(builder: (_, state) => _buildBodyByState(state))
+            BlocBuilder<SearchBloc, SearchState>(
+                builder: (_, state) => _buildBodyByState(state))
           ],
         ),
       ),
@@ -50,15 +45,15 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget _buildSliverAppBar() {
     return SliverAppBar(
-            pinned: true,
-            title: AppSearchBar(),
-            actions: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(right: 15.0),
-                child: Icon(TolyIcon.icon_sound),
-              )
-            ],
-          );
+      pinned: true,
+      title: AppSearchBar(),
+      actions: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(right: 15.0),
+          child: Icon(TolyIcon.icon_sound),
+        )
+      ],
+    );
   }
 
   Widget _buildStarFilter() => Column(
@@ -99,28 +94,56 @@ class _SearchPageState extends State<SearchPage> {
       );
 
   Widget _buildBodyByState(SearchState state) {
-    if (state is SearchStateNoSearch) return SliverToBoxAdapter(child: NotSearchPage(),);
-    if (state is SearchStateLoading) return SliverToBoxAdapter(child: LoadingPage());
-    if (state is SearchStateError) return SliverToBoxAdapter(child: ErrorPage());
+    if (state is SearchStateNoSearch)
+      return SliverToBoxAdapter(
+        child: NotSearchPage(),
+      );
+    if (state is SearchStateLoading)
+      return SliverToBoxAdapter(child: LoadingPage());
+    if (state is SearchStateError)
+      return SliverToBoxAdapter(child: ErrorPage());
     if (state is SearchStateSuccess) return _buildSliverList(state.result);
-    if (state is SearchStateEmpty) return SliverToBoxAdapter(child: EmptyPage());
+    if (state is SearchStateEmpty)
+      return SliverToBoxAdapter(child: EmptyPage());
     return NotSearchPage();
   }
 
-  Widget _buildSliverList(List<WidgetModel> models) => SliverList(
-        delegate: SliverChildBuilderDelegate(
-            (_, int index) => Container(
-                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+  Widget _buildSliverList(List<WidgetModel> models) => SliverPadding(
+    padding: EdgeInsets.all(20),
+    sliver: SliverGrid.count(
+          crossAxisCount: 2,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 20,
+          childAspectRatio: 3.5,
+          children: models
+              .asMap()
+              .keys
+              .map((index) => Container(
+//          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 child: InkWell(
                     onTap: () => _toDetailPage(models[index]),
                     child: TechnoWidgetListItem(
                       data: models[index],
-                    ))),
-            childCount: models.length),
-      );
+                    )),
+              ))
+              .toList(),
+//        delegate: SliverChildBuilderDelegate(
+//            (_, int index) =>
+//            Container(
+//                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+//                child:
+//                InkWell(
+//                    onTap: () => _toDetailPage(models[index]),
+//                    child: TechnoWidgetListItem(
+//                      data: models[index],
+//                    ))
+//                    ),
+//            childCount: models.length),
+        ),
+  );
 
   _doSelectStart(List<int> select) {
-    var temp = select.map((e)=>e+1).toList();
+    var temp = select.map((e) => e + 1).toList();
     if (temp.length < 5) {
       temp.addAll(List.generate(5 - temp.length, (e) => -1));
     }
@@ -130,6 +153,6 @@ class _SearchPageState extends State<SearchPage> {
 
   _toDetailPage(WidgetModel model) {
     BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(model));
-    Navigator.pushNamed(context, Router.widget_detail,arguments: model);
+    Navigator.pushNamed(context, Router.widget_detail, arguments: model);
   }
 }

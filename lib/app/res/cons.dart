@@ -8,9 +8,9 @@ class Cons {
   static const MENU_INFO = <String>["关于", "帮助", "问题反馈"]; //菜单栏
   static const ICONS_MAP = {
     //底栏图标
-    "图鉴": TolyIcon.icon_layout, "收藏": TolyIcon.icon_star,
-//    "喜欢": Icons.favorite, "手册": Icons.class_,
-//    "我的": Icons.account_circle,
+    "组件集录": TolyIcon.icon_layout, "收藏集录": TolyIcon.icon_star,
+    "绘制集录": Icons.palette, "布局集录": Icons.widgets,
+    "要点集录": TolyIcon.icon_bug,
   };
 
   static const rainbow = <int>[

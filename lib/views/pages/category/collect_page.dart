@@ -12,10 +12,10 @@ import 'category_page.dart';
 class CollectPage extends StatelessWidget {
 
   final gridDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount: 4,
-    mainAxisSpacing: 10,
-    crossAxisSpacing: 10,
-    childAspectRatio: 1 / 0.5,
+    crossAxisCount: 3,
+    mainAxisSpacing: 20,
+    crossAxisSpacing: 20,
+    childAspectRatio: 2,
   );
 
   final _tabs = ['收藏集录','默认收藏', ];
@@ -104,21 +104,22 @@ class CollectPage extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, CollectState state) {
     return SliverPadding(
-      padding: EdgeInsets.only(top:10, left: 10, right: 10, bottom: 40),
+      padding: EdgeInsets.only(left: 20,right: 20),
       sliver: SliverGrid(
-          delegate: SliverChildBuilderDelegate(
-              (_, index) => Container(
-                    child: GestureDetector(
-                        onTap: () =>
-                            _toDetailPage(context, state.widgets[index]),
-                        child: CollectWidgetListItem(
-                          data: state.widgets[index],
-                          onDelectItemClick: (model) =>
-                              _deleteCollect(context, model),
-                        )),
-                  ),
-              childCount: state.widgets.length),
-          gridDelegate: gridDelegate),
+            delegate: SliverChildBuilderDelegate(
+                (_, index) => Container(
+                      child: GestureDetector(
+                          onTap: () =>
+                              _toDetailPage(context, state.widgets[index]),
+                          child: CollectWidgetListItem(
+                            data: state.widgets[index],
+                            onDelectItemClick: (model) =>
+                                _deleteCollect(context, model),
+                          )),
+                    ),
+                childCount: state.widgets.length),
+            gridDelegate: gridDelegate
+      ),
     );
   }
 

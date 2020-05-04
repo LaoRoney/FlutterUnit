@@ -30,7 +30,7 @@ class FontSettingPage extends StatelessWidget {
     return GridView.count(
       padding: EdgeInsets.only(top: 20, left: 10, right: 10),
       shrinkWrap: true,
-      crossAxisCount: 2,
+      crossAxisCount: 3,
       mainAxisSpacing: 10,
       crossAxisSpacing: 10,
       childAspectRatio: 1.5,

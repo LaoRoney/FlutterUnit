@@ -13,6 +13,8 @@ import 'package:flutter_unit_mac/components/permanent/circle.dart';
 
 class ThemeColorSettingPage extends StatelessWidget {
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +32,7 @@ class ThemeColorSettingPage extends StatelessWidget {
     return GridView.count(
       padding: EdgeInsets.only(top: 20, left: 10, right: 10),
       shrinkWrap: true,
-      crossAxisCount: 2,
+      crossAxisCount: 4,
       mainAxisSpacing: 10,
       crossAxisSpacing: 10,
       childAspectRatio: 1.5,

@@ -29,6 +29,14 @@ class Hello {
   });
 }""";
 
+
+  final gridDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2,
+    mainAxisSpacing: 10,
+    crossAxisSpacing: 20,
+    childAspectRatio: 1.5,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,9 +51,11 @@ class Hello {
 
   Widget _buildFontCell(
       BuildContext context, List<HighlighterStyle> styles, int index) {
-    return ListView.builder(
-      itemCount: styles.length,
-      itemBuilder: (_ctx, i) =>  FeedbackWidget(
+    return GridView.builder(
+      gridDelegate: gridDelegate,
+        padding: EdgeInsets.all(20),
+        itemCount: styles.length,
+        itemBuilder: (_, i) =>   FeedbackWidget(
         a: 0.95,
         duration: Duration(milliseconds: 200),
       onPressed: (){

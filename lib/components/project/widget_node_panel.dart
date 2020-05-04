@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_unit_mac/app/style/TolyIcon.dart';
+import 'package:flutter_unit_mac/app/utils/Toast.dart';
 
 import 'package:flutter_unit_mac/components/permanent/circle.dart';
 import 'package:flutter_unit_mac/components/permanent/code/code_widget.dart';
@@ -109,13 +111,13 @@ class _WidgetNodePanelState extends State<WidgetNodePanel> {
   Widget _buildShareButton() => FeedbackWidget(
         mode: FeedMode.fade,
         a: 0.4,
-        onPressed: _doShare,
+        onPressed: _doCopy,
         child: Padding(
           padding: const EdgeInsets.only(
             right: 10,
           ),
           child: Icon(
-            TolyIcon.icon_share,
+            Icons.content_copy,
             size: 20,
             color: themeColor,
           ),
@@ -140,8 +142,10 @@ class _WidgetNodePanelState extends State<WidgetNodePanel> {
       );
 
   //执行分享
-  _doShare() {
-    Share.share(widget.code);
+  _doCopy() async{
+    await Clipboard.setData(ClipboardData(text: widget.code));
+    Toast.toast(context, '复制成功!',duration: Duration(seconds: 10));
+//    Share.share(widget.code);
   }
 
   // 折叠代码面板

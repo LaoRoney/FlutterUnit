@@ -16,10 +16,10 @@ import 'edit_category_panel.dart';
 
 class CategoryPage extends StatelessWidget {
   final gridDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount: 4,
-    mainAxisSpacing: 10,
-    crossAxisSpacing: 10,
-    childAspectRatio: 0.8,
+    crossAxisCount: 3,
+    mainAxisSpacing: 25,
+    crossAxisSpacing: 25,
+    childAspectRatio: 0.9,
   );
 
   @override
@@ -27,7 +27,7 @@ class CategoryPage extends StatelessWidget {
     return BlocBuilder<CategoryBloc, CategoryState>(builder: (_, state) {
       if (state is CategoryLoadedState) {
         return GridView.builder(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.only(right: 20,left: 20,bottom: 20,top: 0),
           itemCount: state.categories.length,
           itemBuilder: (_, index) => Container(
             child: GestureDetector(
@@ -70,40 +70,46 @@ class CategoryPage extends StatelessWidget {
   _editCollect(BuildContext context, CategoryModel model) {
     showDialog(
         context: context,
-        builder: (ctx) => Dialog(
-              backgroundColor:Color(0xFFF2F2F2),
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
+        builder: (ctx) => UnconstrainedBox(
+          child: Container(
+            alignment: Alignment.center,
+            width: 400,
+            child: Dialog(
+                  backgroundColor:Color(0xFFF2F2F2),
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20, right: 10),
+                            child: Circle(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                          Text(
+                            '修改收藏集',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          Spacer(),
+                          CloseButton()
+                        ],
+                      ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 10),
-                        child: Circle(
-                          color: Theme.of(context).primaryColor,
-                        ),
+                        padding: const EdgeInsets.all(8.0),
+                        child: EditCategoryPanel(model: model,type: EditType.update,),
                       ),
-                      Text(
-                        '修改收藏集',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      Spacer(),
-                      CloseButton()
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: EditCategoryPanel(model: model,type: EditType.update,),
-                  ),
-                ],
-              ),
-            ));
+                ),
+          ),
+        ));
   }
 
   _toDetailPage(BuildContext context, CategoryModel model) {

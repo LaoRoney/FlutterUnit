@@ -15,6 +15,15 @@ import 'package:flutter_unit_mac/views/items/home_item_support.dart';
 /// 说明: item样式切换支持
 
 class ItemStyleSettingPage extends StatelessWidget {
+
+  final gridDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2,
+    mainAxisSpacing: 10,
+    crossAxisSpacing: 20,
+    childAspectRatio: 3.5,
+  );
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,33 +40,37 @@ class ItemStyleSettingPage extends StatelessWidget {
   get items=> HomeItemSupport.itemSimples();
 
   Widget _buildFontCell(BuildContext context, int index) {
-    return ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (_, i) => FeedbackWidget(
-                a: 0.95,
-                duration: Duration(milliseconds: 200),
-                onPressed: () {
-                  BlocProvider.of<GlobalBloc>(context)
-                      .add(EventChangeItemStyle(i));
-                },
-                child: Stack(
-                  children: <Widget>[
-                    items[i],
-                    if (index == i)
-                      Positioned(
-                        left: 25,
-                        top: 15,
-                        child: Circle(
-                          color: Theme.of(context).primaryColor,
-                          radius: 10,
-                          child: Icon(
-                            Icons.check,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                        ),
-                      )
-                  ],
-                )));
+    return GridView.builder(
+      padding: EdgeInsets.all(20),
+      itemCount: items.length,
+      itemBuilder: (_, i) => FeedbackWidget(
+          a: 0.95,
+          duration: Duration(milliseconds: 200),
+          onPressed: () {
+            BlocProvider.of<GlobalBloc>(context)
+                .add(EventChangeItemStyle(i));
+          },
+          child: Stack(
+            children: <Widget>[
+              items[i],
+              if (index == i)
+                Positioned(
+                  left: 25,
+                  top: 15,
+                  child: Circle(
+                    color: Theme.of(context).primaryColor,
+                    radius: 10,
+                    child: Icon(
+                      Icons.check,
+                      color: Colors.white,
+                      size: 15,
+                    ),
+                  ),
+                )
+            ],
+          )),
+      gridDelegate: gridDelegate,
+    );
   }
+
 }

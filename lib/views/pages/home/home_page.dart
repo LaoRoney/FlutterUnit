@@ -32,7 +32,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var color = BlocProvider.of<HomeBloc>(context).state.homeColor;
-    var showBg = BlocProvider.of<GlobalBloc>(context).state.showBackGround;
     return Scaffold(
       appBar: TolyAppBar(
         selectIndex: Cons.tabColors.indexOf(color.value),
@@ -41,27 +40,34 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Stack(
         children: <Widget>[
-          if (showBg) Background(),
+          BlocBuilder<GlobalBloc, GlobalState>(builder: (_, state) {
+            if (state.showBackGround) {
+              return Background();
+            }
+            return Container();
+          }),
           BlocBuilder<HomeBloc, HomeState>(builder: _buildContent)
         ],
       ),
     );
   }
+
   final gridDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
     crossAxisCount: 2,
     mainAxisSpacing: 10,
-    crossAxisSpacing: 10,
-    childAspectRatio: 3.5,
+    crossAxisSpacing: 20,
+    childAspectRatio: 3.0,
   );
+
   Widget _buildContent(BuildContext context, HomeState state) {
     if (state is WidgetsLoaded) {
       var items = state.widgets;
-      print(items.length);
       if (items.isEmpty) return EmptyPage();
       return GridView.builder(
-        padding: EdgeInsets.all(10),
+        controller: _ctrl,
+        padding: EdgeInsets.all(20),
         itemCount: items.length,
-        itemBuilder: (_, index) =>_buildHomeItem(items[index]),
+        itemBuilder: (_, index) => _buildHomeItem(items[index]),
         gridDelegate: gridDelegate,
       );
     }
@@ -76,11 +82,16 @@ class _HomePageState extends State<HomePage> {
   Widget _buildHomeItem(
     WidgetModel model,
   ) =>
-      FeedbackWidget(
-          duration: const Duration(milliseconds: 200),
-          onPressed: () => _toDetailPage(model),
-          child: HomeItemSupport.get(model,
-              BlocProvider.of<GlobalBloc>(context).state.itemStyleIndex));
+      BlocBuilder<GlobalBloc, GlobalState>(
+        condition: (p, c) => (p.itemStyleIndex != c.itemStyleIndex),
+        builder: (_, state) {
+          return
+            FeedbackWidget(
+            duration: const Duration(milliseconds: 200),
+            onPressed: () => _toDetailPage(model),
+            child: HomeItemSupport.get(model, state.itemStyleIndex));
+        },
+      );
 
   _updateAppBarHeight() {
     if (_ctrl.offset < _limitY * 4) {

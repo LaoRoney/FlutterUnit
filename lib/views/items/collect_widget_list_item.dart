@@ -50,7 +50,7 @@ class CollectWidgetListItem extends StatelessWidget {
           ),
         ),
         Positioned(
-            bottom: 5,
+            bottom: 20,
             right: 5,
             child: FeedbackWidget(
               onPressed: () {

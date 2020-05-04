@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit_mac/app/res/cons.dart';
 import 'package:flutter_unit_mac/app/router.dart';
 import 'package:flutter_unit_mac/app/style/TolyIcon.dart';
 import 'package:flutter_unit_mac/blocs/global/global_bloc.dart';
 import 'package:flutter_unit_mac/blocs/global/global_event.dart';
 import 'package:flutter_unit_mac/blocs/global/global_state.dart';
-import 'package:flutter_unit_mac/components/permanent/feedback_widget.dart';
-import 'package:flutter_unit_mac/components/permanent/circle.dart';
+
 
 class SettingPage extends StatelessWidget {
   @override
@@ -73,10 +71,7 @@ class SettingPage extends StatelessWidget {
                   color: Theme.of(context).primaryColor,
                 ),
                 title: Text('显示背景'),
-                onChanged: (show) {
-                  BlocProvider.of<GlobalBloc>(context)
-                      .add(EventSwitchShowBg(show));
-                },
+                onChanged: (show) => BlocProvider.of<GlobalBloc>(context).add(EventSwitchShowBg(show)),
               ));
 
   Widget _nextIcon(BuildContext context) =>

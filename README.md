@@ -9,6 +9,17 @@
 
 ---
 
+> 当前版本与分支
+
+```
+a1@toly ~ % flutter --version
+Flutter 1.18.0-7.0.pre.46 • channel master •
+https://github.com/flutter/flutter.git
+Framework • revision 1f132e90f8 (10 days ago) • 2020-04-23 11:00:12 +0530
+Engine • revision d3f1c08f52
+Tools • Dart 2.9.0 (build 2.9.0-2.0.dev 64b8ded48b)
+```
+
 
 ### 一、组件的展示页面
 

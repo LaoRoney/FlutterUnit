@@ -31,6 +31,7 @@ class _TolyAppBarState extends State<TolyAppBar>
   double _width = 0;
   int _selectIndex = 0;
   double factor = 1.0;
+  final navWidth =120;
 
   List<int> colors = Cons.tabColors;
   List info = Cons.tabs;
@@ -55,7 +56,7 @@ class _TolyAppBarState extends State<TolyAppBar>
 
   @override
   Widget build(BuildContext context) {
-    _width = MediaQuery.of(context).size.width / colors.length;
+    _width = (MediaQuery.of(context).size.width-navWidth) / colors.length;
     return Container(
       alignment: Alignment.center,
       child: Flow(
