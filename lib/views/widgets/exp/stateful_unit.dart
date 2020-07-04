@@ -11,7 +11,7 @@ export '../StatefulWidget/SlideTransition/node1_base.dart';
 export '../StatefulWidget/MonthPicker/node1_base.dart';
 export '../StatefulWidget/YearPicker/node1_base.dart';
 export '../StatefulWidget/WillPopScope/node1_base.dart';
-
+export '../StatefulWidget/NestedScrollView/node1_base.dart';
 export '../StatefulWidget/AppBar/node1_base.dart';
 export '../StatefulWidget/AppBar/node2_tab.dart';
 export '../StatefulWidget/BottomAppBar/node1_base.dart';
@@ -28,6 +28,8 @@ export '../StatefulWidget/CircularProgressIndicator/node1_base.dart';
 export '../StatefulWidget/CupertinoActivityIndicator/node1_base.dart';
 export '../StatefulWidget/CupertinoSlider/node1_base.dart';
 export '../StatefulWidget/CupertinoSwitch/node1_base.dart';
+export '../StatefulWidget/CupertinoSegmentedControl/node1_base.dart';
+export '../StatefulWidget/CupertinoSegmentedControl/node2_color.dart';
 
 export '../StatefulWidget/Image/node1_base.dart';
 export '../StatefulWidget/Image/node2_fit.dart';

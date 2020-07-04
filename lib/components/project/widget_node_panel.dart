@@ -144,7 +144,7 @@ class _WidgetNodePanelState extends State<WidgetNodePanel> {
   //执行分享
   _doCopy() async{
     await Clipboard.setData(ClipboardData(text: widget.code));
-    Toast.toast(context, '复制成功!',duration: Duration(seconds: 10));
+    Toast.toast(context, '复制成功!',duration: Duration(seconds: 1));
 //    Share.share(widget.code);
   }
 

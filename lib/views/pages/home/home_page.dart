@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,6 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    print(Directory.current.path);
     _ctrl = ScrollController()..addListener(_updateAppBarHeight);
     super.initState();
   }

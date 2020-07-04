@@ -20,6 +20,7 @@ class FlutterApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: Router.generateRoute,
             theme: ThemeData(
+              visualDensity: VisualDensity.adaptivePlatformDensity,
               primarySwatch: state.themeColor,
               fontFamily: state.fontFamily,
             ),
