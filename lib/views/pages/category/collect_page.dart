@@ -35,7 +35,7 @@ class CollectPage extends StatelessWidget {
                 SliverOverlapAbsorber(
                     handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
                         context),
-                    child: _buildAppBar(_topContext, innerBoxIsScrolled)),
+                    sliver: _buildAppBar(_topContext, innerBoxIsScrolled)),
               ];
             },
             body: Container(

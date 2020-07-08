@@ -6,9 +6,9 @@
 ### FlutterUnit 下载体验:
 
 
-| FlutterUnit.apk 下载  | FlutterUnit mac版 下载 | Github仓库地址 | 
+| FlutterUnit.apk 下载  | FlutterUnit mac版 下载 | FlutterUnit win版 下载 | 
 |------|------------|------------|
-|![](http://photo.toly1994.com/ewm$flutter_unit.apk.png)|![](http://photo.toly1994.com/ewm$flutter_unit_mac.png)| ![](http://photo.toly1994.com/ewm$flutter_unit_github.png)|     
+|![](http://toly1994.com/file/ewm/FlutterUnit.png)|![](http://toly1994.com/file/ewm/FlutterUnitMac.png)| ![](http://toly1994.com/file/ewm/FlutterUnitWin.png)|     
 
 ---
 
@@ -16,11 +16,11 @@
 
 ```
 ---[• flutter --version
-Flutter 1.18.0-7.0.pre.46 • channel master •
+Flutter 1.20.0-3.0.pre.159 • channel master •
 https://github.com/flutter/flutter.git
-Framework • revision 1f132e90f8 (11 days ago) • 2020-04-23 11:00:12 +0530
-Engine • revision d3f1c08f52
-Tools • Dart 2.9.0 (build 2.9.0-2.0.dev 64b8ded48b)
+Framework • revision 77310c152f (6 hours ago) • 2020-07-07 18:04:02 -0700
+Engine • revision d0d6a4c236
+Tools • Dart 2.9.0 (build 2.9.0-20.0.dev 69aba23371)
 ```
 
 
