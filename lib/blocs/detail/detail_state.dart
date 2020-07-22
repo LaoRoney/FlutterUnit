@@ -32,5 +32,6 @@ class DetailWithData extends DetailState {
 
 }
 
+class DetailLoading extends DetailState {}
 class DetailEmpty extends DetailState {}
 class DetailFailed extends DetailState {}

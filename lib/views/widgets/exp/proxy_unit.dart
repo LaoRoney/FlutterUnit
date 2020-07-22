@@ -18,3 +18,8 @@ export '../ProxyWidget/ScrollConfiguration/node1_base.dart';
 export '../ProxyWidget/Expanded/node1_base.dart';
 export '../ProxyWidget/Positioned/node1_base.dart';
 export '../ProxyWidget/LayoutId/node1_base.dart';
+export '../ProxyWidget/ChipTheme/node1_base.dart' hide CustomFilterChip;
+export '../ProxyWidget/ListTileTheme/node1_base.dart';
+export '../ProxyWidget/MaterialBannerTheme/node1_base.dart';
+export '../ProxyWidget/PopupMenuTheme/node1_base.dart';
+export '../ProxyWidget/ToggleButtonsTheme/node1_base.dart';

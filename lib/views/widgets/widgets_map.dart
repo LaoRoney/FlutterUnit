@@ -51,6 +51,33 @@ class WidgetsMap {
         return [
           CustomBanner(),
         ];
+
+      case "Title":
+        return [
+          TitleDemo(),
+        ];
+      case "ToggleButtonsTheme":
+        return [
+          ToggleButtonsThemeDemo(),
+        ];
+      case "NavigationToolbar":
+        return [
+          NavigationToolbarDemo(),
+        ];
+      case "CupertinoTextField":
+        return [
+          CupertinoTextFieldDemo(),
+          CupertinoTextFieldStyle(),
+        ];
+      case "MaterialBanner":
+        return [
+          MaterialBannerDemo(),
+          MaterialBannerDemoTwo(),
+        ];
+      case "OrientationBuilder":
+        return [
+          OrientationBuilderDemo(),
+        ];
       case "Icon":
         return [
           CustomIcon(),
@@ -81,12 +108,26 @@ class WidgetsMap {
         ];
       case "ChoiceChip":
         return [CustomChoiceChip()];
+      case "ListTileTheme":
+        return [ListTileThemeDemo()];
+      case "ValueListenableBuilder":
+        return [ValueListenableBuilderDemo()];
       case "ActionChip":
         return [CustomActionChip()];
+      case "MaterialBannerTheme":
+        return [MaterialBannerThemeDemo()];
+      case "PopupMenuTheme":
+        return [PopupMenuThemeDemo()];
       case "InputChip":
         return [PressInputChip(), SelectInputChip()];
       case "FilterChip":
         return [CustomFilterChip()];
+      case "IntrinsicHeight":
+        return [IntrinsicHeightDemo()];
+      case "IntrinsicWidth":
+        return [IntrinsicWidthDemo()];
+      case "ChipTheme":
+        return [ChipThemeDemo()];
       case "ListTile":
         return [CustomListTile(), SelectListTile(), DenseListTile()];
       case "CheckboxListTile":
@@ -948,6 +989,10 @@ class WidgetsMap {
       case "DividerTheme":
         return [
           DividerThemeDemo(),
+        ];
+      case "Navigator":
+        return [
+          NavigatorDemo(),
         ];
       case "SliderTheme":
         return [

@@ -90,7 +90,6 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
                         child:  Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: BlocBuilder<DetailBloc, DetailState>(builder: (_, state) {
-                            print('build---${state.runtimeType}---');
                             if (state is DetailWithData) {
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +125,6 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
                     ],
                   ),
                   BlocBuilder<DetailBloc, DetailState>(builder: (_, state) {
-                    print('build---${state.runtimeType}---');
                     if (state is DetailWithData) {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

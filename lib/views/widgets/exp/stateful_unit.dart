@@ -30,6 +30,7 @@ export '../StatefulWidget/CupertinoSlider/node1_base.dart';
 export '../StatefulWidget/CupertinoSwitch/node1_base.dart';
 export '../StatefulWidget/CupertinoSegmentedControl/node1_base.dart';
 export '../StatefulWidget/CupertinoSegmentedControl/node2_color.dart';
+export '../StatefulWidget/Navigator/node1_base.dart';
 
 export '../StatefulWidget/Image/node1_base.dart';
 export '../StatefulWidget/Image/node2_fit.dart';
@@ -49,6 +50,9 @@ export '../StatefulWidget/SelectableText/node1_base.dart';
 export '../StatefulWidget/SelectableText/node2_align.dart';
 export '../StatefulWidget/CupertinoNavigationBar/node1_base.dart';
 export '../StatefulWidget/CupertinoTabBar/node1_base.dart';
+export '../StatefulWidget/CupertinoTextField/node1_base.dart';
+export '../StatefulWidget/CupertinoTextField/node2_style.dart';
+export '../StatefulWidget/ValueListenableBuilder/node1_base.dart';
 
 export '../StatefulWidget/DropdownButton/node1_base.dart';
 export '../StatefulWidget/DropdownButton/node2_style.dart';
