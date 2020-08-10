@@ -51,7 +51,50 @@ class WidgetsMap {
         return [
           CustomBanner(),
         ];
-
+      case "Viewport":
+        return [
+          ViewportDemo(),
+        ];
+      case "InputDecorator":
+        return [
+          InputDecoratorDemo(),
+        ];
+      case "Scrollable":
+        return [
+          ScrollableDemo(),
+        ];
+      case "EditableText":
+        return [
+          EditableTextDemo(),
+        ];
+      case "PhysicalShape":
+        return [
+          PhysicalShapeDemo(),
+        ];
+      case "ListBody":
+        return [
+          ListBodyDemo(),
+        ];
+      case "FractionalTranslation":
+        return [
+          FractionalTranslationDemo(),
+        ];
+      case "MouseRegion":
+        return [
+          MouseRegionDemo(),
+        ];
+      case "TabPageSelector":
+        return [
+          TabPageSelectorDemo(),
+        ];
+      case "CupertinoNavigationBarBackButton":
+        return [
+          CupertinoNavigationBarBackButtonDemo(),
+        ];
+      case "TabPageSelectorIndicator":
+        return [
+          TabPageSelectorIndicatorDemo(),
+        ];
       case "Title":
         return [
           TitleDemo(),
@@ -90,6 +133,12 @@ class WidgetsMap {
       case "FadeInImage":
         return [
           CustomFadeInImage(),
+        ];
+        case "InteractiveViewer":
+        return [
+          InteractiveViewerDemo(),
+          InteractiveViewerDemo2(),
+          InteractiveViewerDemo3(),
         ];
       case "CircleAvatar":
         return [
