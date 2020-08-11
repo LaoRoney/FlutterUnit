@@ -37,7 +37,7 @@ class WidgetInnerRepository implements WidgetRepository {
 //    var data = await _widgetDao.queryCollect();
 //    var widgets = data.map((e) => WidgetPo.fromJson(e)).toList();
 //    var list = widgets.map(WidgetModel.fromPo).toList();
-//    return list;
+    return [];
   }
 
   @override
@@ -70,8 +70,8 @@ class WidgetInnerRepository implements WidgetRepository {
   @override
   Future<void> toggleCollect(
     int id,
-  ) {
-//    return _widgetDao.toggleCollect(id);
+  ) async{
+    return ;
   }
 
   @override
