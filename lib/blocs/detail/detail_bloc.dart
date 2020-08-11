@@ -28,8 +28,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
     }
   }
 
-  Stream<DetailState> _mapLoadWidgetToState(
-      WidgetModel widgetModel) async* {
+  Stream<DetailState> _mapLoadWidgetToState(WidgetModel widgetModel) async* {
     yield DetailLoading();
     try {
       final nodes = await this.repository.loadNode(widgetModel);

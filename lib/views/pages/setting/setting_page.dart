@@ -35,16 +35,16 @@ class SettingPage extends StatelessWidget {
             trailing: _nextIcon(context),
             onTap: () => Navigator.of(context).pushNamed(Router.font_setting),
           ),
-          Divider(),
-          ListTile(
-            leading: Icon(
-              TolyIcon.icon_item,
-              color: Theme.of(context).primaryColor,
-            ),
-            title: Text('item样式设置'),
-            trailing: _nextIcon(context),
-            onTap: () => Navigator.of(context).pushNamed(Router.item_style_setting),
-          ),
+//          Divider(),
+//          ListTile(
+//            leading: Icon(
+//              TolyIcon.icon_item,
+//              color: Theme.of(context).primaryColor,
+//            ),
+//            title: Text('item样式设置'),
+//            trailing: _nextIcon(context),
+//            onTap: () => Navigator.of(context).pushNamed(Router.item_style_setting),
+//          ),
           Divider(),
           ListTile(
             leading: Icon(

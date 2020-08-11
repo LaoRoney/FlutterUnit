@@ -36,7 +36,7 @@ class _UnitNavigationState extends State<UnitNavigation> {
     _controller.dispose(); //释放控制器
     super.dispose();
   }
-
+  final tempText =  Text('这里是一片未知的领域\n等待着勇者的探寻...',style: TextStyle(fontSize: 24,color: Colors.white),);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
@@ -59,10 +59,15 @@ class _UnitNavigationState extends State<UnitNavigation> {
                         controller: _controller,
                         children: <Widget>[
                           HomePage(),
-                          CollectPage(),
-                          PaintUnitPage(),
-                          LayoutUnitPage(),
-                          BugUnitPage(),
+                          Container(color: Colors.red,alignment: Alignment.center,child:tempText,),
+                          Container(color: Colors.blue,alignment: Alignment.center,child: tempText),
+                          Container(color: Colors.purpleAccent,alignment: Alignment.center,child: tempText),
+                          Container(color: Colors.green,alignment: Alignment.center,child: tempText),
+
+//                          CollectPage(),
+//                          PaintUnitPage(),
+//                          LayoutUnitPage(),
+//                          BugUnitPage(),
                         ],
                       ),
                     ),

@@ -6,6 +6,7 @@ import 'package:flutter_unit_mac/blocs/bloc_exp.dart';
 import 'package:flutter_unit_mac/components/permanent/circle.dart';
 import 'package:flutter_unit_mac/storage/dao/widget_dao.dart';
 import 'package:flutter_unit_mac/model/widget_model.dart';
+import 'package:flutter_unit_mac/views/items/home_item_support.dart';
 import 'package:flutter_unit_mac/views/items/techno_widget_list_item.dart';
 import 'package:flutter_unit_mac/views/pages/search/app_search_bar.dart';
 import 'package:flutter_unit_mac/views/pages/search/error_page.dart';
@@ -111,10 +112,10 @@ class _SearchPageState extends State<SearchPage> {
   Widget _buildSliverList(List<WidgetModel> models) => SliverPadding(
     padding: EdgeInsets.all(20),
     sliver: SliverGrid.count(
-          crossAxisCount: 2,
+          crossAxisCount: 3,
           mainAxisSpacing: 10,
           crossAxisSpacing: 20,
-          childAspectRatio: 3.5,
+          childAspectRatio: 4,
           children: models
               .asMap()
               .keys
@@ -122,9 +123,7 @@ class _SearchPageState extends State<SearchPage> {
 //          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 child: InkWell(
                     onTap: () => _toDetailPage(models[index]),
-                    child: TechnoWidgetListItem(
-                      data: models[index],
-                    )),
+                    child: HomeItemSupport.get(models[index], 1)),
               ))
               .toList(),
 //        delegate: SliverChildBuilderDelegate(
@@ -147,8 +146,7 @@ class _SearchPageState extends State<SearchPage> {
     if (temp.length < 5) {
       temp.addAll(List.generate(5 - temp.length, (e) => -1));
     }
-    BlocProvider.of<SearchBloc>(context)
-        .add(EventTextChanged(args: SearchArgs(name: '', stars: temp)));
+    BlocProvider.of<SearchBloc>(context).add(EventTextChanged(args: SearchArgs(name: '', stars: temp)));
   }
 
   _toDetailPage(WidgetModel model) {

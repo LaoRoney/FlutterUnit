@@ -62,7 +62,7 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
             actions: <Widget>[
               Builder(builder: (ctx)=>GestureDetector(
                   onLongPress: (){
-                    Scaffold.of(ctx).openEndDrawer();
+//                    Scaffold.of(ctx).openEndDrawer();
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
@@ -71,7 +71,7 @@ class _WidgetDetailPageState extends State<WidgetDetailPage> {
                   onTap: () {
                     Navigator.of(ctx).pop();
                   })),
-              _buildCollectButton(_models.last, context),
+//              _buildCollectButton(_models.last, context),
             ],
           ),
           body: SingleChildScrollView(

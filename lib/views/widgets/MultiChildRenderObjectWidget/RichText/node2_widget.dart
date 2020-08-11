@@ -12,45 +12,51 @@ import 'package:flutter/material.dart';
 class RichTextWithWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        text: 'hello ',
-        style: TextStyle(color: Colors.black, fontSize: 18),
-        children: <InlineSpan>[
-          WidgetSpan(
-              child: Image.asset(
-                'assets/images/icon_head.png',
-                width: 30,
-              ),
-              alignment: PlaceholderAlignment.baseline,
-              baseline: TextBaseline.ideographic),
-          TextSpan(
-            text: ' , welcome to ',
-            style: TextStyle(color: Colors.blue, fontSize: 18),
-          ),
-          WidgetSpan(
-              child: FlutterLogo(),
-              alignment: PlaceholderAlignment.baseline,
-              baseline: TextBaseline.ideographic),
-          TextSpan(
-            text: ' .\n',
-          ),
-          TextSpan(
-            text: 'focus me on ',
-            style: TextStyle(color: Colors.orange, fontSize: 16),
-          ),
-          TextSpan(
-            text: 'https://github.com/toly1994328',
-            style: TextStyle(
-                color: Colors.blue,
-                fontSize: 18,
-                decoration: TextDecoration.underline),
-          ),
-          TextSpan(
-            text: ' .\n',
-          ),
-        ],
-      ),
+    return Container(
+      width: 300,
+      height: 60,
+      alignment: Alignment.center,
+      child: Text('暂不支持Web')
+//      RichText(
+//        text: TextSpan(
+//          text: 'hello ',
+//          style: TextStyle(color: Colors.black, fontSize: 18),
+//          children: <InlineSpan>[
+//            WidgetSpan(
+//                child: Image.asset(
+//                  'assets/images/icon_head.png',
+//                  width: 30,
+//                ),
+//                alignment: PlaceholderAlignment.baseline,
+//                baseline: TextBaseline.ideographic),
+//            TextSpan(
+//              text: ' , welcome to ',
+//              style: TextStyle(color: Colors.blue, fontSize: 18),
+//            ),
+//            WidgetSpan(
+//                child: FlutterLogo(),
+//                alignment: PlaceholderAlignment.baseline,
+//                baseline: TextBaseline.ideographic),
+//            TextSpan(
+//              text: ' .\n',
+//            ),
+//            TextSpan(
+//              text: 'focus me on ',
+//              style: TextStyle(color: Colors.orange, fontSize: 16),
+//            ),
+//            TextSpan(
+//              text: 'https://github.com/toly1994328',
+//              style: TextStyle(
+//                  color: Colors.blue,
+//                  fontSize: 18,
+//                  decoration: TextDecoration.underline),
+//            ),
+//            TextSpan(
+//              text: ' .\n',
+//            ),
+//          ],
+//        ),
+//      ),
     );
   }
 }

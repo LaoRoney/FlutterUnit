@@ -23,7 +23,7 @@ class UnitSplash extends StatefulWidget {
 class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
   AnimationController _controller;
   AnimationController _secondController;
-  double _factor;
+  double _factor=0.0;
   Animation _curveAnim;
 
   bool _animEnd = false;
@@ -69,9 +69,10 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
           Container(
             width: winW,
             height: winH,
-            child: CustomPaint(
-              painter: UnitPainter(factor: _factor),
-            ),
+            child: Container()
+//            CustomPaint(
+//              painter: UnitPainter(factor: _factor),
+//            ),
           ),
           buildText(winH, winW),
           buildHead(),
@@ -138,8 +139,8 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
         begin: const Offset(0, -5),
       ).animate(_controller),
       child: Container(
-        height: 45,
-        width: 45,
+        height: 150*_factor,
+        width: 150*_factor,
         child: Image.asset('assets/images/icon_head.png'),
       ));
 

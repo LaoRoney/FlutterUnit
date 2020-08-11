@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    print(Directory.current.path);
     _ctrl = ScrollController()..addListener(_updateAppBarHeight);
     super.initState();
   }
@@ -56,10 +55,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   final gridDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount: 2,
+    crossAxisCount: 3,
     mainAxisSpacing: 10,
     crossAxisSpacing: 20,
-    childAspectRatio: 3.0,
+    childAspectRatio: 4,
   );
 
   Widget _buildContent(BuildContext context, HomeState state) {

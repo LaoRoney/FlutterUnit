@@ -34,7 +34,7 @@ class Hello {
     crossAxisCount: 2,
     mainAxisSpacing: 10,
     crossAxisSpacing: 20,
-    childAspectRatio: 1.5,
+    childAspectRatio: 2.5,
   );
 
   @override

@@ -4,6 +4,7 @@ import 'package:flutter_unit_mac/app/enums.dart';
 import 'package:flutter_unit_mac/blocs/bloc_exp.dart';
 import 'package:flutter_unit_mac/repositories/impl/catagory_db_repository.dart';
 import 'package:flutter_unit_mac/repositories/impl/widget_db_repository.dart';
+import 'package:flutter_unit_mac/repositories/impl/widget_innner_repository.dart';
 import 'package:flutter_unit_mac/storage/app_storage.dart';
 
 /// create by 张风捷特烈 on 2020/4/28
@@ -17,7 +18,7 @@ class BlocWrapper extends StatelessWidget {
 
   BlocWrapper({this.child});
 
-  final repository = WidgetDbRepository(storage);
+  final repository = WidgetInnerRepository(storage);
   final categoryRepo = CategoryDbRepository(storage);
 
   @override

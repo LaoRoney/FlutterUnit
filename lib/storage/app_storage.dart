@@ -1,4 +1,4 @@
-
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -6,9 +6,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_unit_mac/app/res/cons.dart';
 import 'package:flutter_unit_mac/app/res/sp.dart';
 import 'package:flutter_unit_mac/blocs/global/global_state.dart';
+import 'package:flutter_unit_mac/storage/po/node_po.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
+
 /// create by 张风捷特烈 on 2020-03-04
 /// contact me by email 1981462002@qq.com
 /// 说明:
@@ -16,6 +18,8 @@ import 'package:path/path.dart' as path;
 class AppStorage {
   SharedPreferences _sp;
   Database _database;
+
+  static List<NodePo> nodes;
 
   Future<SharedPreferences> get sp async {
     _sp = _sp ?? await SharedPreferences.getInstance();
@@ -29,15 +33,18 @@ class AppStorage {
 
   // 初始化 App 固化的配置数据
   Future<GlobalState> initApp() async {
-    var prefs = await sp;
-    _database = await initDb();
-    var showBg = prefs.getBool(SP.showBackground) ?? true;
-    var themeIndex = prefs.getInt(SP.themeColorIndex) ?? 4;
-    var fontIndex = prefs.getInt(SP.fontFamily) ?? 1;
-    var codeIndex = prefs.getInt(SP.codeStyleIndex) ?? 0;
-    var itemStyleIndex = prefs.getInt(SP.itemStyleIndex) ?? 0;
+    var str = await rootBundle.loadString('assets/data/node.json');
+    var data = json.decode(str) as List;
+    nodes = data.map((e) => NodePo.fromJson(e)).toList();
+
+    var showBg = true;
+    var themeIndex = 4;
+    var fontIndex = 1;
+    var codeIndex = 0;
+    var itemStyleIndex = 1;
 
     return GlobalState(
+
         showBackGround: showBg,
         themeColor: Cons.themeColorSupport.keys.toList()[themeIndex],
         fontFamily: Cons.fontFamilySupport[fontIndex],
@@ -57,7 +64,7 @@ class AppStorage {
       } catch (_) {}
       ByteData data = await rootBundle.load(path.join("assets", "flutter.db"));
       List<int> bytes =
-      data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       await File(dbPath).writeAsBytes(bytes, flush: true);
     } else {
       print("========= 数据库 ======已存在====");
