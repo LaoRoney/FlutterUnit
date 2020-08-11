@@ -149,6 +149,11 @@ class WidgetsMap {
           CustomVisibility(),
           ReplacementVisibility(),
         ];
+        case "RepaintBoundary":
+        return [
+          RepaintBoundaryDemo(),
+          RepaintBoundarySave(),
+        ];
       case "Chip":
         return [
           CustomChip(),
