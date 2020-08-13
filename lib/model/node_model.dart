@@ -9,8 +9,9 @@ class NodeModel extends Equatable {
   final String name;
   final String subtitle;
   final String code;
+  final int priority;
 
-  const NodeModel({this.name, this.subtitle, this.code});
+  const NodeModel({this.name, this.subtitle, this.code,this.priority});
 
   @override
   List<Object> get props => [name, subtitle, code];
@@ -30,6 +31,7 @@ class NodeModel extends Equatable {
       name: po.name,
       subtitle: po.subtitle,
       code: po.code,
+      priority: po.priority,
     );
   }
 }

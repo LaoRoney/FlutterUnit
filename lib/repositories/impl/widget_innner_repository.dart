@@ -57,6 +57,7 @@ class WidgetInnerRepository implements WidgetRepository {
     var nodes = AppStorage.nodes
         .where((element) => element.widgetId == widgetModel.id)
         .map(NodeModel.fromPo).toList();
+    nodes.sort((a, b) => a.priority.compareTo(b.priority));
     return nodes;
   }
 
