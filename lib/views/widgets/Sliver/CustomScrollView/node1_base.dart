@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 //          "【controller】 : 控制器   【ScrollController】",
 //    }
 class CustomScrollViewDemo extends StatelessWidget {
-  final data = <Color>[
+  final List<Color> data = [
     Colors.purple[50],
     Colors.purple[100],
     Colors.purple[200],
@@ -69,7 +69,7 @@ class CustomScrollViewDemo extends StatelessWidget {
       expandedHeight: 190.0,
       leading: Container(
           margin: EdgeInsets.all(10),
-          child: Image.asset('assets/images/icon_head.png')),
+          child: Image.asset('assets/images/icon_head.webp')),
       flexibleSpace: FlexibleSpaceBar(
         //伸展处布局
         titlePadding: EdgeInsets.only(left: 55, bottom: 15), //标题边距
@@ -82,7 +82,7 @@ class CustomScrollViewDemo extends StatelessWidget {
               ]),
         ),
         background: Image.asset(
-          "assets/images/caver.jpeg", fit: BoxFit.cover,
+          "assets/images/caver.webp", fit: BoxFit.cover,
         ),
       ),
     );

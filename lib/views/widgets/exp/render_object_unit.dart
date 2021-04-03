@@ -24,6 +24,8 @@ export '../MultiChildRenderObjectWidget/Row/node1_base.dart';
 export '../MultiChildRenderObjectWidget/CustomMultiChildLayout/node1_base.dart';
 export '../MultiChildRenderObjectWidget/Viewport/node1_base.dart';
 export '../MultiChildRenderObjectWidget/ListBody/node1_base.dart';
+export '../MultiChildRenderObjectWidget/ShrinkWrappingViewport/node1_base.dart';
+export '../MultiChildRenderObjectWidget/NestedScrollViewViewport/node1_base.dart';
 
 export '../SingleChildRenderObjectWidget/Align/node1_base.dart';
 export '../SingleChildRenderObjectWidget/Align/node2_other.dart';
@@ -31,8 +33,16 @@ export '../SingleChildRenderObjectWidget/CustomSingleChildLayout/node1_base.dart
 export '../SingleChildRenderObjectWidget/CustomSingleChildLayout/node2_offset.dart';
 export '../SingleChildRenderObjectWidget/RepaintBoundary/node1_base.dart';
 export '../SingleChildRenderObjectWidget/RepaintBoundary/node2_save.dart';
+export '../SingleChildRenderObjectWidget/CompositedTransformTarget/node1_base.dart';
+export '../SingleChildRenderObjectWidget/CompositedTransformFollower/node1_base.dart';
+
+export '../SingleChildRenderObjectWidget/AnnotatedRegion/node1_base.dart';
+export '../SingleChildRenderObjectWidget/CupertinoTextSelectionToolbar/node1_base.dart';
+export '../SingleChildRenderObjectWidget/SizeChangedLayoutNotifier/node1_base.dart';
+export '../SingleChildRenderObjectWidget/ColoredBox/node1_base.dart';
 
 export '../SingleChildRenderObjectWidget/ConstrainedBox/node1_base.dart';
+export '../SingleChildRenderObjectWidget/PhysicalModel/node1_base.dart';
 export '../SingleChildRenderObjectWidget/FractionalTranslation/node1_base.dart';
 export '../SingleChildRenderObjectWidget/ColorFiltered/node1_base.dart';
 export '../SingleChildRenderObjectWidget/Baseline/node1_base.dart';

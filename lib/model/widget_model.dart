@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_unit_mac/app/convert.dart';
-import 'package:flutter_unit_mac/app/enums.dart';
-import 'package:flutter_unit_mac/app/res/cons.dart';
-import 'package:flutter_unit_mac/storage/po/widget_po.dart';
+import 'package:flutter_unit/app/convert.dart';
+import 'package:flutter_unit/app/enums.dart';
+import 'package:flutter_unit/app/res/cons.dart';
+import 'package:flutter_unit/storage/po/widget_po.dart';
 
 /// create by 张风捷特烈 on 2020-03-04
 /// contact me by email 1981462002@qq.com

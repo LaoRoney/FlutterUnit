@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -90,7 +89,7 @@ class _InteractiveViewerDemo3State extends State<InteractiveViewerDemo3>
             maxScale: 1.8,
             onInteractionStart: _onInteractionStart,
             child: Container(
-              child: Image.asset('assets/images/caver.jpeg'),
+              child: Image.asset('assets/images/caver.webp'),
             ),
           ),
         ),

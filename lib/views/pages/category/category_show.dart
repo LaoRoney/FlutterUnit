@@ -2,18 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_star/flutter_star.dart';
-import 'package:flutter_unit_mac/app/router.dart';
-import 'package:flutter_unit_mac/blocs/category_widget/category_widget_bloc.dart';
-import 'package:flutter_unit_mac/blocs/category_widget/category_widget_event.dart';
-import 'package:flutter_unit_mac/blocs/category_widget/category_widget_state.dart';
-import 'package:flutter_unit_mac/blocs/detail/detail_bloc.dart';
-import 'package:flutter_unit_mac/blocs/detail/detail_event.dart';
-import 'package:flutter_unit_mac/components/permanent/circle_image.dart';
-import 'package:flutter_unit_mac/components/permanent/circle_text.dart';
-import 'package:flutter_unit_mac/components/permanent/feedback_widget.dart';
-import 'package:flutter_unit_mac/model/category_model.dart';
-import 'package:flutter_unit_mac/model/widget_model.dart';
-import 'package:flutter_unit_mac/views/items/techno_widget_list_item.dart';
+import 'package:flutter_unit/app/router.dart';
+import 'package:flutter_unit/blocs/category_widget/category_widget_bloc.dart';
+import 'package:flutter_unit/blocs/category_widget/category_widget_event.dart';
+import 'package:flutter_unit/blocs/category_widget/category_widget_state.dart';
+import 'package:flutter_unit/blocs/detail/detail_bloc.dart';
+import 'package:flutter_unit/blocs/detail/detail_event.dart';
+import 'package:flutter_unit/model/category_model.dart';
+import 'package:flutter_unit/model/widget_model.dart';
+import 'package:flutter_unit/views/components/permanent/circle_image.dart';
+import 'package:flutter_unit/views/components/permanent/circle_text.dart';
+import 'package:flutter_unit/views/components/permanent/feedback_widget.dart';
 
 /// create by 张风捷特烈 on 2020-04-22
 /// contact me by email 1981462002@qq.com
@@ -75,7 +74,7 @@ class CategoryShow extends StatelessWidget {
 
   _toDetailPage(BuildContext context, WidgetModel model) async {
     BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(model));
-    Navigator.pushNamed(context, Router.widget_detail, arguments: model);
+    Navigator.pushNamed(context, UnitRouter.widget_detail, arguments: model);
   }
 }
 

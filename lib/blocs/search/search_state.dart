@@ -1,6 +1,6 @@
 
 
-import 'package:flutter_unit_mac/model/widget_model.dart';
+import 'package:flutter_unit/model/widget_model.dart';
 
 abstract class SearchState {//基态
   const SearchState();

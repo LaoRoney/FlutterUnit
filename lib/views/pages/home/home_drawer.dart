@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unit_mac/app/router.dart';
-import 'package:flutter_unit_mac/app/style/TolyIcon.dart';
-import 'package:flutter_unit_mac/components/flutter/no_div_expansion_tile.dart';
-import 'package:flutter_unit_mac/views/common/unit_drawer_header.dart';
+import 'package:flutter_unit/app/router.dart';
+import 'package:flutter_unit/app/res/toly_icon.dart';
+import 'package:flutter_unit/views/components/flutter/no_div_expansion_tile.dart';
+import 'package:flutter_unit/views/components/project/default/unit_drawer_header.dart';
 
 /// create by 张风捷特烈 on 2020-03-26
 /// contact me by email 1981462002@qq.com
@@ -34,7 +34,7 @@ class HomeDrawer extends StatelessWidget {
               trailing: _nextIcon(context),
               title: Text('我的主题'),
               onTap: () {
-                Navigator.of(context).pushNamed(Router.setting);
+                Navigator.of(context).pushNamed(UnitRouter.setting);
               },
             ),
 
@@ -70,7 +70,7 @@ class HomeDrawer extends StatelessWidget {
               ),
               title: Text('关于应用'),
               trailing: _nextIcon(context),
-              onTap: () => Navigator.of(context).pushNamed(Router.about_app),
+              onTap: () => Navigator.of(context).pushNamed(UnitRouter.about_app),
             ),
             ListTile(
               leading: Icon(
@@ -79,7 +79,7 @@ class HomeDrawer extends StatelessWidget {
               ),
               title: Text('联系本王'),
               trailing: _nextIcon(context),
-              onTap: () => Navigator.of(context).pushNamed(Router.about_me),
+              onTap: () => Navigator.of(context).pushNamed(UnitRouter.about_me),
             ),
           ],
         ),

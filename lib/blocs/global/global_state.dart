@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_unit_mac/storage/po/node_po.dart';
+import 'package:flutter_unit/storage/po/node_po.dart';
 
 class GlobalState extends Equatable {
   final String fontFamily;
@@ -10,7 +10,7 @@ class GlobalState extends Equatable {
   final int itemStyleIndex;
 
   const GlobalState({
-    this.fontFamily = 'ComicNeue',
+    this.fontFamily = 'SourceHanSans',
     this.themeColor = Colors.blue,
     this.showBackGround = true,
     this.codeStyleIndex,

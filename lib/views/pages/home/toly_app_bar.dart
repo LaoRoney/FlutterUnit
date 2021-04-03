@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unit_mac/app/res/cons.dart';
-import 'package:flutter_unit_mac/components/permanent/circle.dart';
+import 'package:flutter_unit/app/res/cons.dart';
+import 'package:flutter_unit/views/components/permanent/circle.dart';
 
 class TolyAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Function(int, Color) onItemClick;

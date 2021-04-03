@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit_mac/blocs/global/global_bloc.dart';
-import 'package:flutter_unit_mac/blocs/global/global_event.dart';
-import 'package:flutter_unit_mac/blocs/global/global_state.dart';
-import 'package:flutter_unit_mac/components/permanent/feedback_widget.dart';
-import 'package:flutter_unit_mac/components/permanent/circle.dart';
-import 'package:flutter_unit_mac/views/items/home_item_support.dart';
+import 'package:flutter_unit/blocs/global/global_bloc.dart';
+import 'package:flutter_unit/blocs/global/global_event.dart';
+import 'package:flutter_unit/blocs/global/global_state.dart';
+import 'package:flutter_unit/views/components/permanent/circle.dart';
+import 'package:flutter_unit/views/components/permanent/feedback_widget.dart';
+import 'package:flutter_unit/views/components/project/items/home_item_support.dart';
 
 
 /// create by 张风捷特烈 on 2020-04-10

@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unit_mac/views/app/navigation/unit_navigation.dart';
-import 'package:flutter_unit_mac/views/pages/about/about_me_page.dart';
-import 'package:flutter_unit_mac/views/pages/about/about_app_page.dart';
-import 'package:flutter_unit_mac/views/pages/category/category_show.dart';
-import 'package:flutter_unit_mac/views/pages/category/collect_page.dart';
-import 'package:flutter_unit_mac/views/pages/search/serach_page.dart';
-import 'package:flutter_unit_mac/views/pages/setting/code_style_setting.dart';
-import 'package:flutter_unit_mac/views/pages/setting/font_setting.dart';
-import 'package:flutter_unit_mac/views/pages/setting/item_style_setting.dart';
-import 'package:flutter_unit_mac/views/pages/setting/theme_color_setting.dart';
-import 'package:flutter_unit_mac/views/pages/unit_todo/attr_unit_page.dart';
-import 'package:flutter_unit_mac/views/pages/unit_todo/bug_unit_page.dart';
+import 'package:flutter_unit/views/pages/about/about_me_page.dart';
+import 'package:flutter_unit/views/pages/about/about_app_page.dart';
+import 'package:flutter_unit/views/pages/app/navigation/unit_navigation.dart';
+import 'package:flutter_unit/views/pages/category/category_show.dart';
+import 'package:flutter_unit/views/pages/category/collect_page.dart';
+import 'package:flutter_unit/views/pages/search/serach_page.dart';
+import 'package:flutter_unit/views/pages/setting/code_style_setting.dart';
+import 'package:flutter_unit/views/pages/setting/font_setting.dart';
+import 'package:flutter_unit/views/pages/setting/item_style_setting.dart';
+import 'package:flutter_unit/views/pages/setting/theme_color_setting.dart';
+import 'package:flutter_unit/views/pages/unit_todo/attr_unit_page.dart';
+import 'package:flutter_unit/views/pages/unit_todo/bug_unit_page.dart';
 
-import 'package:flutter_unit_mac/views/pages/detail/widget_detail_page.dart';
-import 'package:flutter_unit_mac/views/pages/unit_todo/layout_unit_page.dart';
-import 'package:flutter_unit_mac/views/pages/unit_todo/paint_unit_page.dart';
-import 'package:flutter_unit_mac/views/pages/setting/setting_page.dart';
+import 'package:flutter_unit/views/pages/detail/widget_detail_page.dart';
+import 'package:flutter_unit/views/pages/unit_todo/layout_unit_page.dart';
+import 'package:flutter_unit/views/pages/unit_todo/paint_unit_page.dart';
+import 'package:flutter_unit/views/pages/setting/setting_page.dart';
 
 
 import 'utils/router_utils.dart';
 
-class Router {
+class UnitRouter {
   static const String detail = 'detail';
   static const String home = '/';
   static const String logo = 'logo';

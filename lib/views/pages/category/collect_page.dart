@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit_mac/app/router.dart';
-import 'package:flutter_unit_mac/blocs/bloc_exp.dart';
-import 'package:flutter_unit_mac/components/permanent/circle_image.dart';
-import 'package:flutter_unit_mac/model/widget_model.dart';
-import 'package:flutter_unit_mac/views/items/collect_widget_list_item.dart';
+import 'package:flutter_unit/app/router.dart';
+import 'package:flutter_unit/blocs/bloc_exp.dart';
 
+import 'package:flutter_unit/model/widget_model.dart';
+import 'package:flutter_unit/views/components/permanent/circle_image.dart';
+import 'package:flutter_unit/views/components/project/items/collect_widget_list_item.dart';
 import 'category_page.dart';
 
 class CollectPage extends StatelessWidget {
@@ -136,6 +136,6 @@ class CollectPage extends StatelessWidget {
 
   _toDetailPage(BuildContext context, WidgetModel model) {
     BlocProvider.of<DetailBloc>(context).add(FetchWidgetDetail(model));
-    Navigator.pushNamed(context, Router.widget_detail, arguments: model);
+    Navigator.pushNamed(context, UnitRouter.widget_detail, arguments: model);
   }
 }

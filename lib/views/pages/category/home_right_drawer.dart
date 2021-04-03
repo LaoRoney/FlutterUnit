@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit_mac/app/style/unit_color.dart';
-import 'package:flutter_unit_mac/app/utils/color_utils.dart';
-import 'package:flutter_unit_mac/blocs/category/category_bloc.dart';
-import 'package:flutter_unit_mac/blocs/category/category_event.dart';
-import 'package:flutter_unit_mac/components/permanent/circle.dart';
-import 'package:flutter_unit_mac/components/project/color_chooser.dart';
-import 'package:flutter_unit_mac/views/common/unit_drawer_header.dart';
-import 'package:flutter_unit_mac/components/permanent/input_button.dart';
-import 'package:flutter_unit_mac/components/permanent/edit_panel.dart';
+import 'package:flutter_unit/views/components/permanent/circle.dart';
+import 'package:flutter_unit/views/components/project/default/unit_drawer_header.dart';
 
 import 'edit_category_panel.dart';
 

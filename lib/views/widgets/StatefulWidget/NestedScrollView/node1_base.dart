@@ -34,8 +34,7 @@ class NestedScrollViewDemo extends StatelessWidget {
                   (BuildContext context, bool innerBoxIsScrolled) {
                 return <Widget>[
                   SliverOverlapAbsorber(
-                    handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
-                        context),
+                    handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
                     sliver: SliverAppBar(
                       title: const Text('旷古奇书'),
                       pinned: true,
@@ -44,7 +43,7 @@ class NestedScrollViewDemo extends StatelessWidget {
                       forceElevated: innerBoxIsScrolled, //为true时展开有阴影
                       flexibleSpace: FlexibleSpaceBar(
                         background: Image.asset(
-                          "assets/images/wy_300x200_filter.jpg",
+                          "assets/images/wy_300x200_filter.webp",
                           fit: BoxFit.cover,
                         ),
                       ),

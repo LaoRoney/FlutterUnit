@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -103,7 +102,7 @@ class CustomSimpleDialog extends StatelessWidget {
       //标题
       children: <Widget>[
         Image.asset(
-          "assets/images/icon_head.png",
+          "assets/images/icon_head.webp",
           width: 30,
           height: 30,
         ),

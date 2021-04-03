@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit_mac/app/style/unit_color.dart';
-import 'package:flutter_unit_mac/app/utils/color_utils.dart';
-import 'package:flutter_unit_mac/blocs/category/category_bloc.dart';
-import 'package:flutter_unit_mac/blocs/category/category_event.dart';
-import 'package:flutter_unit_mac/components/permanent/edit_panel.dart';
-import 'package:flutter_unit_mac/components/permanent/input_button.dart';
-import 'package:flutter_unit_mac/components/project/color_chooser.dart';
-import 'package:flutter_unit_mac/model/category_model.dart';
+import 'package:flutter_unit/app/style/unit_color.dart';
+import 'package:flutter_unit/app/utils/color_utils.dart';
+import 'package:flutter_unit/blocs/category/category_bloc.dart';
+import 'package:flutter_unit/blocs/category/category_event.dart';
+import 'package:flutter_unit/model/category_model.dart';
+import 'package:flutter_unit/views/components/permanent/edit_panel.dart';
+import 'package:flutter_unit/views/components/permanent/input_button.dart';
+import 'package:flutter_unit/views/components/project/color_chooser.dart';
 
 /// create by 张风捷特烈 on 2020-04-23
 /// contact me by email 1981462002@qq.com

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit_mac/app/router.dart';
-import 'package:flutter_unit_mac/blocs/category/category_bloc.dart';
-import 'package:flutter_unit_mac/blocs/category/category_event.dart';
-import 'package:flutter_unit_mac/blocs/category/category_state.dart';
-import 'package:flutter_unit_mac/blocs/category_widget/category_widget_bloc.dart';
-import 'package:flutter_unit_mac/blocs/category_widget/category_widget_event.dart';
-import 'package:flutter_unit_mac/components/permanent/circle.dart';
+import 'package:flutter_unit/app/router.dart';
+import 'package:flutter_unit/blocs/category/category_bloc.dart';
+import 'package:flutter_unit/blocs/category/category_event.dart';
+import 'package:flutter_unit/blocs/category/category_state.dart';
+import 'package:flutter_unit/blocs/category_widget/category_widget_bloc.dart';
+import 'package:flutter_unit/blocs/category_widget/category_widget_event.dart';
 
-import 'package:flutter_unit_mac/model/category_model.dart';
-import 'package:flutter_unit_mac/views/dialogs/delete_category_dialog.dart';
-import 'package:flutter_unit_mac/views/items/category_list_item.dart';
+import 'package:flutter_unit/model/category_model.dart';
+import 'package:flutter_unit/views/components/permanent/circle.dart';
+import 'package:flutter_unit/views/components/project/dialogs/delete_category_dialog.dart';
+import 'package:flutter_unit/views/components/project/items/category_list_item.dart';
 
 import 'edit_category_panel.dart';
 
@@ -115,6 +115,6 @@ class CategoryPage extends StatelessWidget {
   _toDetailPage(BuildContext context, CategoryModel model) {
     BlocProvider.of<CategoryWidgetBloc>(context)
         .add(EventLoadCategoryWidget(model.id));
-    Navigator.pushNamed(context, Router.category_show, arguments: model);
+    Navigator.pushNamed(context, UnitRouter.category_show, arguments: model);
   }
 }
