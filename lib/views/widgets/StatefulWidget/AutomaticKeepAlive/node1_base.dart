@@ -15,33 +15,34 @@ import 'package:flutter/material.dart';
 //    }
 
 class AutomaticKeepAliveDemo extends StatelessWidget {
+  AutomaticKeepAliveDemo({Key? key}) : super(key: key);
 
   final List<Color> data = [
-    Colors.purple[50],
-    Colors.purple[100],
-    Colors.purple[200],
-    Colors.purple[300],
-    Colors.purple[400],
-    Colors.purple[500],
-    Colors.purple[600],
-    Colors.purple[700],
-    Colors.purple[800],
-    Colors.purple[900],
-    Colors.red[50],
-    Colors.red[100],
-    Colors.red[200],
-    Colors.red[300],
-    Colors.red[400],
-    Colors.red[500],
-    Colors.red[600],
-    Colors.red[700],
-    Colors.red[800],
-    Colors.red[900],
+    Colors.purple[50]!,
+    Colors.purple[100]!,
+    Colors.purple[200]!,
+    Colors.purple[300]!,
+    Colors.purple[400]!,
+    Colors.purple[500]!,
+    Colors.purple[600]!,
+    Colors.purple[700]!,
+    Colors.purple[800]!,
+    Colors.purple[900]!,
+    Colors.red[50]!,
+    Colors.red[100]!,
+    Colors.red[200]!,
+    Colors.red[300]!,
+    Colors.red[400]!,
+    Colors.red[500]!,
+    Colors.red[600]!,
+    Colors.red[700]!,
+    Colors.red[800]!,
+    Colors.red[900]!,
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 300,
       child: ListView.builder(
         itemCount: data.length,
@@ -58,7 +59,8 @@ class ColorBox extends StatefulWidget {
   final Color color;
   final int index;
 
-  ColorBox({Key key, this.color, this.index}) : super(key: key);
+  const ColorBox({Key? key, required this.color, required this.index})
+      : super(key: key);
 
   @override
   _ColorBoxState createState() => _ColorBoxState();
@@ -83,26 +85,31 @@ class _ColorBoxState extends State<ColorBox> with AutomaticKeepAliveClientMixin 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-
     return Container(
       alignment: Alignment.center,
       height: 50,
       color: widget.color,
       child: Row(
         children: [
-          SizedBox(width: 60,),
+          const SizedBox(
+            width: 60,
+          ),
           Checkbox(
             value: _checked,
-            onChanged: (v) {
+            onChanged: (bool? v) {
               setState(() {
-                _checked = v;
+                _checked = v ?? false;
               });
             },
           ),
           Text(
             "index ${widget.index}: ${colorString(widget.color)}",
-            style: TextStyle(color: Colors.white, shadows: [
-              Shadow(color: Colors.black, offset: Offset(.5, .5), blurRadius: 2)
+            style: const TextStyle(color: Colors.white, shadows: [
+              Shadow(
+                color: Colors.black,
+                offset: Offset(.5, .5),
+                blurRadius: 2,
+              )
             ]),
           ),
         ],

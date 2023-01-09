@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 //          "【delegate】 : 孩子代理   【SliverChildDelegate】",
 //    }
 class SliverPrototypeExtentListDemo extends StatefulWidget {
+  const SliverPrototypeExtentListDemo({Key? key}) : super(key: key);
+
   @override
   _SliverPrototypeExtentListDemoState createState() =>
       _SliverPrototypeExtentListDemoState();
@@ -19,22 +21,22 @@ class SliverPrototypeExtentListDemo extends StatefulWidget {
 
 class _SliverPrototypeExtentListDemoState
     extends State<SliverPrototypeExtentListDemo> {
-  final data = <Color>[
-    Colors.orange[50],
-    Colors.orange[100],
-    Colors.orange[200],
-    Colors.orange[300],
-    Colors.orange[400],
-    Colors.orange[500],
-    Colors.orange[600],
-    Colors.orange[700],
-    Colors.orange[800],
-    Colors.orange[900],
+  final List<Color> data = [
+    Colors.orange[50]!,
+    Colors.orange[100]!,
+    Colors.orange[200]!,
+    Colors.orange[300]!,
+    Colors.orange[400]!,
+    Colors.orange[500]!,
+    Colors.orange[600]!,
+    Colors.orange[700]!,
+    Colors.orange[800]!,
+    Colors.orange[900]!,
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 300,
       child: CustomScrollView(
         slivers: <Widget>[_buildSliverAppBar(), _buildSliverList()],
@@ -54,7 +56,7 @@ class _SliverPrototypeExtentListDemoState
                   color: data[index],
                   child: Text(
                     colorString(data[index]),
-                    style: TextStyle(color: Colors.white, shadows: [
+                    style: const TextStyle(color: Colors.white, shadows: [
                       Shadow(
                           color: Colors.black,
                           offset: Offset(.5, .5),
@@ -69,14 +71,14 @@ class _SliverPrototypeExtentListDemoState
     return SliverAppBar(
       expandedHeight: 150.0,
       leading: _buildLeading(),
-      title: Text('张风捷特烈'),
+      title: const Text('张风捷特烈'),
       actions: _buildActions(),
       elevation: 5,
       pinned: true,
       backgroundColor: Colors.orange,
       flexibleSpace: FlexibleSpaceBar(
         //伸展处布局
-        titlePadding: EdgeInsets.only(left: 55, bottom: 15), //标题边距
+        titlePadding: const EdgeInsets.only(left: 55, bottom: 15), //标题边距
         collapseMode: CollapseMode.parallax, //视差效果
         background: Image.asset(
           "assets/images/caver.webp",
@@ -87,13 +89,13 @@ class _SliverPrototypeExtentListDemoState
   }
 
   Widget _buildLeading() => Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Image.asset('assets/images/icon_head.webp'));
 
   List<Widget> _buildActions() => <Widget>[
         IconButton(
           onPressed: () {},
-          icon: Icon(
+          icon: const Icon(
             Icons.star_border,
             color: Colors.white,
           ),

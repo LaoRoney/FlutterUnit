@@ -8,8 +8,7 @@ import 'package:flutter/material.dart';
 //      "widgetId": 150,
 //      "name": 'InkWell基本事件',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 子组件   【Widget】\n"
+//      "subtitle": "【child】 : 子组件   【Widget】\n"
 //          "【onTap】 : 点击事件   【Function()】\n"
 //          "【onDoubleTap】 : 双击事件   【Function()】\n"
 //          "【onTapCancel】 : 点击取消   【Function()】\n"
@@ -17,12 +16,14 @@ import 'package:flutter/material.dart';
 //    }
 
 class CustomInkWell extends StatefulWidget {
+  const CustomInkWell({Key? key}) : super(key: key);
+
   @override
   _CustomInkWellState createState() => _CustomInkWellState();
 }
 
 class _CustomInkWellState extends State<CustomInkWell> {
-  var _info = 'Push';
+  String _info = 'Push';
 
   @override
   Widget build(BuildContext context) {

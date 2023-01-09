@@ -7,22 +7,25 @@ import 'package:flutter/material.dart';
 //      "widgetId": 191,
 //      "name": 'SliverPadding基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【sliver】 : 子组件   【Widget】\n"
+//      "subtitle": "【sliver】 : 子组件   【Widget】\n"
 //          "【padding】 : 内边距  【EdgeInsetsGeometry】",
 //    }
 class SliverPaddingDemo extends StatelessWidget {
+  SliverPaddingDemo({Key? key}) : super(key: key);
+
   final data = List.generate(128, (i) => Color(0xFF6600FF - 2 * i));
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 300,
       child: CustomScrollView(
-        slivers: <Widget>[_buildSliverAppBar(), SliverPadding(
-            padding: EdgeInsets.only(top: 10),
-            sliver
-            : _buildSliverGrid())],
+        slivers: <Widget>[
+          _buildSliverAppBar(),
+          SliverPadding(
+              padding: const EdgeInsets.only(top: 10),
+              sliver: _buildSliverGrid())
+        ],
       ),
     );
   }
@@ -40,12 +43,12 @@ class SliverPaddingDemo extends StatelessWidget {
       color: e,
       child: Text(
         colorString(e),
-        style: TextStyle(color: Colors.white, shadows: [
-          Shadow(
-              color: Colors.black,
-              offset: Offset(.5, .5),
-              blurRadius: 2)
-        ]),
+        style: const TextStyle(color: Colors.white, shadows: [
+                      Shadow(
+                          color: Colors.black,
+                          offset: Offset(.5, .5),
+                          blurRadius: 2)
+                    ]),
       ),
     ))
         .toList(),
@@ -55,14 +58,14 @@ class SliverPaddingDemo extends StatelessWidget {
     return SliverAppBar(
       expandedHeight: 190.0,
       leading: _buildLeading(),
-      title: Text('张风捷特烈'),
+      title: const Text('张风捷特烈'),
       actions: _buildActions(),
       elevation: 5,
       pinned: true,
       backgroundColor: Colors.orange,
       flexibleSpace: FlexibleSpaceBar(
         //伸展处布局
-        titlePadding: EdgeInsets.only(left: 55, bottom: 15), //标题边距
+        titlePadding: const EdgeInsets.only(left: 55, bottom: 15), //标题边距
         collapseMode: CollapseMode.parallax, //视差效果
         background: Image.asset(
           "assets/images/caver.webp",
@@ -73,16 +76,16 @@ class SliverPaddingDemo extends StatelessWidget {
   }
 
   Widget _buildLeading() => Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Image.asset('assets/images/icon_head.webp'));
 
-  List<Widget> _buildActions() => <Widget>[
+  List<Widget> _buildActions() => [
     IconButton(
       onPressed: () {},
-      icon: Icon(
-        Icons.star_border,
-        color: Colors.white,
-      ),
+      icon: const Icon(
+            Icons.star_border,
+            color: Colors.white,
+          ),
     )
   ];
 

@@ -1,21 +1,19 @@
+import 'package:app_config/app_config.dart';
+import 'package:components/components.dart';
+import 'package:components/toly_ui/toly_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit/app/res/cons.dart';
-import 'package:flutter_unit/blocs/global/global_bloc.dart';
-import 'package:flutter_unit/blocs/global/global_event.dart';
-import 'package:flutter_unit/blocs/global/global_state.dart';
-import 'package:flutter_unit/views/components/permanent/circle.dart';
-import 'package:flutter_unit/views/components/permanent/code/back/code_panel.dart';
-import 'package:flutter_unit/views/components/permanent/code/highlighter_style.dart';
-import 'package:flutter_unit/views/components/permanent/feedback_widget.dart';
-
+import 'package:flutter_unit/components/permanent/circle.dart';
 
 /// create by 张风捷特烈 on 2020-04-10
 /// contact me by email 1981462002@qq.com
 /// 说明:
 
 class CodeStyleSettingPage extends StatelessWidget {
-  final code = """
+
+  const CodeStyleSettingPage({Key? key}) : super(key: key);
+
+  final String code = """
 const String _kCounty = 'China';
 
 class Hello {
@@ -31,20 +29,12 @@ class Hello {
 }""";
 
 
-  final gridDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount: 2,
-    mainAxisSpacing: 10,
-    crossAxisSpacing: 20,
-    childAspectRatio: 2.5,
-  );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('代码高亮样式'),
-      ),
-      body: BlocBuilder<GlobalBloc, GlobalState>(
+      backgroundColor: UnitColor.scaffoldBgLight,
+    appBar: const UnitAppbar(title: '代码高亮样式'),
+      body: BlocBuilder<AppBloc, AppState>(
           builder: (_, state) => _buildFontCell(context,
               Cons.codeThemeSupport.keys.toList(), state.codeStyleIndex)),
     );
@@ -52,21 +42,19 @@ class Hello {
 
   Widget _buildFontCell(
       BuildContext context, List<HighlighterStyle> styles, int index) {
-    return GridView.builder(
-      gridDelegate: gridDelegate,
-        padding: EdgeInsets.all(20),
-        itemCount: styles.length,
-        itemBuilder: (_, i) =>   FeedbackWidget(
+    return ListView.builder(
+      itemCount: styles.length,
+      itemBuilder: (_ctx, i) =>  FeedbackWidget(
         a: 0.95,
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
       onPressed: (){
-        BlocProvider.of<GlobalBloc>(context).add(EventSwitchCoderTheme(i));
+        BlocProvider.of<AppBloc>(context).switchCoderTheme(i);
       },
       child: Stack(
         fit: StackFit.passthrough,
         children: <Widget>[
          Card(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               child: CodeWidget(
                 code: code,
                 style: styles[i],
@@ -78,8 +66,8 @@ class Hello {
             bottom: 20,
             child: Text(Cons.codeThemeSupport.values.toList()[i],style: TextStyle(
               fontSize: 14,
-              color: styles[i].stringStyle.color,
-              shadows: [Shadow(
+              color: styles[i].stringStyle!.color,
+              shadows: const [Shadow(
                 color: Colors.white,
                 offset: Offset(.5,.5),
                 blurRadius: 1
@@ -93,7 +81,7 @@ class Hello {
             top: 20,
             child: Circle(radius: 10,
               color: Theme.of(context).primaryColor,
-              child: Icon(Icons.check,color:Colors.white,size: 15,),),
+              child: const Icon(Icons.check,color:Colors.white,size: 15,),),
           )
         ],
       ),

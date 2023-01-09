@@ -7,29 +7,31 @@ import 'package:flutter/material.dart';
 //      "widgetId": 179,
 //      "name": 'ListWheelScrollView基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【children】 : 子组件列表   【List<Widget>】\n"
+//      "subtitle": "【children】 : 子组件列表   【List<Widget>】\n"
 //          "【perspective】 : 透视度   【double】\n"
 //          "【itemExtent】 : item高   【EdgeInsets】\n"
 //          "【onSelectedItemChanged】 : 选中回调  【ValueChanged<int> 】",
 //    }
 class CustomListWheelScrollView extends StatefulWidget {
+  const CustomListWheelScrollView({Key? key}) : super(key: key);
+
   @override
-  _CustomListWheelScrollViewState createState() => _CustomListWheelScrollViewState();
+  _CustomListWheelScrollViewState createState() =>
+      _CustomListWheelScrollViewState();
 }
 
 class _CustomListWheelScrollViewState extends State<CustomListWheelScrollView> {
-  var data = <Color>[
-    Colors.orange[50],
-    Colors.orange[100],
-    Colors.orange[200],
-    Colors.orange[300],
-    Colors.orange[400],
-    Colors.orange[500],
-    Colors.orange[600],
-    Colors.orange[700],
-    Colors.orange[800],
-    Colors.orange[900],
+  final List<Color> data = [
+    Colors.orange[50]!,
+    Colors.orange[100]!,
+    Colors.orange[200]!,
+    Colors.orange[300]!,
+    Colors.orange[400]!,
+    Colors.orange[500]!,
+    Colors.orange[600]!,
+    Colors.orange[700]!,
+    Colors.orange[800]!,
+    Colors.orange[900]!,
   ];
 
   Color _color = Colors.blue;
@@ -39,15 +41,15 @@ class _CustomListWheelScrollViewState extends State<CustomListWheelScrollView> {
     return Column(
       children: <Widget>[
         _buildCircle(),
-        Container(
+        SizedBox(
           height: 150,
           width: 300,
           child: ListWheelScrollView(
             perspective: 0.006,
             itemExtent: 50,
-            onSelectedItemChanged: (index){
+            onSelectedItemChanged: (index) {
               print('onSelectedItemChanged:$index');
-              setState(() => _color=data[index]);
+              setState(() => _color = data[index]);
             },
             children: data.map((color) => _buildItem(color)).toList(),
           ),
@@ -57,13 +59,10 @@ class _CustomListWheelScrollViewState extends State<CustomListWheelScrollView> {
   }
 
   Widget _buildCircle() => Container(
-        margin: EdgeInsets.only(bottom: 5),
+    margin: const EdgeInsets.only(bottom: 5),
         width: 30,
         height: 30,
-        decoration: BoxDecoration(
-          color: _color,
-          shape: BoxShape.circle
-        ),
+        decoration: BoxDecoration(color: _color, shape: BoxShape.circle),
       );
 
   Widget _buildItem(Color color) {
@@ -74,8 +73,12 @@ class _CustomListWheelScrollViewState extends State<CustomListWheelScrollView> {
       color: color,
       child: Text(
         colorString(color),
-        style: TextStyle(color: Colors.white, shadows: [
-          Shadow(color: Colors.black, offset: Offset(.5, .5), blurRadius: 2)
+        style: const TextStyle(color: Colors.white, shadows: [
+          Shadow(
+            color: Colors.black,
+            offset: Offset(.5, .5),
+            blurRadius: 2,
+          )
         ]),
       ),
     );

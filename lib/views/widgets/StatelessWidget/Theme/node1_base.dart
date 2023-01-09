@@ -11,53 +11,52 @@ import 'package:flutter/material.dart';
 //          "子组件可以通过ThemeData.of获取主题的数据进行使用。",
 //    }
 class TextThemeDemo extends StatelessWidget {
+  const TextThemeDemo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    var queryData = Theme.of(context).textTheme;
-    var styles = {
-      "headline: ": queryData.headline,
-      "title: ": queryData.title,
-      "subhead: ": queryData.subhead,
-      "body1: ": queryData.body1,
-      "body2: ": queryData.body2,
-      "button: ": queryData.button,
-      "overline: ": queryData.overline,
-      "subtitle: ": queryData.subtitle,
-      "caption: ": queryData.caption,
-      "display1: ": queryData.display1,
-      "display2: ": queryData.display2,
-      "display3: ": queryData.display3,
-      "display4: ": queryData.display4,
+    TextTheme queryData = Theme.of(context).textTheme;
+    Map<String, TextStyle> styles = {
+      "headline1: ": queryData.headline1!,
+      "headline2: ": queryData.headline2!,
+      "headline3: ": queryData.headline3!,
+      "headline4: ": queryData.headline4!,
+      "headline5: ": queryData.headline5!,
+      "headline6: ": queryData.headline6!,
+      "button: ": queryData.button!,
+      "overline: ": queryData.overline!,
+      "subtitle1: ": queryData.subtitle1!,
+      "subtitle2: ": queryData.subtitle2!,
+      "caption: ": queryData.caption!,
+      "bodyText1: ": queryData.bodyText1!,
+      "bodyText2: ": queryData.bodyText2!,
     };
 
-    return Container(
-      child: Column(
-        children: styles.keys.map((e) => buildItem(e, styles[e])).toList(),
-      ),
+    return Column(
+      children: styles.keys
+          .map((String styleInfo) => buildItem(styleInfo, styles[styleInfo]!))
+          .toList(),
     );
   }
 
-  Widget buildItem(String e, TextStyle style) => Column(
-    children: <Widget>[
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              e,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+  TextStyle get textStyle => const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      );
+
+  Widget buildItem(String styleInfo, TextStyle style) => Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(styleInfo, style: textStyle),
+                Text("@toly", style: style)
+              ],
             ),
-            Text(
-              "@toly",
-              style: style,
-            )
-          ],
-        ),
-      ),
-      Divider(
-        height: 1,
-      )
-    ],
-  );
+          ),
+          const Divider(height: 1)
+        ],
+      );
 }

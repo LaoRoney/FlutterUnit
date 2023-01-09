@@ -1,50 +1,33 @@
+import 'package:app_config/app_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit/app/enums.dart';
 import 'package:flutter_unit/blocs/bloc_exp.dart';
-import 'package:flutter_unit/repositories/impl/catagory_db_repository.dart';
-import 'package:flutter_unit/repositories/impl/widget_db_repository.dart';
-import 'package:flutter_unit/repositories/impl/widget_innner_repository.dart';
-import 'package:flutter_unit/storage/app_storage.dart';
+import 'package:widget_repository/widget_repository.dart';
 
 /// create by 张风捷特烈 on 2020/4/28
 /// contact me by email 1981462002@qq.com
-/// 说明: 
-
-final storage = AppStorage();
+/// 说明:
 
 class BlocWrapper extends StatelessWidget {
   final Widget child;
 
-  BlocWrapper({this.child});
+  BlocWrapper({required this.child});
 
-  final repository = WidgetInnerRepository(storage);
-  final categoryRepo = CategoryDbRepository(storage);
+  final WidgetRepository repository = MemoryWidgetRepository();
+  final AppStateRepository appStateRepository = AppStateRepository();
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(//使用MultiBlocProvider包裹
         providers: [
-          //Bloc提供器
-          BlocProvider<GlobalBloc>(
-              create: (_) => GlobalBloc(storage)..add(EventInitApp())),
-
-          BlocProvider<HomeBloc>(
-              create: (_) => HomeBloc(repository: repository)
-                ..add(EventTabTap(WidgetFamily.statelessWidget))),
-
-          BlocProvider<DetailBloc>(
-              create: (_) => DetailBloc(repository: repository)),
-          BlocProvider<CategoryBloc>(
-              create: (_) =>
-              CategoryBloc(repository: categoryRepo)..add(EventLoadCategory())),
-
-          BlocProvider<CollectBloc>(
-              create: (_) =>
-              CollectBloc(repository: repository)..add(EventSetCollectData())),
-
-          BlocProvider<SearchBloc>(
-              create: (_) => SearchBloc(repository: repository)),
-        ], child: child);
+      //Bloc提供器
+      BlocProvider<AppBloc>(
+          create: (_) => AppBloc(appStateRepository)..initApp()),
+      BlocProvider<WidgetsBloc>(
+          create: (_) => WidgetsBloc(repository: repository)
+            ..add(EventTabTap(WidgetFamily.statelessWidget))),
+      BlocProvider<WidgetDetailBloc>(
+          create: (_) => WidgetDetailBloc(repository: repository)),
+    ], child: child);
   }
 }

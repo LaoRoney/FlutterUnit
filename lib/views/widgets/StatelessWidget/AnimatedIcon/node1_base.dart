@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 /// create by 张风捷特烈 on 2020/4/25
 /// contact me by email 1981462002@qq.com
-/// 说明: 
-
+/// 说明:
 //    {
 //      "widgetId": 125,
 //      "name": 'AnimatedIcon基本使用',
@@ -12,23 +13,20 @@
 //          "【color】 : 颜色  【Color】\n"
 //          "【progress】 : 动画   【Animation<double>】",
 //    }
-
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
 class CustomAnimatedIcon extends StatefulWidget {
+  const CustomAnimatedIcon({Key? key}) : super(key: key);
+
   @override
   _CustomAnimatedIconState createState() => _CustomAnimatedIconState();
 }
 
 class _CustomAnimatedIconState extends State<CustomAnimatedIcon>
     with SingleTickerProviderStateMixin {
-  AnimationController _ctrl;
+  late AnimationController _ctrl;
 
   @override
   void initState() {
-    _ctrl = AnimationController(vsync: this, duration: Duration(seconds: 1));
+    _ctrl = AnimationController(vsync: this, duration: const Duration(seconds: 1));
     _ctrl.forward();
     super.initState();
   }
@@ -42,12 +40,7 @@ class _CustomAnimatedIconState extends State<CustomAnimatedIcon>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          _ctrl.reset();
-          _ctrl.forward();
-        });
-      },
+      onTap: () => _ctrl.forward(from: 0),
       child: Wrap(
         runSpacing: 30,
         children: _buildChildren(),
@@ -55,7 +48,7 @@ class _CustomAnimatedIconState extends State<CustomAnimatedIcon>
     );
   }
 
-  final data = {
+  final Map<Color, AnimatedIconData> data = {
     Colors.orange: AnimatedIcons.menu_arrow,
     Colors.blue: AnimatedIcons.ellipsis_search,
     Colors.red: AnimatedIcons.close_menu,
@@ -64,12 +57,13 @@ class _CustomAnimatedIconState extends State<CustomAnimatedIcon>
     Colors.purple: AnimatedIcons.pause_play,
   };
 
-  List<Widget> _buildChildren() => data.keys
-      .map((e) => AnimatedIcon(
-    size: 50,
-    color: e,
-    icon: data[e],
-    progress: _ctrl,
-  ))
+  List<Widget> _buildChildren() =>
+      data.keys
+      .map((Color color) => AnimatedIcon(
+            size: 50,
+            color: color,
+            icon: data[color]!,
+            progress: _ctrl,
+          ))
       .toList();
 }

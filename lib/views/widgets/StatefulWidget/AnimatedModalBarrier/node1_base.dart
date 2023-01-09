@@ -14,22 +14,29 @@ import 'package:flutter/material.dart';
 //          "【color】 : 颜色   【Animation<Color>】",
 //    }
 class AnimatedModalBarrierDemo extends StatefulWidget {
+  const AnimatedModalBarrierDemo({Key? key}) : super(key: key);
+
   @override
-  _AnimatedModalBarrierDemoState createState() => _AnimatedModalBarrierDemoState();
+  _AnimatedModalBarrierDemoState createState() =>
+      _AnimatedModalBarrierDemoState();
 }
 
 class _AnimatedModalBarrierDemoState extends State<AnimatedModalBarrierDemo>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<Color> _color;
+ late AnimationController _controller;
+ late Animation<Color?> _color;
 
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 2))..forward();
-    _color = ColorTween(begin: Colors.blue, end: Colors.purple)
-        .animate(_controller);
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..forward();
+    _color = ColorTween(
+      begin: Colors.blue,
+      end: Colors.purple,
+    ).animate(_controller);
   }
 
   @override
@@ -40,7 +47,7 @@ class _AnimatedModalBarrierDemoState extends State<AnimatedModalBarrierDemo>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 200,
       height: 100,
       child: Stack(alignment: Alignment.center, children: [
@@ -48,7 +55,10 @@ class _AnimatedModalBarrierDemoState extends State<AnimatedModalBarrierDemo>
           dismissible: true,
           color: _color,
         ),
-        Text('点击背景返回',style: TextStyle(color: Colors.white),)
+        const Text(
+          '点击背景返回',
+          style: TextStyle(color: Colors.white),
+        )
       ]),
     );
   }

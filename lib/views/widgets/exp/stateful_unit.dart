@@ -3,6 +3,8 @@ library stateful_unit;
 export '../StatefulWidget/CupertinoButton/node1_base.dart';
 export '../StatefulWidget/CupertinoContextMenu/node1_base.dart';
 export '../StatefulWidget/CupertinoContextMenuAction/node1_base.dart';
+export '../StatefulWidget/DateRangePickerDialog/node1_base.dart';
+export '../StatefulWidget/DateRangePickerDialog/node2_diy.dart';
 
 export '../StatefulWidget/CupertinoDatePicker/node1_base.dart';
 export '../StatefulWidget/CupertinoPicker/node1_base.dart';
@@ -163,7 +165,7 @@ export '../StatefulWidget/GlowingOverscrollIndicator/node1_base.dart';
 export '../StatefulWidget/DraggableScrollableSheet/node1_base.dart';
 export '../StatefulWidget/DrawerController/node1_base.dart';
 export '../StatefulWidget/MergeableMaterial/node1_base.dart';
-export '../StatefulWidget/CupertinoTabView/node1_base.dart' hide HomePage;
+export '../StatefulWidget/CupertinoTabView/node1_base.dart';
 
 export '../StatefulWidget/TextButton/node1_base.dart';
 export '../StatefulWidget/TextButton/node2_style.dart';
@@ -173,3 +175,7 @@ export '../StatefulWidget/ElevatedButton/node2_style.dart';
 
 export '../StatefulWidget/OutlinedButton//node1_base.dart';
 export '../StatefulWidget/OutlinedButton/node2_style.dart';
+
+export '../StatefulWidget/NavigationRail/node1_base.dart';
+export '../StatefulWidget/NavigationRail/node2_extend.dart';
+export '../StatefulWidget/NavigationRail/node3_dark.dart';

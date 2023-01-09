@@ -1,11 +1,7 @@
+import 'dart:async';
 import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit/app/enums.dart';
-import 'package:flutter_unit/app/res/cons.dart';
-import 'package:flutter_unit/repositories/itf/widget_repository.dart';
+import 'package:widget_repository/widget_repository.dart';
 
 import 'home_event.dart';
 import 'home_state.dart';
@@ -14,31 +10,31 @@ import 'home_state.dart';
 /// contact me by email 1981462002@qq.com
 /// 说明:
 
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
+class WidgetsBloc extends Bloc<HomeEvent, WidgetsState> {
   final WidgetRepository repository;
 
-  HomeBloc({@required this.repository});
+  WidgetsBloc({required this.repository}) : super(const WidgetsLoading()){
+    on<EventTabTap>(_onLoadWidget);
+  }
 
   @override
-  HomeState get initialState => WidgetsLoading(
-      homeColor: Color(Cons.tabColors[0]));
-
-  @override
-  Stream<HomeState> mapEventToState(HomeEvent event) async* {
+  Stream<WidgetsState> mapEventToState(HomeEvent event) async* {
     if (event is EventTabTap) {
       yield* _mapLoadWidgetToState(event.family);
     }
   }
 
-  Stream<HomeState> _mapLoadWidgetToState(WidgetFamily family) async* {
+  Stream<WidgetsState> _mapLoadWidgetToState(WidgetFamily family) async* {
+
+  }
+
+  FutureOr<void> _onLoadWidget(EventTabTap event, Emitter<WidgetsState> emit) async{
     try {
-      final widgets = await this.repository.loadWidgets(family);
-      yield WidgetsLoaded(
-          widgets: widgets,
-          homeColor: Color(Cons.tabColors[family.index]));
+      final widgets = await this.repository.loadWidgets(event.family);
+      emit( WidgetsLoaded(widgets: widgets));
     } catch (err) {
       print(err);
-      yield WidgetsLoadFailed();
+      emit( WidgetsLoadFailed(error: err.toString()));
     }
   }
 }

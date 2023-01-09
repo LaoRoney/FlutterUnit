@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 //          "    PositionedTransition组件只能在Stack内起作用",
 //    }
 class CustomPositionedTransition extends StatefulWidget {
+  const CustomPositionedTransition({Key? key}) : super(key: key);
+
   @override
   _CustomPositionedTransitionState createState() =>
       _CustomPositionedTransitionState();
@@ -19,11 +21,14 @@ class CustomPositionedTransition extends StatefulWidget {
 
 class _CustomPositionedTransitionState extends State<CustomPositionedTransition>
     with SingleTickerProviderStateMixin {
-  AnimationController _ctrl;
+  late AnimationController _ctrl;
 
   @override
   void initState() {
-    _ctrl = AnimationController(vsync: this, duration: Duration(seconds: 2));
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
     _ctrl.forward();
     super.initState();
   }
@@ -37,12 +42,7 @@ class _CustomPositionedTransitionState extends State<CustomPositionedTransition>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {
-          setState(() {
-            _ctrl.reset();
-            _ctrl.forward();
-          });
-        },
+        onTap: () => _ctrl.forward(from: 0),
         child: Container(
           color: Colors.grey.withAlpha(33),
           width: 200,
@@ -51,10 +51,10 @@ class _CustomPositionedTransitionState extends State<CustomPositionedTransition>
             children: <Widget>[
               PositionedTransition(
                 rect: RelativeRectTween(
-                  begin: RelativeRect.fromLTRB(0, 50, 150, 100),
-                  end: RelativeRect.fromLTRB(60, 0, 150, -50),
+                  begin: const RelativeRect.fromLTRB(0, 50, 150, 100),
+                  end: const RelativeRect.fromLTRB(60, 0, 150, -50),
                 ).animate(_ctrl),
-                child: Icon(
+                child: const Icon(
                   Icons.android,
                   color: Colors.green,
                   size: 50,

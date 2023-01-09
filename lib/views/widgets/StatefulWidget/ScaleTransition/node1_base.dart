@@ -11,17 +11,19 @@ import 'package:flutter/material.dart';
 //          "【scale】 : 动画   【Animation<double>】",
 //    }
 class CustomScaleTransition extends StatefulWidget {
+  const CustomScaleTransition({Key? key}) : super(key: key);
+
   @override
   _CustomScaleTransitionState createState() => _CustomScaleTransitionState();
 }
 
 class _CustomScaleTransitionState extends State<CustomScaleTransition>
     with SingleTickerProviderStateMixin {
-  AnimationController _ctrl;
+  late AnimationController _ctrl;
 
   @override
   void initState() {
-    _ctrl = AnimationController(vsync: this, duration: Duration(seconds: 2));
+    _ctrl = AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _ctrl.forward();
     super.initState();
   }
@@ -35,19 +37,14 @@ class _CustomScaleTransitionState extends State<CustomScaleTransition>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {
-          setState(() {
-            _ctrl.reset();
-            _ctrl.forward();
-          });
-        },
+        onTap: () => _ctrl.forward(from: 0),
         child: Container(
           color: Colors.grey.withAlpha(22),
           width: 100,
           height: 100,
           child: ScaleTransition(
             scale: CurvedAnimation(parent: _ctrl, curve: Curves.linear),
-            child: Icon(Icons.android, color: Colors.green, size: 60),
+            child: const Icon(Icons.android, color: Colors.green, size: 60),
           ),
         ));
   }

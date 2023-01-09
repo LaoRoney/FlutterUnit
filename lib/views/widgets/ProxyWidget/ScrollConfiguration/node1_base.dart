@@ -7,28 +7,30 @@ import 'package:flutter/material.dart';
 //      "widgetId": 180,
 //      "name": 'ScrollConfiguration基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 子组件   【Widget】\n"
+//      "subtitle": "【child】 : 子组件   【Widget】\n"
 //          "【behavior】 : 滑动行为  【ScrollBehavior】\n"
 //          "    可以使用ScrollConfiguration让ListView无蓝色阴影",
 //    }
 class CustomScrollConfiguration extends StatelessWidget {
-  final data = <Color>[
-    Colors.cyan[50],
-    Colors.cyan[100],
-    Colors.cyan[200],
-    Colors.cyan[300],
-    Colors.cyan[400],
-    Colors.cyan[500],
-    Colors.cyan[600],
-    Colors.cyan[700],
-    Colors.cyan[800],
-    Colors.cyan[900],
+  CustomScrollConfiguration({Key? key}) : super(key: key);
+
+  final List<Color> data = [
+    Colors.cyan[50]!,
+    Colors.cyan[100]!,
+    Colors.cyan[200]!,
+    Colors.cyan[300]!,
+    Colors.cyan[400]!,
+    Colors.cyan[500]!,
+    Colors.cyan[600]!,
+    Colors.cyan[700]!,
+    Colors.cyan[800]!,
+    Colors.cyan[900]!,
   ];
+
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: ScrollConfiguration(
           behavior: NoScrollBehavior(), child: _buildListView()),
@@ -36,7 +38,7 @@ class CustomScrollConfiguration extends StatelessWidget {
   }
 
   Widget _buildListView() => ListView(
-        padding: EdgeInsets.symmetric(horizontal: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         children: data
             .map((color) => Container(
                   alignment: Alignment.center,
@@ -45,7 +47,7 @@ class CustomScrollConfiguration extends StatelessWidget {
                   color: color,
                   child: Text(
                     colorString(color),
-                    style: TextStyle(color: Colors.white, shadows: [
+                    style: const TextStyle(color: Colors.white, shadows: [
                       Shadow(
                           color: Colors.black,
                           offset: Offset(.5, .5),

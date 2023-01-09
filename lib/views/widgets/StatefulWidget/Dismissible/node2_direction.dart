@@ -10,36 +10,38 @@ import 'package:flutter/material.dart';
 //      "widgetId": 176,
 //      "name": 'Dismissible基本使用',
 //      "priority": 2,
-//      "subtitle":
-//          "【direction】 : 方向   【DismissDirection】\n"
+//      "subtitle": "【direction】 : 方向   【DismissDirection】\n"
 //          "【crossAxisEndOffset】 : 偏移  【double】\n",
 //    }
 class DirectionDismissible extends StatefulWidget {
+  const DirectionDismissible({Key? key}) : super(key: key);
+
   @override
-  _CustomDirectionDismissibleState createState() => _CustomDirectionDismissibleState();
+  _CustomDirectionDismissibleState createState() =>
+      _CustomDirectionDismissibleState();
 }
 
 class _CustomDirectionDismissibleState extends State<DirectionDismissible> {
-  var data = <Color>[
-    Colors.purple[50],
-    Colors.purple[100],
-    Colors.purple[200],
-    Colors.purple[300],
-    Colors.purple[400],
-    Colors.purple[500],
-    Colors.purple[600],
-    Colors.purple[700],
-    Colors.purple[800],
-    Colors.purple[900],
+  final List<Color> data = [
+    Colors.purple[50]!,
+    Colors.purple[100]!,
+    Colors.purple[200]!,
+    Colors.purple[300]!,
+    Colors.purple[400]!,
+    Colors.purple[500]!,
+    Colors.purple[600]!,
+    Colors.purple[700]!,
+    Colors.purple[800]!,
+    Colors.purple[900]!,
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         children: data.map((color) => _buildItem(color)).toList(),
       ),
     );
@@ -50,16 +52,22 @@ class _CustomDirectionDismissibleState extends State<DirectionDismissible> {
       direction: DismissDirection.vertical,
       background: Container(
         color: Colors.green,
-        alignment: Alignment( 0,-0.9,),
-        child: Icon(
+        alignment: const Alignment(
+          0,
+          -0.9,
+        ),
+        child: const Icon(
           Icons.check,
           color: Colors.white,
         ),
       ),
       crossAxisEndOffset: 0.5,
       secondaryBackground: Container(
-        alignment: Alignment( 0,0.9,),
-        child: Icon(
+        alignment: const Alignment(
+          0,
+          0.9,
+        ),
+        child: const Icon(
           Icons.close,
           color: Colors.white,
         ),
@@ -83,8 +91,12 @@ class _CustomDirectionDismissibleState extends State<DirectionDismissible> {
         color: color,
         child: Text(
           colorString(color),
-          style: TextStyle(color: Colors.white, shadows: [
-            Shadow(color: Colors.black, offset: Offset(.5, .5), blurRadius: 2)
+          style: const TextStyle(color: Colors.white, shadows: [
+            Shadow(
+              color: Colors.black,
+              offset: Offset(.5, .5),
+              blurRadius: 2,
+            )
           ]),
         ),
       ),

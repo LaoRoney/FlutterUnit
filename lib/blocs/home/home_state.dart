@@ -1,35 +1,32 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_unit/model/widget_model.dart';
+import 'package:widget_repository/widget_repository.dart';
+
 
 /// create by 张风捷特烈 on 2020-03-03
 /// contact me by email 1981462002@qq.com
 /// 说明: widget状态类
 
-abstract class HomeState extends Equatable {
-  final Color homeColor;
-
-  const HomeState({this.homeColor});
+abstract class WidgetsState extends Equatable {
+  const WidgetsState();
 
   @override
-  List<Object> get props => [homeColor];
+  List<Object> get props => [];
 }
 
-class WidgetsLoading extends HomeState {
-  const WidgetsLoading({homeColor})
-      : super(homeColor: homeColor);
+class WidgetsLoading extends WidgetsState {
+  const WidgetsLoading();
   @override
-  List<Object> get props => [homeColor];
+  List<Object> get props => [];
 }
 
-class WidgetsLoaded extends HomeState {
+class WidgetsLoaded extends WidgetsState {
   final List<WidgetModel> widgets;
 
-  const WidgetsLoaded({homeColor, barHeight, this.widgets = const []})
-      : super(homeColor: homeColor);
+  const WidgetsLoaded({ barHeight, this.widgets = const []});
 
   @override
-  List<Object> get props => [homeColor,widgets];
+  List<Object> get props => [widgets];
 
   @override
   String toString() {
@@ -37,9 +34,9 @@ class WidgetsLoaded extends HomeState {
   }
 }
 
-class WidgetsLoadFailed extends HomeState {
-  const WidgetsLoadFailed({homeColor, barHeight})
-      : super(homeColor: homeColor);
+class WidgetsLoadFailed extends WidgetsState {
+  final String error;
+  const WidgetsLoadFailed({required this.error});
   @override
-  List<Object> get props => [homeColor];
+  List<Object> get props => [error];
 }

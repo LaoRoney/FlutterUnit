@@ -7,36 +7,38 @@ import 'package:flutter/material.dart';
 //      "widgetId": 187,
 //      "name": 'SliverFillViewport基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【viewportFraction】 : 视口分率   【double】\n"
+//      "subtitle": "【viewportFraction】 : 视口分率   【double】\n"
 //          "【delegate】 : 孩子代理   【SliverChildDelegate】",
 //    }
 class SliverFillViewportDemo extends StatefulWidget {
+  const SliverFillViewportDemo({Key? key}) : super(key: key);
+
   @override
   _SliverFillViewportDemoState createState() => _SliverFillViewportDemoState();
 }
 
 class _SliverFillViewportDemoState extends State<SliverFillViewportDemo> {
-  final data = <Color>[
-    Colors.orange[50],
-    Colors.orange[100],
-    Colors.orange[200],
-    Colors.orange[300],
-    Colors.orange[400],
-    Colors.orange[500],
-    Colors.orange[600],
-    Colors.orange[700],
-    Colors.orange[800],
-    Colors.orange[900],
+  final List<Color> data = [
+    Colors.orange[50]!,
+    Colors.orange[100]!,
+    Colors.orange[200]!,
+    Colors.orange[300]!,
+    Colors.orange[400]!,
+    Colors.orange[500]!,
+    Colors.orange[600]!,
+    Colors.orange[700]!,
+    Colors.orange[800]!,
+    Colors.orange[900]!,
   ];
-  var _viewportFraction = 0.5;
+
+  double _viewportFraction = 0.5;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         _buildTool(),
-        Container(
+        SizedBox(
           height: 300,
           child: CustomScrollView(
             slivers: <Widget>[_buildSliverAppBar(), _buildSliverList()],
@@ -56,7 +58,7 @@ class _SliverFillViewportDemoState extends State<SliverFillViewportDemo> {
                   color: data[index],
                   child: Text(
                     colorString(data[index]),
-                    style: TextStyle(color: Colors.white, shadows: [
+                    style: const TextStyle(color: Colors.white, shadows: [
                       Shadow(
                           color: Colors.black,
                           offset: Offset(.5, .5),
@@ -71,14 +73,14 @@ class _SliverFillViewportDemoState extends State<SliverFillViewportDemo> {
     return SliverAppBar(
       expandedHeight: 190.0,
       leading: _buildLeading(),
-      title: Text('张风捷特烈'),
+      title: const Text('张风捷特烈'),
       actions: _buildActions(),
       elevation: 5,
       pinned: true,
       backgroundColor: Colors.orange,
       flexibleSpace: FlexibleSpaceBar(
         //伸展处布局
-        titlePadding: EdgeInsets.only(left: 55, bottom: 15), //标题边距
+        titlePadding: const EdgeInsets.only(left: 55, bottom: 15), //标题边距
         collapseMode: CollapseMode.parallax, //视差效果
         background: Image.asset(
           "assets/images/caver.webp",
@@ -89,13 +91,13 @@ class _SliverFillViewportDemoState extends State<SliverFillViewportDemo> {
   }
 
   Widget _buildLeading() => Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Image.asset('assets/images/icon_head.webp'));
 
   List<Widget> _buildActions() => <Widget>[
         IconButton(
           onPressed: () {},
-          icon: Icon(
+          icon: const Icon(
             Icons.star_border,
             color: Colors.white,
           ),

@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 //      "widgetId": 44,
 //      "name": 'RangeSlider基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【values】 : 数值   【RangeValues】\n"
+//      "subtitle": "【values】 : 数值   【RangeValues】\n"
 //          "【min】 : 最小值   【double】\n"
 //          "【max】 : 最大值   【double】\n"
 //          "【divisions】 : 分段数   【int】\n"
@@ -19,12 +18,14 @@ import 'package:flutter/material.dart';
 //          "【onChanged】 : 改变时回调   【Function(RangeValues)】",
 //    }
 class CustomRangeSlider extends StatefulWidget {
+  const CustomRangeSlider({Key? key}) : super(key: key);
+
   @override
   _CustomRangeSliderState createState() => _CustomRangeSliderState();
 }
 
 class _CustomRangeSliderState extends State<CustomRangeSlider> {
-  RangeValues _rangeValues = RangeValues(90, 270);
+  RangeValues _rangeValues = const RangeValues(90, 270);
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +34,8 @@ class _CustomRangeSliderState extends State<CustomRangeSlider> {
         divisions: 180,
         min: 0.0,
         max: 360.0,
-        labels: RangeLabels("${_rangeValues.start.toStringAsFixed(1)}",
-            "${_rangeValues.end.toStringAsFixed(1)}"),
+        labels: RangeLabels(_rangeValues.start.toStringAsFixed(1),
+            _rangeValues.end.toStringAsFixed(1)),
         activeColor: Colors.orangeAccent,
         inactiveColor: Colors.green.withAlpha(99),
         onChangeStart: (value) {

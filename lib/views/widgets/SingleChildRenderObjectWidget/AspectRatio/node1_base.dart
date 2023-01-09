@@ -6,33 +6,34 @@ import 'package:flutter/material.dart';
 //      "widgetId": 77,
 //      "name": 'AspectRatio基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 孩子组件   【Widget】\n"
+//      "subtitle": "【child】 : 孩子组件   【Widget】\n"
 //          "【aspectRatio】 : 宽高比例   【double】",
 //    }
 class CustomAspectRatio extends StatefulWidget {
+  const CustomAspectRatio({Key? key}) : super(key: key);
+
   @override
   _CustomAspectRatioState createState() => _CustomAspectRatioState();
 }
 
 class _CustomAspectRatioState extends State<CustomAspectRatio> {
-  var _ratio = 0.75;
+  double _ratio = 0.75;
 
   @override
   Widget build(BuildContext context) {
-    var child = Container(
+    Widget child = Container(
       alignment: Alignment.center,
       color: Colors.cyanAccent,
       width: 50,
       height: 50,
-      child: Text("Static"),
+      child: const Text("Static"),
     );
 
-    var box = AspectRatio(
+    Widget box = AspectRatio(
       aspectRatio: _ratio,
       child: Container(
           color: Colors.orange,
-          child: Icon(
+          child: const Icon(
             Icons.android,
             color: Colors.white,
           )),
@@ -54,10 +55,11 @@ class _CustomAspectRatioState extends State<CustomAspectRatio> {
   }
 
   Widget _buildSlider() => Slider(
-      divisions: 20,
-      min: 0.1,
-      max: 2.0,
-      label: _ratio.toStringAsFixed(2),
-      value: _ratio,
-      onChanged: (v) => setState(() => _ratio = v));
+        divisions: 20,
+        min: 0.1,
+        max: 2.0,
+        label: _ratio.toStringAsFixed(2),
+        value: _ratio,
+        onChanged: (v) => setState(() => _ratio = v),
+      );
 }

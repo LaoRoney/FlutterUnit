@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 //          "【strokeWidth】 : 线宽   【double】",
 //    }
 class CustomCircularProgressIndicator extends StatefulWidget {
+  const CustomCircularProgressIndicator({Key? key}) : super(key: key);
+
   @override
   _CustomCircularProgressIndicatorState createState() =>
       _CustomCircularProgressIndicatorState();
@@ -21,20 +23,20 @@ class CustomCircularProgressIndicator extends StatefulWidget {
 class _CustomCircularProgressIndicatorState
     extends State<CustomCircularProgressIndicator> {
 
-  var data = <double>[0.2,0.4,0.6,0.8,null];
+  List<double?> data = [0.2,0.4,0.6,0.8,null];
 
   @override
   Widget build(BuildContext context) {
 
     return Wrap(
       spacing: 10,
-      children:data.map((e)=>Container(
+      children:data.map((e)=>SizedBox(
         width: 50,
         height: 50,
         child: CircularProgressIndicator(
           value: e,
           backgroundColor: Colors.grey.withAlpha(33),
-          valueColor: AlwaysStoppedAnimation(Colors.orange),
+          valueColor: const AlwaysStoppedAnimation(Colors.orange),
           strokeWidth: 5,
         ),
       )).toList(),

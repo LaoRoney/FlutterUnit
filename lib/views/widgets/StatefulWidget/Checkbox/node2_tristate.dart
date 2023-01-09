@@ -15,6 +15,8 @@ import 'package:flutter/material.dart';
 //          "  onChanged时,回调true、null、false三种状态"
 //    }
 class TristateCheckBok extends StatefulWidget {
+  const TristateCheckBok({Key? key}) : super(key: key);
+
   @override
   _TristateCheckBokState createState() => _TristateCheckBokState();
 }
@@ -33,9 +35,9 @@ class _TristateCheckBokState extends State<TristateCheckBok> {
               tristate: true,
               checkColor: Colors.white,
               activeColor: e,
-              onChanged: (v) {
-                print(v);
-                setState(() => _checked = v);
+              onChanged: (bool? value) {
+                print(value);
+                setState(() => _checked = value??false);
               }))
           .toList(),
     );

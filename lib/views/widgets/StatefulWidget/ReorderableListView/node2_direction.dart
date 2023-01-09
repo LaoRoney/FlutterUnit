@@ -13,27 +13,30 @@ import 'package:flutter/material.dart';
 //          "【reverse】 : 是否反向  【bool】",
 //    }
 class DirectionReorderableListView extends StatefulWidget {
+  const DirectionReorderableListView({Key? key}) : super(key: key);
+
   @override
-  _DirectionReorderableListViewState createState() => _DirectionReorderableListViewState();
+  _DirectionReorderableListViewState createState() =>
+      _DirectionReorderableListViewState();
 }
 
 class _DirectionReorderableListViewState extends State<DirectionReorderableListView> {
-  var data = <Color>[
-    Colors.yellow[50],
-    Colors.yellow[100],
-    Colors.yellow[200],
-    Colors.yellow[300],
-    Colors.yellow[400],
-    Colors.yellow[500],
-    Colors.yellow[600],
-    Colors.yellow[700],
-    Colors.yellow[800],
-    Colors.yellow[900],
+  final List<Color> data = [
+    Colors.yellow[50]!,
+    Colors.yellow[100]!,
+    Colors.yellow[200]!,
+    Colors.yellow[300]!,
+    Colors.yellow[400]!,
+    Colors.yellow[500]!,
+    Colors.yellow[600]!,
+    Colors.yellow[700]!,
+    Colors.yellow[800]!,
+    Colors.yellow[900]!,
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: ReorderableListView(
         scrollDirection: Axis.horizontal,
@@ -64,8 +67,12 @@ class _DirectionReorderableListViewState extends State<DirectionReorderableListV
       color: color,
       child: Text(
         colorString(color),
-        style: TextStyle(color: Colors.white, shadows: [
-          Shadow(color: Colors.black, offset: Offset(.5, .5), blurRadius: 2)
+        style: const TextStyle(color: Colors.white, shadows: [
+          Shadow(
+            color: Colors.black,
+            offset: Offset(.5, .5),
+            blurRadius: 2,
+          )
         ]),
       ),
     );

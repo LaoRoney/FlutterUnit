@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 /// create by 张风捷特烈 on 2020/9/21
@@ -8,11 +8,12 @@ import 'package:flutter/material.dart';
 //      "widgetId": 301,
 //      "name": 'SliverAnimatedList基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【itemBuilder】 : item构造器   【AnimatedListItemBuilder】\n"
+//      "subtitle": "【itemBuilder】 : item构造器   【AnimatedListItemBuilder】\n"
 //          "【initialItemCount】 : 初始item个数   【int】",
 //    }
 class SliverAnimatedListDemo extends StatefulWidget {
+  const SliverAnimatedListDemo({Key? key}) : super(key: key);
+
   @override
   _SliverAnimatedListDemoState createState() =>
       _SliverAnimatedListDemoState();
@@ -21,9 +22,9 @@ class SliverAnimatedListDemo extends StatefulWidget {
 class _SliverAnimatedListDemoState extends State<SliverAnimatedListDemo> {
 
   final GlobalKey<SliverAnimatedListState> _listKey = GlobalKey<SliverAnimatedListState>();
-  ListModel<int> _list;
-  int _selectedItem;
-  int _nextItem;
+  late ListModel<int> _list;
+  int? _selectedItem;
+  int _nextItem=0;
 
   @override
   void initState() {
@@ -58,13 +59,13 @@ class _SliverAnimatedListDemoState extends State<SliverAnimatedListDemo> {
   }
 
   void _insert() {
-    final int index = _selectedItem == null ? _list.length : _list.indexOf(_selectedItem);
+    final int index = _selectedItem == null ? _list.length : _list.indexOf(_selectedItem!);
     _list.insert(index, _nextItem++);
   }
 
   void _remove() {
     if (_selectedItem != null) {
-      _list.removeAt(_list.indexOf(_selectedItem));
+      _list.removeAt(_list.indexOf(_selectedItem!));
       setState(() {
         _selectedItem = null;
       });
@@ -80,12 +81,12 @@ class _SliverAnimatedListDemoState extends State<SliverAnimatedListDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return  SizedBox(
       height: 300,
       child: CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
-                title: Text(
+                title: const Text(
                   'SliverAnimatedList',
                   style: TextStyle(fontSize: 20),
                 ),
@@ -121,24 +122,23 @@ class _SliverAnimatedListDemoState extends State<SliverAnimatedListDemo> {
 
 class ListModel<E> {
   ListModel({
-    @required this.listKey,
-    @required this.removedItemBuilder,
-    Iterable<E> initialItems,
-  }) : assert(listKey != null),
-        assert(removedItemBuilder != null),
+    required this.listKey,
+    required this.removedItemBuilder,
+    required Iterable<E>? initialItems,
+  }) : assert(removedItemBuilder != null),
         _items = List<E>.from(initialItems ?? <E>[]);
   final GlobalKey<SliverAnimatedListState> listKey;
   final dynamic removedItemBuilder;
   final List<E> _items;
-  SliverAnimatedListState get _animatedList => listKey.currentState;
+  SliverAnimatedListState? get _animatedList => listKey.currentState;
   void insert(int index, E item) {
     _items.insert(index, item);
-    _animatedList.insertItem(index);
+    _animatedList?.insertItem(index);
   }
   E removeAt(int index) {
     final E removedItem = _items.removeAt(index);
     if (removedItem != null) {
-      _animatedList.removeItem(
+      _animatedList?.removeItem(
         index,
             (BuildContext context, Animation<double> animation) => removedItemBuilder(removedItem, context, animation),
       );
@@ -153,17 +153,14 @@ class ListModel<E> {
 
 class CardItem extends StatelessWidget {
   const CardItem({
-    Key key,
-    @required this.animation,
-    @required this.item,
+    Key? key,
+    required this.animation,
+    required this.item,
     this.onTap,
     this.selected = false,
-  }) : assert(animation != null),
-        assert(item != null && item >= 0),
-        assert(selected != null),
-        super(key: key);
+  }) :super(key: key);
   final Animation<double> animation;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final int item;
   final bool selected;
   @override
@@ -190,8 +187,7 @@ class CardItem extends StatelessWidget {
               child: Center(
                 child: Text(
                   'Item $item',
-                  style: TextStyle(color: Colors.white,fontSize: 16),
-
+                  style: const TextStyle(color: Colors.white,fontSize: 16),
                 ),
               ),
             ),

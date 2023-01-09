@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 //      "widgetId": 84,
 //      "name": 'SizedOverflowBox基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 孩子组件   【Widget】\n"
+//      "subtitle": "【child】 : 孩子组件   【Widget】\n"
 //          "【size】 : 尺寸偏移   【Size】\n"
 //          "【alignment】 : 对齐方式   【AlignmentGeometry】",
 //    }
 class CustomSizedOverflowBox extends StatefulWidget {
+  const CustomSizedOverflowBox({Key? key}) : super(key: key);
 
   @override
   _CustomSizedOverflowBoxState createState() => _CustomSizedOverflowBoxState();
@@ -24,7 +24,7 @@ class _CustomSizedOverflowBoxState extends State<CustomSizedOverflowBox> {
 
   @override
   Widget build(BuildContext context) {
-    var box = SizedOverflowBox(
+    Widget box = SizedOverflowBox(
       alignment: Alignment.bottomRight,
       size: Size(_x, _y),
       child: Container(width: 30, height: 50, color: Colors.orange),

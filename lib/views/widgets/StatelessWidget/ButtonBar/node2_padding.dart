@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../../../components/project/dialogs/dialog_about.dart';
+import '../../../../components/project/dialogs/dialog_about.dart';
 
 /// create by 张风捷特烈 on 2020-03-25
 /// contact me by email 1981462002@qq.com
@@ -13,24 +13,24 @@ import '../../../components/project/dialogs/dialog_about.dart';
 //          "【buttonHeight】: 高   【double】",
 //    }
 class PaddingButtonBar extends StatelessWidget {
+  const PaddingButtonBar({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ButtonBar(
       alignment: MainAxisAlignment.center,
       buttonHeight: 40,
-      buttonPadding: EdgeInsets.only(left: 15,right: 15),
+      buttonPadding: const EdgeInsets.only(left: 15,right: 15),
       children: <Widget>[
-        RaisedButton(
-            color: Colors.blue,
-            child: Text("Raised"),
+        ElevatedButton(
+            child: const Text("ElevatedButton"),
             onPressed: () => DialogAbout.show(context)),
-        OutlineButton(
-            child: Text("Outline"),
+        OutlinedButton(
+            child: const Text("Outlined"),
             onPressed: () => DialogAbout.show(context)),
-        FlatButton(
-          color: Colors.blue,
+        TextButton(
           onPressed: () => DialogAbout.show(context),
-          child: Text("Flat"),
+          child: const Text("TextButton"),
         )
       ],
     );

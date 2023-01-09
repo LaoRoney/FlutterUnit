@@ -22,9 +22,10 @@ import 'package:flutter/material.dart';
 
 class CompositedTransformFollowerDemo extends StatelessWidget {
 
-  const CompositedTransformFollowerDemo();
+  const CompositedTransformFollowerDemo({Key? key}) : super(key: key);
 
-  static const  List<Color> colors =[Colors.red,Colors.yellow,Colors.blue,Colors.green];
+  static const List<Color> colors =[Colors.red,Colors.yellow,Colors.blue,Colors.green];
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,25 +55,24 @@ class _LogoTips extends StatefulWidget {
 }
 
 class _LogoTipsState extends State<_LogoTips> {
-  OverlayEntry _overlayEntry;
+  OverlayEntry? _overlayEntry;
 
   final LayerLink _layerLink = LayerLink();
 
   bool show = false;
 
   OverlayEntry _createOverlayEntry() {
-
     return OverlayEntry(
         builder: (context) => Positioned(
               width: 150,
               child: CompositedTransformFollower(
-                link: this._layerLink,
+                link: _layerLink,
                 showWhenUnlinked: false,
-                offset: Offset(0,-10),
+                offset: const Offset(0,-10),
                 targetAnchor: Alignment.topRight,
-                child: Card(
+                child: const Card(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text('我是一个 Overlay，目标组件为图标，当它变换时，我会伴随变换。'),
                   ),
                 ),
@@ -85,9 +85,9 @@ class _LogoTipsState extends State<_LogoTips> {
     return GestureDetector(
         onTap: _toggleOverlay,
         child: CompositedTransformTarget(
-          link: this._layerLink,
+          link: _layerLink,
           child:
-          FlutterLogo(
+          const FlutterLogo(
             size: 80,
           ),
         ));
@@ -104,7 +104,7 @@ class _LogoTipsState extends State<_LogoTips> {
 
   void _showOverlay() {
     _overlayEntry = _createOverlayEntry();
-    Overlay.of(context).insert(_overlayEntry);
+    Overlay.of(context)?.insert(_overlayEntry!);
   }
 
   void _hideOverlay() {

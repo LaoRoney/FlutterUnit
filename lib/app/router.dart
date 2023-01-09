@@ -1,32 +1,30 @@
+import 'package:app_config/app_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_unit/views/pages/about/about_me_page.dart';
 import 'package:flutter_unit/views/pages/about/about_app_page.dart';
-import 'package:flutter_unit/views/pages/app/navigation/unit_navigation.dart';
-import 'package:flutter_unit/views/pages/category/category_show.dart';
-import 'package:flutter_unit/views/pages/category/collect_page.dart';
-import 'package:flutter_unit/views/pages/search/serach_page.dart';
+import 'package:flutter_unit/views/pages/app/navigation/unit_desk_navigation.dart';
+
 import 'package:flutter_unit/views/pages/setting/code_style_setting.dart';
 import 'package:flutter_unit/views/pages/setting/font_setting.dart';
-import 'package:flutter_unit/views/pages/setting/item_style_setting.dart';
+
 import 'package:flutter_unit/views/pages/setting/theme_color_setting.dart';
 import 'package:flutter_unit/views/pages/unit_todo/attr_unit_page.dart';
 import 'package:flutter_unit/views/pages/unit_todo/bug_unit_page.dart';
 
-import 'package:flutter_unit/views/pages/detail/widget_detail_page.dart';
 import 'package:flutter_unit/views/pages/unit_todo/layout_unit_page.dart';
 import 'package:flutter_unit/views/pages/unit_todo/paint_unit_page.dart';
 import 'package:flutter_unit/views/pages/setting/setting_page.dart';
+import 'package:widget_repository/widget_repository.dart';
 
+import '../views/pages/home/widget_detail/widget_detail_page.dart';
 
-import 'utils/router_utils.dart';
-
-class UnitRouter {
+class UnitRouters {
   static const String detail = 'detail';
   static const String home = '/';
   static const String logo = 'logo';
   static const String search = 'search';
   static const String nav = 'nav';
-  static const String widget_detail = 'WidgetDetail';
+  static const String widget_detail = 'widget_detail';
   static const String collect = 'CollectPage';
 
   static const String setting = 'SettingPage';
@@ -34,7 +32,6 @@ class UnitRouter {
   static const String theme_color_setting = 'ThemeColorSettingPage';
   static const String code_style_setting = 'CodeStyleSettingPage';
   static const String item_style_setting = 'ItemStyleSettingPage';
-
 
   static const String category_show = 'CategoryShow';
 
@@ -49,13 +46,16 @@ class UnitRouter {
     switch (settings.name) {
       //根据名称跳转相应页面
       case widget_detail:
-        return Right2LeftRouter(child: WidgetDetailPage(model: settings.arguments,));
+        return Right2LeftRouter(
+            child: WidgetDetailPageScope(
+          model: settings.arguments as WidgetModel,
+        ));
       case search:
-        return Right2LeftRouter(child: SearchPage());
+      // return Right2LeftRouter(child: SearchPage());
       case collect:
-        return Right2LeftRouter(child: CollectPage());
+      // return Right2LeftRouter(child: CollectPage());
       case nav:
-        return Left2RightRouter(child: UnitNavigation());
+        return Left2RightRouter(child: UnitDeskNavigation());
       case setting:
         return Right2LeftRouter(child: SettingPage());
       case font_setting:
@@ -65,7 +65,7 @@ class UnitRouter {
       case code_style_setting:
         return Right2LeftRouter(child: CodeStyleSettingPage());
       case item_style_setting:
-        return Right2LeftRouter(child: ItemStyleSettingPage());
+      // return Right2LeftRouter(child: ItemStyleSettingPage());
 
       case attr:
         return Right2LeftRouter(child: AttrUnitPage());
@@ -80,8 +80,10 @@ class UnitRouter {
       case about_me:
         return Right2LeftRouter(child: AboutMePage());
 
-        case category_show:
-        return Right2LeftRouter(child: CategoryShow(model: settings.arguments,));
+      case category_show:
+      // return Right2LeftRouter(child: CategoryShow(
+      //   model: settings.arguments as CategoryModel,
+      // ));
 
       default:
         return MaterialPageRoute(

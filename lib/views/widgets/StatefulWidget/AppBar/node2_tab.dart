@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../PopupMenuButton/node1_base.dart';
 /// create by 张风捷特烈 on 2020-03-23
 /// contact me by email 1981462002@qq.com
@@ -11,14 +12,16 @@ import '../PopupMenuButton/node1_base.dart';
 //          "【bottom】 : 底部组件   【PreferredSizeWidget】",
 //    }
 class TabAppBar extends StatefulWidget {
+  const TabAppBar({Key? key}) : super(key: key);
+
   @override
   _TabAppBarState createState() => _TabAppBarState();
 }
 
 class _TabAppBarState extends State<TabAppBar>
     with SingleTickerProviderStateMixin {
-  final tabs = ['风画庭', '雨韵舍', '雷鸣殿', '电疾堂', '霜寒阁', '雪月楼'];
-  TabController _tabController;
+  final List<String> tabs = ['风画庭', '雨韵舍', '雷鸣殿', '电疾堂', '霜寒阁', '雪月楼'];
+  late TabController _tabController;
 
   @override
   void initState() {
@@ -34,43 +37,33 @@ class _TabAppBarState extends State<TabAppBar>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          height: 180,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(
-                    "assets/images/sabar.webp",
-                  ),
-                  fit: BoxFit.cover)),
-          child: _buildAppBar(),
-        ),
-        Container(
-            height: 150, color: Color(0xff916BF0), child: _buildTableBarView())
-      ],
+    return SizedBox(
+      height: 220,
+      child: Scaffold(
+        appBar: _buildAppBar(),
+        body: _buildTableBarView(),
+      ),
     );
   }
 
-  Widget _buildAppBar() => AppBar(
-        title: Text('风雅六社'),
+  PreferredSizeWidget _buildAppBar() => AppBar(
+        title: const Text('风雅六社'),
         elevation: 1,
-        leading: BackButton(),
-        backgroundColor: Colors.amber[500].withAlpha(33),
+        leading: const BackButton(),
         centerTitle: true,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         )),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.star),
-              tooltip: 'like',
+              icon: const Icon(Icons.star),
+              tooltip: 'liked_widget_bloc',
               onPressed: () {
                 // do nothing
               }),
-          CustomPopupMenuButton()
+          const CustomPopupMenuButton()
         ],
         bottom: TabBar(
           isScrollable: true,
@@ -83,10 +76,13 @@ class _TabAppBarState extends State<TabAppBar>
   Widget _buildTableBarView() => TabBarView(
       controller: _tabController,
       children: tabs
-          .map((e) => Center(
-                  child: Text(
-                e,
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              )))
+          .map((e) => ColoredBox(
+          color: Colors.purple,
+          child:Center(
+                  child:  Text(
+                      e,
+                style: const TextStyle(color: Colors.white, fontSize: 20),
+              ),
+                  )))
           .toList());
 }

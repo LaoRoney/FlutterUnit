@@ -7,10 +7,11 @@ import 'package:flutter/material.dart';
 //      "widgetId": 181,
 //      "name": 'DropDownButtonHideUnderline使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 子组件   【Widget】\n",
+//      "subtitle": "【child】 : 子组件   【Widget】\n",
 //    }
 class CustomDropDownButtonHideUnderline extends StatefulWidget {
+  const CustomDropDownButtonHideUnderline({Key? key}) : super(key: key);
+
   @override
   _CustomDropDownButtonHideUnderlineState createState() =>
       _CustomDropDownButtonHideUnderlineState();
@@ -19,15 +20,20 @@ class CustomDropDownButtonHideUnderline extends StatefulWidget {
 class _CustomDropDownButtonHideUnderlineState
     extends State<CustomDropDownButtonHideUnderline> {
   Color _color = Colors.red;
-  final _colors = [Colors.red, Colors.yellow, Colors.blue, Colors.green];
-  final _info = ["红色", "黄色", "蓝色", "绿色"];
+  final List<Color> _colors = const[
+    Colors.red,
+    Colors.yellow,
+    Colors.blue,
+    Colors.green
+  ];
+  final List<String> _info = const["红色", "黄色", "蓝色", "绿色"];
 
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      children: <Widget>[
+      children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
           width: 50,
           height: 50,
           color: _color,
@@ -42,7 +48,8 @@ class _CustomDropDownButtonHideUnderlineState
                 color: _color,
               ),
               items: _buildItems(),
-              onChanged: (v) => setState(() => _color = v)),
+              onChanged: (Color? color) =>
+                  setState(() => _color = color ?? _color)),
         ),
       ],
     );

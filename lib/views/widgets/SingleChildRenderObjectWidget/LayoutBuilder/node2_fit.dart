@@ -7,13 +7,14 @@ import 'package:flutter/material.dart';
 //      "widgetId": 287,
 //      "name": 'LayoutBuilder的适应布局',
 //      "priority": 2,
-//      "subtitle":
-//          "可以根据区域的大小进行组件展示设计。"
+//      "subtitle": "可以根据区域的大小进行组件展示设计。"
 //          "比如在不同的宽度区域显示不同的布局结构。"
 //          "毕竟很多地方不容易获取父组件区域，使用LayoutBuilder就会非常爽口。",
 //    }
 
 class FitByLayoutBuilder extends StatefulWidget {
+  const FitByLayoutBuilder({Key? key}) : super(key: key);
+
   @override
   _FitByLayoutBuilderState createState() => _FitByLayoutBuilderState();
 }
@@ -25,7 +26,7 @@ class _FitByLayoutBuilderState extends State<FitByLayoutBuilder> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: _width,
           child: LayoutBuilder(
             builder: (_, zone) {
@@ -42,8 +43,7 @@ class _FitByLayoutBuilderState extends State<FitByLayoutBuilder> {
     );
   }
 
-  Widget _buildSlider() {
-    return Slider(
+  Widget _buildSlider() => Slider(
           min: 50,
           max: 300,
           label: "父宽:${_width.toStringAsFixed(1)}",
@@ -51,7 +51,6 @@ class _FitByLayoutBuilderState extends State<FitByLayoutBuilder> {
           onChanged: (v) => setState(() {
               _width = v;
             }));
-  }
 
   Widget _buildType1() => Container(
         color: Colors.blue,
@@ -73,7 +72,7 @@ class _FitByLayoutBuilderState extends State<FitByLayoutBuilder> {
         child: Row(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               height: 80,
               width: 30,
               color: Colors.grey,
@@ -84,7 +83,7 @@ class _FitByLayoutBuilderState extends State<FitByLayoutBuilder> {
       );
 
   Widget _buildTitle() => Container(
-        margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+        margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
         color: Colors.grey,
         height: 30,
       );

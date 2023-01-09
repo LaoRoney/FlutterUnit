@@ -18,27 +18,29 @@ import 'package:flutter/material.dart';
 //          "【padding】 : 内边距   【EdgeInsetsDirectional】",
 //    }
 class CupertinoSliverNavigationBarDemo extends StatelessWidget {
-  final data = <Color>[
-    Colors.orange[50],
-    Colors.orange[100],
-    Colors.orange[200],
-    Colors.orange[300],
-    Colors.orange[400],
-    Colors.orange[500],
-    Colors.orange[600],
-    Colors.orange[700],
-    Colors.orange[800],
-    Colors.orange[900],
+  CupertinoSliverNavigationBarDemo({Key? key}) : super(key: key);
+
+  final List<Color> data = [
+    Colors.orange[50]!,
+    Colors.orange[100]!,
+    Colors.orange[200]!,
+    Colors.orange[300]!,
+    Colors.orange[400]!,
+    Colors.orange[500]!,
+    Colors.orange[600]!,
+    Colors.orange[700]!,
+    Colors.orange[800]!,
+    Colors.orange[900]!,
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 300,
       child: CustomScrollView(
         slivers: <Widget>[
           CupertinoSliverNavigationBar(
-            trailing: Icon(
+            trailing: const Icon(
               CupertinoIcons.share,
               size: 25,
             ),
@@ -47,13 +49,13 @@ class CupertinoSliverNavigationBarDemo extends StatelessWidget {
             // middle: Text('张风捷特烈'),
             largeTitle: Row(
               mainAxisSize: MainAxisSize.min,
-              children: [
+              children: const [
                 Icon(
                   Icons.ac_unit,
                   size: 20,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 8),
                   child: Text('张风捷特烈'),
                 ),
                 Icon(Icons.ac_unit, size: 20),
@@ -78,7 +80,7 @@ class CupertinoSliverNavigationBarDemo extends StatelessWidget {
                   color: data[index],
                   child: Text(
                     colorString(data[index]),
-                    style: TextStyle(color: Colors.white, shadows: [
+                    style: const TextStyle(color: Colors.white, shadows: [
                       Shadow(
                           color: Colors.black,
                           offset: Offset(.5, .5),
@@ -90,7 +92,7 @@ class CupertinoSliverNavigationBarDemo extends StatelessWidget {
       );
 
   Widget _buildLeading() => Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Image.asset('assets/images/icon_head.webp'));
 
 

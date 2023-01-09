@@ -10,17 +10,18 @@ import 'package:flutter/material.dart';
 //      "widgetId": 166,
 //      "name": 'CustomPaint绘线贝塞尔曲线',
 //      "priority": 2,
-//      "subtitle":
-//          "    Flutter也支持贝塞尔曲线等复杂绘制。",
+//      "subtitle":  "    Flutter也支持贝塞尔曲线等复杂绘制。",
 //    }
 class PlayBezier3Page extends StatefulWidget {
+  const PlayBezier3Page({Key? key}) : super(key: key);
+
   @override
   _PlayBezier3PageState createState() => _PlayBezier3PageState();
 }
 
 class _PlayBezier3PageState extends State<PlayBezier3Page> {
   List<Offset> _pos = <Offset>[];
-  int selectPos;
+  int selectPos=0;
 
   @override
   void initState() {
@@ -30,40 +31,39 @@ class _PlayBezier3PageState extends State<PlayBezier3Page> {
 
   void _initPoints() {
     _pos = [];
-    _pos.add(Offset(0, 0));
-    _pos.add(Offset(60, -60));
-    _pos.add(Offset(-90, -90));
-    _pos.add(Offset(-120, -40));
+    _pos.add(const Offset(0, 0));
+    _pos.add(const Offset(60, -60));
+    _pos.add(const Offset(-90, -90));
+    _pos.add(const Offset(-120, -40));
   }
 
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-        height: 200,
-        width: MediaQuery.of(context).size.width,
-        child: RepaintBoundary(
-          child: CustomPaint(
-            painter: BezierPainter(pos: _pos, selectPos: selectPos),
-          ),
+    return SizedBox(
+      height: 200,
+      width: MediaQuery.of(context).size.width,
+      child: RepaintBoundary(
+        child: CustomPaint(
+          painter: BezierPainter(pos: _pos, selectPos: selectPos),
         ),
-
+      ),
     );
   }
 }
 
 class BezierPainter extends CustomPainter {
-  Paint _gridPaint;
-  Path _gridPath;
+ late Paint _gridPaint;
+ late Path _gridPath;
 
-  Paint _mainPaint;
-  Path _mainPath;
-  int selectPos;
-  Paint _helpPaint;
+ late Paint _mainPaint;
+ late Path _mainPath;
+  int? selectPos;
+ late Paint _helpPaint;
 
   List<Offset> pos;
 
-  BezierPainter({this.pos, this.selectPos}) {
+  BezierPainter({this.pos=const [], this.selectPos}) {
     _gridPaint = Paint()..style = PaintingStyle.stroke;
     _gridPath = Path();
 
@@ -87,12 +87,12 @@ class BezierPainter extends CustomPainter {
     _drawGrid(canvas, size); //绘制格线
     _drawAxis(canvas, size); //绘制轴线
 
-      _mainPath.moveTo(pos[0].dx, pos[0].dy);
-      _mainPath.cubicTo(pos[1].dx, pos[1].dy, pos[2].dx, pos[2].dy, pos[3].dx, pos[3].dy);
-      canvas.drawPath(_mainPath, _mainPaint);
-      _drawHelp(canvas);
-      _drawSelectPos(canvas);
-
+    _mainPath.moveTo(pos[0].dx, pos[0].dy);
+    _mainPath.cubicTo(
+        pos[1].dx, pos[1].dy, pos[2].dx, pos[2].dy, pos[3].dx, pos[3].dy);
+    canvas.drawPath(_mainPath, _mainPaint);
+    _drawHelp(canvas);
+    _drawSelectPos(canvas);
   }
 
   @override
@@ -166,7 +166,7 @@ class BezierPainter extends CustomPainter {
   void _drawSelectPos(Canvas canvas) {
     if (selectPos == null) return;
     canvas.drawCircle(
-        pos[selectPos],
+        pos[selectPos!],
         10,
         _helpPaint
           ..color = Colors.green

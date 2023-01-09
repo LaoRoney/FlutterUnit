@@ -8,15 +8,16 @@ import 'package:flutter/material.dart';
 //      "widgetId": 167,
 //      "name": 'MediaQuery获取数据信息',
 //      "priority": 1,
-//      "subtitle":
-//          "MediaQuery.of(context)可以获取MediaQueryData",
+//      "subtitle": "MediaQuery.of(context)可以获取MediaQueryData",
 //    }
 
 class CustomMediaQuery extends StatelessWidget {
+  const CustomMediaQuery({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    var queryData = MediaQuery.of(context);
-    var data = {
+    MediaQueryData queryData = MediaQuery.of(context);
+    Map<String,Object> data = {
       "size": queryData.size,
       "devicePixelRatio": queryData.devicePixelRatio.toStringAsFixed(1),
       "textScaleFactor": queryData.textScaleFactor.toStringAsFixed(1),
@@ -52,16 +53,16 @@ class CustomMediaQuery extends StatelessWidget {
               children: <Widget>[
                 Text(
                   e,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   data[e].toString(),
-                  style: TextStyle(fontSize: 16, color: Colors.orange),
+                  style: const TextStyle(fontSize: 16, color: Colors.orange),
                 )
               ],
             ),
           ),
-          Divider(
+          const Divider(
             height: 1,
           )
         ],

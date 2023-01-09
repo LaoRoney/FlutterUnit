@@ -8,35 +8,36 @@ import 'package:flutter/material.dart';
 //      "widgetId": 108,
 //      "name": 'Positioned基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 组件   【Widget】\n"
+//      "subtitle": "【child】 : 组件   【Widget】\n"
 //          "【top】 : 到父顶距离   【double】\n"
 //          "【right】 : 到父右距离   【double】\n"
 //          "【left】 : 到父左距离   【double】\n"
 //          "【bottom】 : 到父底距离   【double】",
 //    }
 class CustomPositioned extends StatelessWidget {
+  const CustomPositioned({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    var yellowBox = Container(
+    Widget yellowBox = Container(
       color: Colors.yellow,
       height: 100,
       width: 100,
     );
 
-    var redBox = Container(
+    Widget redBox = Container(
       color: Colors.red,
       height: 90,
       width: 90,
     );
 
-    var greenBox = Container(
+    Widget greenBox = Container(
       color: Colors.green,
       height: 80,
       width: 80,
     );
 
-    var cyanBox = Container(
+    Widget cyanBox = Container(
       color: Colors.cyanAccent,
       height: 70,
       width: 70,
@@ -47,7 +48,7 @@ class CustomPositioned extends StatelessWidget {
         height: 120,
         color: Colors.grey.withAlpha(33),
         child: Stack(
-          children: <Widget>[
+          children: [
             yellowBox,
             redBox,
             Positioned(top: 20, left: 20, child: greenBox),

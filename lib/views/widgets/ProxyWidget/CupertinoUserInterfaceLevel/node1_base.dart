@@ -10,15 +10,15 @@ import 'package:flutter/material.dart';
 //      "widgetId": 337,
 //      "name": 'CupertinoUserInterfaceLevel 介绍',
 //      "priority": 1,
-//      "subtitle":
-//          "CupertinoUserInterfaceLevel.of(context) 可以获取 CupertinoUserInterfaceLevelData 数据。也可以使用该组件设置该数据与子树共享。关于数据原图详见:  https://developer.apple.com/documentation/uikit/uiuserinterfacelevel",
+//      "subtitle": "CupertinoUserInterfaceLevel.of(context) 可以获取 CupertinoUserInterfaceLevelData 数据。也可以使用该组件设置该数据与子树共享。关于数据原图详见:  https://developer.apple.com/documentation/uikit/uiuserinterfacelevel",
 //    }
 
 class CupertinoUserInterfaceLevelDemo extends StatelessWidget {
+  const CupertinoUserInterfaceLevelDemo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-
-    return CupertinoUserInterfaceLevel(
+    return const CupertinoUserInterfaceLevel(
       data: CupertinoUserInterfaceLevelData.elevated,
       child: LevelShower()
     );
@@ -27,6 +27,8 @@ class CupertinoUserInterfaceLevelDemo extends StatelessWidget {
 }
 
 class LevelShower extends StatelessWidget {
+  const LevelShower({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     CupertinoUserInterfaceLevelData data = CupertinoUserInterfaceLevel.of(context);

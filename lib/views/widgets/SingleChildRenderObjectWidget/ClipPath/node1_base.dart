@@ -9,12 +9,13 @@ import 'package:flutter/material.dart';
 //      "widgetId": 69,
 //      "name": 'ClipPath基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 子组件   【Widget】\n"
+//      "subtitle": "【child】 : 子组件   【Widget】\n"
 //          "【clipBehavior】 : 裁剪行为   【Clip】\n"
 //          "【clipper】 : 裁剪器   【CustomClipper<Path>】",
 //    }
 class CustomClipPath extends StatelessWidget {
+  const CustomClipPath({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ClipPath(
@@ -33,20 +34,20 @@ class _StarShapeBorder extends ShapeBorder {
   final Path _path = Path();
 
   @override
-  EdgeInsetsGeometry get dimensions => null;
+  EdgeInsetsGeometry get dimensions => EdgeInsets.zero;
 
   @override
-  Path getInnerPath(Rect rect, {TextDirection textDirection}) {
-    return null;
+  Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
+    return Path();
   }
 
   @override
-  Path getOuterPath(Rect rect, {TextDirection textDirection}) =>
+  Path getOuterPath(Rect rect, {TextDirection? textDirection}) =>
       nStarPath(20, rect.height / 2, rect.height / 2 * 0.85,
           dx: rect.width / 2, dy: rect.height / 2);
 
   @override
-  void paint(Canvas canvas, Rect rect, {TextDirection textDirection}) {}
+  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {}
 
   Path nStarPath(int num, double R, double r, {dx = 0, dy = 0}) {
     double perRad = 2 * pi / num;
@@ -65,6 +66,6 @@ class _StarShapeBorder extends ShapeBorder {
 
   @override
   ShapeBorder scale(double t) {
-    return null;
+    return this;
   }
 }

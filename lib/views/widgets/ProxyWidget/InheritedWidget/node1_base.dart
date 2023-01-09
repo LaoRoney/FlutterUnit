@@ -10,8 +10,7 @@ import 'package:flutter/material.dart';
 //      "widgetId": 346,
 //      "name": 'InheritedWidget 使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 子组件   【Widget】\n"
+//      "subtitle": "【child】 : 子组件   【Widget】\n"
 //          "下面是一个简单的自定义 InheritedWidget，实现信息的子树共享。",
 //    }
 
@@ -20,24 +19,28 @@ class InheritedWidgetDemo extends StatelessWidget {
       'InheritedWidget 是一个抽象类，不可以直接使用。可以自定义对应共享数据的子类，如这里的通过 InfoInheritedWidget 实现：当前这段话可以在任意子树节点上下文获取。'
       '一般都会定义一个 XXX.of(context) 的方法来获取数据，如 MediaQuery.of，Theme.of 等。';
 
+  const InheritedWidgetDemo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return InfoInheritedWidget(
       info: info,
-      child: InfoWidget(),
+      child: const InfoWidget(),
     );
   }
 }
 
 class InfoWidget extends StatelessWidget {
+  const InfoWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    String info = InfoInheritedWidget.of(context).info;
+    String info = InfoInheritedWidget.of(context)?.info??'';
 
     return Container(
       color: Colors.blue.withOpacity(0.1),
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Text(info),
     );
   }
@@ -46,13 +49,13 @@ class InfoWidget extends StatelessWidget {
 class InfoInheritedWidget extends InheritedWidget {
   final String info;
 
-  InfoInheritedWidget({Key key, this.info, @required Widget child})
+  const InfoInheritedWidget({Key? key,required this.info, required Widget child})
       : super(key: key, child: child);
 
   @override
   bool updateShouldNotify(covariant InfoInheritedWidget oldWidget) =>
       info != oldWidget.info;
 
-  static InfoInheritedWidget of(BuildContext context) =>
+  static InfoInheritedWidget? of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<InfoInheritedWidget>();
 }

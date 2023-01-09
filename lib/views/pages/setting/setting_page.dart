@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_unit/app/router.dart';
 import 'package:flutter_unit/app/res/toly_icon.dart';
-import 'package:flutter_unit/blocs/global/global_bloc.dart';
-import 'package:flutter_unit/blocs/global/global_event.dart';
-import 'package:flutter_unit/blocs/global/global_state.dart';
 
 
 class SettingPage extends StatelessWidget {
@@ -23,7 +20,7 @@ class SettingPage extends StatelessWidget {
             ),
             title: Text('主题色设置'),
             trailing: _nextIcon(context),
-            onTap: () => Navigator.of(context).pushNamed(UnitRouter.theme_color_setting),
+            onTap: () => Navigator.of(context).pushNamed(UnitRouters.theme_color_setting),
           ),
           Divider(),
           ListTile(
@@ -33,7 +30,7 @@ class SettingPage extends StatelessWidget {
             ),
             title: Text('字体设置'),
             trailing: _nextIcon(context),
-            onTap: () => Navigator.of(context).pushNamed(UnitRouter.font_setting),
+            onTap: () => Navigator.of(context).pushNamed(UnitRouters.font_setting),
           ),
 //          Divider(),
 //          ListTile(
@@ -53,26 +50,26 @@ class SettingPage extends StatelessWidget {
             ),
             title: Text('代码高亮样式'),
             trailing: _nextIcon(context),
-            onTap: () => Navigator.of(context).pushNamed(UnitRouter.code_style_setting),
+            onTap: () => Navigator.of(context).pushNamed(UnitRouters.code_style_setting),
           ),
           Divider(),
-          _buildShowBg(context),
+          // _buildShowBg(context),
         ],
       ),
     );
   }
 
-  Widget _buildShowBg(BuildContext context) =>
-      BlocBuilder<GlobalBloc, GlobalState>(
-          builder: (_, state) => SwitchListTile(
-                value: state.showBackGround,
-                secondary: Icon(
-                  TolyIcon.icon_background,
-                  color: Theme.of(context).primaryColor,
-                ),
-                title: Text('显示背景'),
-                onChanged: (show) => BlocProvider.of<GlobalBloc>(context).add(EventSwitchShowBg(show)),
-              ));
+  // Widget _buildShowBg(BuildContext context) =>
+  //     BlocBuilder<GlobalBloc, GlobalState>(
+  //         builder: (_, state) => SwitchListTile(
+  //               value: state.showBackGround,
+  //               secondary: Icon(
+  //                 TolyIcon.icon_background,
+  //                 color: Theme.of(context).primaryColor,
+  //               ),
+  //               title: Text('显示背景'),
+  //               onChanged: (show) => BlocProvider.of<GlobalBloc>(context).add(EventSwitchShowBg(show)),
+  //             ));
 
   Widget _nextIcon(BuildContext context) =>
       Icon(Icons.chevron_right, color: Theme.of(context).primaryColor);

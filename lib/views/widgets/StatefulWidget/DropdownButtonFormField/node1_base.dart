@@ -18,24 +18,32 @@ import 'package:flutter/material.dart';
 //    }
 
 class DropdownButtonFormFieldDemo extends StatefulWidget {
+  const DropdownButtonFormFieldDemo({Key? key}) : super(key: key);
+
   @override
-  _DropdownButtonFormFieldDemoState createState() => _DropdownButtonFormFieldDemoState();
+  _DropdownButtonFormFieldDemoState createState() =>
+      _DropdownButtonFormFieldDemoState();
 }
 
 class _DropdownButtonFormFieldDemoState extends State<DropdownButtonFormFieldDemo> {
-  Color _color;
-  final _colors = [Colors.red, Colors.yellow, Colors.blue, Colors.green];
-  final _info = ["红色", "黄色", "蓝色", "绿色"];
+  Color _color = Colors.blue;
+  final List<Color> _colors = const [
+    Colors.red,
+    Colors.yellow,
+    Colors.blue,
+    Colors.green
+  ];
+  final List<String> _info = const ["红色", "黄色", "蓝色", "绿色"];
 
   @override
   Widget build(BuildContext context) {
     return Wrap(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
           width: 50,
           height: 50,
-          color: _color??_colors[0],
+          color: _color,
         ),
 
         SizedBox(
@@ -43,15 +51,14 @@ class _DropdownButtonFormFieldDemoState extends State<DropdownButtonFormFieldDem
           child: DropdownButtonFormField<Color>(
               value: _color,
               elevation: 1,
-              hint: Text('选择颜色',style: TextStyle(fontSize: 12),),
+              hint: const Text('选择颜色',style: TextStyle(fontSize: 12),),
               icon: Icon(
                 Icons.expand_more,
                 size: 20,
                 color: _color,
               ),
             items: _buildItems(),
-              onChanged: (v) => setState(() => _color = v)
-          ),
+              onChanged: (v) => setState(() => _color = v ?? Colors.blue)),
         )
 
       ],

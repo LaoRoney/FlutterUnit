@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 /// create by 张风捷特烈 on 2020-03-31
 /// contact me by email 1981462002@qq.com
@@ -13,17 +12,20 @@ import 'package:flutter/material.dart';
 //          "【sizeFactor】 : 动画   【Animation<double>】",
 //    }
 class CustomSizeTransition extends StatefulWidget {
+  const CustomSizeTransition({Key? key}) : super(key: key);
+
   @override
   _CustomSizeTransitionState createState() => _CustomSizeTransitionState();
 }
 
 class _CustomSizeTransitionState extends State<CustomSizeTransition>
     with SingleTickerProviderStateMixin {
-  AnimationController _ctrl;
+  late AnimationController _ctrl;
 
   @override
   void initState() {
-    _ctrl = AnimationController(vsync: this, duration: Duration(seconds: 1));
+    _ctrl =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
     _ctrl.forward();
     super.initState();
   }
@@ -37,12 +39,7 @@ class _CustomSizeTransitionState extends State<CustomSizeTransition>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          _ctrl.reset();
-          _ctrl.forward();
-        });
-      },
+      onTap: () => _ctrl.forward(from: 0),
       child: Wrap(
         runSpacing: 20,
         children: <Widget>[
@@ -52,7 +49,8 @@ class _CustomSizeTransitionState extends State<CustomSizeTransition>
             child: Container(
                 width: MediaQuery.of(context).size.width,
                 color: Colors.orange,
-                child: Icon(Icons.android, color: Colors.green, size: 80)),
+                child:
+                    const Icon(Icons.android, color: Colors.green, size: 80)),
           ),
           SizeTransition(
             axis: Axis.vertical,
@@ -60,7 +58,8 @@ class _CustomSizeTransitionState extends State<CustomSizeTransition>
             child: Container(
                 width: MediaQuery.of(context).size.width,
                 color: Colors.orange,
-                child: Icon(Icons.android, color: Colors.green, size: 80)),
+                child:
+                    const Icon(Icons.android, color: Colors.green, size: 80)),
           ),
         ],
       ),

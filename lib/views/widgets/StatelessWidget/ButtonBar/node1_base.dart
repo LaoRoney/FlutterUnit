@@ -10,26 +10,26 @@
 //    }
 
 import 'package:flutter/material.dart';
-import '../../../components/project/dialogs/dialog_about.dart';
+import '../../../../components/project/dialogs/dialog_about.dart';
 
 
 class CustomButtonBar extends StatelessWidget {
+  const CustomButtonBar({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ButtonBar(
       alignment: MainAxisAlignment.center,
       children: <Widget>[
-        RaisedButton(
-            color: Colors.blue,
-            child: Text("Raised"),
+        ElevatedButton(
+            child: const Text("ElevatedButton"),
             onPressed: () => DialogAbout.show(context)),
-        OutlineButton(
-            child: Text("Outline"),
+        OutlinedButton(
+            child: const Text("Outlined"),
             onPressed: () => DialogAbout.show(context)),
-        FlatButton(
-          color: Colors.blue,
+        TextButton(
           onPressed: () => DialogAbout.show(context),
-          child: Text("Flat"),
+          child: const Text("TextButton"),
         )
       ],
     );

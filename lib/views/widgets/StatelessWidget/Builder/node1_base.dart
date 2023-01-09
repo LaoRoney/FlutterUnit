@@ -13,26 +13,25 @@ import 'package:flutter/material.dart';
 //    }
 
 class BuilderDemo extends StatelessWidget {
+  const BuilderDemo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Builder'),
+          title: const Text('Builder'),
         ),
         floatingActionButton: Builder(
           builder: (ctx) => FloatingActionButton(
             onPressed: () {
-              Scaffold.of(ctx)
-                  .showSnackBar(SnackBar(content: Text('hello builder')));
+              ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(content: Text('hello builder')));
             },
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
           ),
         ),
       ),
     );
   }
-
-
 }

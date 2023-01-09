@@ -15,14 +15,22 @@ import 'package:flutter/material.dart';
 //    }
 
 class StyleDropDownButton extends StatefulWidget {
+  const StyleDropDownButton({Key? key}) : super(key: key);
+
   @override
   _StyleDropDownButtonState createState() => _StyleDropDownButtonState();
 }
 
 class _StyleDropDownButtonState extends State<StyleDropDownButton> {
-  Color _color = Colors.red ;
-  final _colors = [Colors.red, Colors.yellow, Colors.blue, Colors.green];
-  final _info = ["红色", "黄色", "蓝色", "绿色"];
+  Color _color = Colors.red;
+
+  final List<Color> _colors = const [
+    Colors.red,
+    Colors.yellow,
+    Colors.blue,
+    Colors.green
+  ];
+  final List<String> _info = const ["红色", "黄色", "蓝色", "绿色"];
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +38,19 @@ class _StyleDropDownButtonState extends State<StyleDropDownButton> {
       crossAxisAlignment: WrapCrossAlignment.center,
       children: <Widget>[
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
           width: 50,
           height: 50,
-          color: _color??Colors.transparent,
+          color: _color,
         ),
         DropdownButton<Color>(
-            hint: Text('请选择'),
+            hint: const Text('请选择'),
             isDense: true,
             iconSize:20,
-            iconEnabledColor:_color??Colors.orange,
+            iconEnabledColor:_color,
             value: _color,
             items: _buildItems(),
-            onChanged: (v) => setState(() => _color = v)),
+            onChanged: (v) => setState(() => _color = v??Colors.blue)),
       ],
     );
   }

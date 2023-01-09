@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_unit/model/widget_model.dart';
-import 'package:flutter_unit/repositories/itf/widget_repository.dart';
+import 'package:widget_repository/widget_repository.dart';
 
 import 'detail_event.dart';
 import 'detail_state.dart';
@@ -10,37 +10,26 @@ import 'detail_state.dart';
 /// contact me by email 1981462002@qq.com
 /// 说明:
 
-class DetailBloc extends Bloc<DetailEvent, DetailState> {
+class WidgetDetailBloc extends Bloc<DetailEvent, DetailState> {
   final WidgetRepository repository;
 
-  DetailBloc({@required this.repository});
-
-  @override
-  DetailState get initialState => DetailLoading();
-
-  @override
-  Stream<DetailState> mapEventToState(DetailEvent event) async* {
-    if (event is FetchWidgetDetail) {
-      yield* _mapLoadWidgetToState(event.widgetModel);
-    }
-    if(event is ResetDetailState){
-      yield DetailLoading();
-    }
+  WidgetDetailBloc({required this.repository}) : super(DetailLoading()){
+    on<FetchWidgetDetail>(_onFetchWidgetDetail);
   }
 
-  Stream<DetailState> _mapLoadWidgetToState(WidgetModel widgetModel) async* {
-    yield DetailLoading();
+  FutureOr<void> _onFetchWidgetDetail(FetchWidgetDetail event, Emitter<DetailState> emit) async{
+    emit (DetailLoading());
     try {
-      final nodes = await this.repository.loadNode(widgetModel);
-      final links = await this.repository.loadWidget(widgetModel.links);
+      final nodes = await this.repository.loadNode(event.widgetModel);
+      final links = await this.repository.loadWidget(event.widgetModel.links);
       if(nodes.isEmpty){
-        yield DetailEmpty();
+        emit ( DetailEmpty());
       }else{
-        yield DetailWithData(widgetModel: widgetModel, nodes: nodes,links: links);
+        emit ( DetailWithData(widgetModel: event.widgetModel, nodes: nodes,links: links));
       }
 
-    } catch (_) {
-      yield DetailFailed();
+    } catch (e) {
+      emit ( DetailFailed());
     }
   }
 }

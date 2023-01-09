@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// create by 张风捷特烈 on 2020/9/21
@@ -8,16 +7,17 @@ import 'package:flutter/material.dart';
 //      "widgetId": 221,
 //      "name": '基本使用方法',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 子组件   【Widget】\n"
+//      "subtitle": "【child】 : 子组件   【Widget】\n"
 //          "使用 DraggableScrollableActuator.reset(context) 重置后代 DraggableScrollableSheet 位初始位置。",
 //    }
 
 class DraggableScrollableActuatorDemo extends StatelessWidget {
+  const DraggableScrollableActuatorDemo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(
@@ -26,59 +26,59 @@ class DraggableScrollableActuatorDemo extends StatelessWidget {
                 builder: (context) => DraggableScrollableActuatorPage()),
           );
         },
-        child: Text("进入 DraggableScrollableActuator 测试页"),
+        child: const Text("进入 DraggableScrollableActuator 测试页"),
       ),
     );
   }
 }
 
 class DraggableScrollableActuatorPage extends StatelessWidget {
+  DraggableScrollableActuatorPage({Key? key}) : super(key: key);
+
   final List<Color> data = [
-    Colors.orange[50],
-    Colors.orange[100],
-    Colors.orange[200],
-    Colors.orange[300],
-    Colors.orange[400],
-    Colors.orange[500],
-    Colors.orange[600],
-    Colors.orange[700],
-    Colors.orange[800],
-    Colors.orange[900],
-    Colors.red[50],
-    Colors.red[100],
-    Colors.red[200],
-    Colors.red[300],
-    Colors.red[400],
-    Colors.red[500],
-    Colors.red[600],
-    Colors.red[700],
-    Colors.red[800],
-    Colors.red[900],
+    Colors.orange[50]!,
+    Colors.orange[100]!,
+    Colors.orange[200]!,
+    Colors.orange[300]!,
+    Colors.orange[400]!,
+    Colors.orange[500]!,
+    Colors.orange[600]!,
+    Colors.orange[700]!,
+    Colors.orange[800]!,
+    Colors.orange[900]!,
+    Colors.red[50]!,
+    Colors.red[100]!,
+    Colors.red[200]!,
+    Colors.red[300]!,
+    Colors.red[400]!,
+    Colors.red[500]!,
+    Colors.red[600]!,
+    Colors.red[700]!,
+    Colors.red[800]!,
+    Colors.red[900]!,
   ];
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("DraggableScrollableActuator"),
+        title: const Text("DraggableScrollableActuator"),
       ),
-      body: Container(
-        // height: 400,
-        child: DraggableScrollableActuator(
-          child: Builder(
-            builder: (ctx) => Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    DraggableScrollableActuator.reset(ctx);
-                  },
-                  child: Text("重置位置"),
-                ),
-                Expanded(
-                  child: buildSheet(),
-                ),
-              ],
-            ),
+      body: DraggableScrollableActuator(
+        child: Builder(
+          builder: (ctx) => Column(
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  DraggableScrollableActuator.reset(ctx);
+                },
+                child: const Text("重置位置"),
+              ),
+              Expanded(
+                child: buildSheet(),
+              ),
+            ],
           ),
         ),
       ),
@@ -105,7 +105,7 @@ class DraggableScrollableActuatorPage extends StatelessWidget {
       color: data[index],
       child: Text(
         colorString(data[index]),
-        style: TextStyle(color: Colors.white, shadows: [
+        style: const TextStyle(color: Colors.white, shadows: [
           Shadow(color: Colors.black, offset: Offset(.5, .5), blurRadius: 2)
         ]),
       ),

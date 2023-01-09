@@ -9,11 +9,12 @@ import 'package:flutter/material.dart';
 //      "widgetId": 347,
 //      "name": 'ParentDataWidget 介绍',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 子组件   【Widget】",
+//      "subtitle": "【child】 : 子组件   【Widget】",
 //    }
 
 class ParentDataWidgetDemo extends StatelessWidget {
+  const ParentDataWidgetDemo({Key? key}) : super(key: key);
+
   final String info =
       'ParentDataWidget 是一个抽象类，不能直接使用，它拥有 ParentData 子类型的泛型，该泛型会限定该组件的适应场景。'
       '如 Positioned 组件继承自 ParentDataWidget<StackParentData>，就说明 Positioned 的上层组件必须使用 Stack 族组件。'
@@ -23,8 +24,8 @@ class ParentDataWidgetDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.blue.withOpacity(0.1),
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Text(info),
     );
   }

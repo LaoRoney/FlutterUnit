@@ -32,6 +32,8 @@ class ItemBean {
 }
 
 class CustomRadioListTile extends StatefulWidget {
+  const CustomRadioListTile({Key? key}) : super(key: key);
+
   @override
   _CustomRadioListTileState createState() => _CustomRadioListTileState();
 }
@@ -45,7 +47,7 @@ class _CustomRadioListTileState extends State<CustomRadioListTile> {
     ItemType.dart:
     ItemBean("Dart", "世界上最优雅的语言", "assets/images/dart.webp"),
   };
-  var _type = ItemType.java;
+  ItemType _type = ItemType.java;
 
   @override
   Widget build(BuildContext context) {
@@ -57,13 +59,13 @@ class _CustomRadioListTileState extends State<CustomRadioListTile> {
               .map((type) => RadioListTile<ItemType>(
             value: type,
             groupValue: _type,
-            title: Text(languages[type].title),
-            subtitle: Text(languages[type].subTitle),
+            title: Text(languages[type]!.title),
+            subtitle: Text(languages[type]!.subTitle),
             selected: _type == type,
             secondary: CircleAvatar(
-              backgroundImage: AssetImage(languages[type].imgUrl),
+              backgroundImage: AssetImage(languages[type]!.imgUrl),
             ),
-            onChanged: (type) => setState(() => _type = type),
+            onChanged: (ItemType? type) => setState(() => _type = type?? _type),
           ))
               .toList()),
     );

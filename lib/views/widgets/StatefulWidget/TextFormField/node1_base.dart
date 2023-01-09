@@ -14,22 +14,24 @@ import 'package:flutter/material.dart';
 //          "【onSaved】 : 表单save时回调  【FormFieldSetter<String>】",
 //    }
 class CustomTextFormField extends StatefulWidget {
+  const CustomTextFormField({Key? key}) : super(key: key);
+
   @override
   _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        SizedBox(width: 40),
+        const SizedBox(width: 40),
         Expanded(
           child: TextFormField(
-            style: TextStyle(textBaseline: TextBaseline.alphabetic),
-            decoration: InputDecoration(
+            style: const TextStyle(textBaseline: TextBaseline.alphabetic),
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               labelText: 'username',
             ),
@@ -43,37 +45,38 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     );
   }
 
-  String _validateUsername(value) {
+  String? _validateUsername(value) {
     if (value.isEmpty) {
       return '用户名不能为空';
     }
     return null;
   }
-  _onSaved(value){
-    print('onSaved:'+value);
+
+  void _onSaved(value) {
+    print('onSaved:' + value);
   }
 
   void _onFieldSubmitted(value) {
-    print('onFieldSubmitted:'+value);
+    print('onFieldSubmitted:' + value);
   }
 
-  RaisedButton _buildSubmitButton(BuildContext context) {
-    return RaisedButton(
-      color: Colors.blue,
-      shape: CircleBorder(
-        side: BorderSide(width: 2.0, color: Color(0xFFFFDFDFDF)),
-      ),
-      onPressed: _onSubmit,
-      child: Icon(
-        Icons.check,
-        color: Colors.white,
-      ),
-    );
-  }
+  Widget _buildSubmitButton(BuildContext context) => ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+            shape: const CircleBorder(
+              side: BorderSide(width: 2.0, color: Color(0xFFDFDFDF)),
+            )),
+        onPressed: _onSubmit,
+        child: const Icon(
+          Icons.check,
+          color: Colors.white,
+        ),
+      );
 
-  _onSubmit(){
-    _formKey.currentState.save();
-    if (_formKey.currentState.validate()) {
+  void _onSubmit() {
+    if (_formKey.currentState == null) return;
+    _formKey.currentState!.save();
+    if (_formKey.currentState!.validate()) {
       FocusScope.of(context).requestFocus(FocusNode());
     }
   }

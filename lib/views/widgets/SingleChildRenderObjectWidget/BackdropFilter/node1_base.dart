@@ -11,13 +11,14 @@ import 'package:flutter/material.dart';
 //      "widgetId": 278,
 //      "name": 'BackdropFilter基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 孩子组件   【Widget】\n"
+//      "subtitle": "【child】 : 孩子组件   【Widget】\n"
 //          "【filter】 : 过滤器   【ImageFilter】\n"
 //          "ImageFilter.blur可以实现高斯模糊，指定x，y模糊因子。",
 //    }
 
 class CustomBackdropFilter extends StatefulWidget {
+  const CustomBackdropFilter({Key? key}) : super(key: key);
+
   @override
   _CustomBackdropFilterState createState() => _CustomBackdropFilterState();
 }
@@ -54,7 +55,7 @@ class _CustomBackdropFilterState extends State<CustomBackdropFilter> {
     return Wrap(
       spacing: 20,
       children: <Widget>[
-        Container(
+        SizedBox(
           height: 150,
           width: 150,
           child: Image.asset(
@@ -62,7 +63,7 @@ class _CustomBackdropFilterState extends State<CustomBackdropFilter> {
             fit: BoxFit.cover,
           ),
         ),
-        Container(
+        SizedBox(
           height: 150,
           width: 150,
           child: Image.asset(

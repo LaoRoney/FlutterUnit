@@ -9,40 +9,42 @@ import 'package:flutter/material.dart';
 //      "widgetId": 170,
 //      "name": 'WillPopScope使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 子组件   【Widget】\n"
+//      "subtitle": "【child】 : 子组件   【Widget】\n"
 //          "【onWillPop】 : 返回回调  【WillPopCallback】",
 //    }
 class CustomWillPopScope extends StatelessWidget {
+  const CustomWillPopScope({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: WillPopScope(child: (BackButton()),
-          onWillPop: ()=>_willPop(context)),
+    return WillPopScope(
+      child: const BackButton(),
+      onWillPop: () => _willPop(context),
     );
   }
 
-  Future<bool> _willPop(context) async{
-    return await showDialog(
-      context: context,
-      builder: (context) =>  AlertDialog(
-        shape:  RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10))),
-        title:  Text('提示'),
-        content:  Text('你确定要离开此页吗?'),
-        actions: <Widget>[
-          FlatButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child:  Text('确定'),
+  Future<bool> _willPop(context) async {
+    bool? exit = await showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            title: const Text('提示'),
+            content: const Text('你确定要离开此页吗?'),
+            actions: [
+              ElevatedButton(
+                onPressed: () => Navigator.of(ctx).pop(true),
+                child: const Text('确定'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(ctx).pop(false),
+                child: const Text('取消'),
+              ),
+            ],
           ),
-           FlatButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child:  Text('取消'),
-          ),
+        );
+    print('====_willPop==:$exit========');
 
-        ],
-      ),
-    ) ?? false;
-
+    return exit??false;
   }
 }

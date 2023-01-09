@@ -13,21 +13,21 @@ import 'package:flutter/material.dart';
 //    }
 
 class ValueListenableBuilderDemo extends StatelessWidget {
-  ValueListenableBuilderDemo({Key key}) : super(key: key);
+  ValueListenableBuilderDemo({Key? key}) : super(key: key);
 
   final ValueNotifier<int> _counter = ValueNotifier<int>(0);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: Scaffold(
-        appBar: AppBar(title: Text("ValueListenableBuilder")),
+        appBar: AppBar(title: const Text("ValueListenableBuilder")),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('You have pushed the button this many times:'),
+              const Text('You have pushed the button this many times:'),
               ValueListenableBuilder<int>(
                 builder: _buildWithValue,
                 valueListenable: _counter,
@@ -37,19 +37,19 @@ class ValueListenableBuilderDemo extends StatelessWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.plus_one),
+          child: const Icon(Icons.plus_one),
           onPressed: () => _counter.value += 1,
         ),
       ),
     );
   }
 
-  Widget _buildWithValue(BuildContext context, int value, Widget child) {
+  Widget _buildWithValue(BuildContext context, int value, Widget? child) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         Text('$value'),
-        child,
+        child ?? const SizedBox.shrink(),
       ],
     );
   }

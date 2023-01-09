@@ -7,29 +7,30 @@ import 'package:flutter/material.dart';
 //      "widgetId": 183,
 //      "name": 'CustomScrollView基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【slivers】 : 子组件列表   【List<Widget>】\n"
+//      "subtitle": "【slivers】 : 子组件列表   【List<Widget>】\n"
 //          "【reverse】 : 是否反向   【bool】\n"
 //          "【scrollDirection】 : 滑动方向   【Axis】\n"
 //          "【controller】 : 控制器   【ScrollController】",
 //    }
 class CustomScrollViewDemo extends StatelessWidget {
+  CustomScrollViewDemo({Key? key}) : super(key: key);
+
   final List<Color> data = [
-    Colors.purple[50],
-    Colors.purple[100],
-    Colors.purple[200],
-    Colors.purple[300],
-    Colors.purple[400],
-    Colors.purple[500],
-    Colors.purple[600],
-    Colors.purple[700],
-    Colors.purple[800],
-    Colors.purple[900],
+    Colors.purple[50]!,
+    Colors.purple[100]!,
+    Colors.purple[200]!,
+    Colors.purple[300]!,
+    Colors.purple[400]!,
+    Colors.purple[500]!,
+    Colors.purple[600]!,
+    Colors.purple[700]!,
+    Colors.purple[800]!,
+    Colors.purple[900]!,
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 300,
       child: CustomScrollView(
         anchor: 0,
@@ -39,6 +40,14 @@ class CustomScrollViewDemo extends StatelessWidget {
       ),
     );
   }
+
+  TextStyle get textStyle => const TextStyle(color: Colors.white, shadows: [
+        Shadow(
+          color: Colors.black,
+          offset: Offset(.5, .5),
+          blurRadius: 2,
+        )
+      ]);
 
   Widget _buildSliverFixedExtentList() => SliverFixedExtentList(
         itemExtent: 60,
@@ -50,12 +59,7 @@ class CustomScrollViewDemo extends StatelessWidget {
                   color: data[index],
                   child: Text(
                     colorString(data[index]),
-                    style: TextStyle(color: Colors.white, shadows: [
-                      Shadow(
-                          color: Colors.black,
-                          offset: Offset(.5, .5),
-                          blurRadius: 2)
-                    ]),
+                    style: textStyle,
                   ),
                 ),
             childCount: data.length),
@@ -68,21 +72,26 @@ class CustomScrollViewDemo extends StatelessWidget {
     return SliverAppBar(
       expandedHeight: 190.0,
       leading: Container(
-          margin: EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
           child: Image.asset('assets/images/icon_head.webp')),
       flexibleSpace: FlexibleSpaceBar(
         //伸展处布局
-        titlePadding: EdgeInsets.only(left: 55, bottom: 15), //标题边距
+        titlePadding: const EdgeInsets.only(left: 55, bottom: 15), //标题边距
         collapseMode: CollapseMode.parallax, //视差效果
-        title: Text(
+        title: const Text(
           '张风捷特烈',
           style: TextStyle(color: Colors.black, //标题
               shadows: [
-                Shadow(color: Colors.blue, offset: Offset(1, 1), blurRadius: 2)
+                Shadow(
+                  color: Colors.blue,
+                  offset: Offset(1, 1),
+                  blurRadius: 2,
+                )
               ]),
         ),
         background: Image.asset(
-          "assets/images/caver.webp", fit: BoxFit.cover,
+          "assets/images/caver.webp",
+          fit: BoxFit.cover,
         ),
       ),
     );

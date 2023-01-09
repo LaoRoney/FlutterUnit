@@ -12,16 +12,18 @@ import 'package:flutter/material.dart';
 //          "【textDirection】 : 文字方向*2   【TextDirection】",
 //    }
 class AlignSelectableText extends StatefulWidget {
+  const AlignSelectableText({Key? key}) : super(key: key);
+
   @override
   _AlignSelectableTextState createState() => _AlignSelectableTextState();
 }
 
 class _AlignSelectableTextState extends State<AlignSelectableText> {
-  final text =
+  final String text =
       "The [SelectableText] widget displays a string of text with a single style."
       "The string might break across multiple lines or might all be displayed on"
       "the same line depending on the layout constraints.";
-  var _textAlign = TextAlign.left;
+  TextAlign _textAlign = TextAlign.left;
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +32,13 @@ class _AlignSelectableTextState extends State<AlignSelectableText> {
         _buildSelector(),
         SelectableText(
           text,
-          style: TextStyle(fontSize: 18, color: Colors.red),
+          style: const TextStyle(fontSize: 18, color: Colors.red),
           cursorColor: Colors.green,
-          cursorRadius: Radius.circular(3),
+          cursorRadius: const Radius.circular(3),
           cursorWidth: 5,
           showCursor: true,
           textAlign: _textAlign,
           textDirection: TextDirection.ltr,
-
           autofocus: false,
         ),
       ],
@@ -48,10 +49,13 @@ class _AlignSelectableTextState extends State<AlignSelectableText> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        Text(
+        const Text(
           "textAlign属性选择:",
           style: TextStyle(
-              fontSize: 16, color: Colors.blue, fontWeight: FontWeight.bold),
+            fontSize: 16,
+            color: Colors.blue,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         DropdownButton<TextAlign>(
             underline: Container(),
@@ -64,7 +68,7 @@ class _AlignSelectableTextState extends State<AlignSelectableText> {
                 .toList(),
             onChanged: (e) {
               setState(() {
-                _textAlign = e;
+                _textAlign = e??_textAlign;
               });
             }),
       ],

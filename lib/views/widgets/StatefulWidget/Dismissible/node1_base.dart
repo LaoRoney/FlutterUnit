@@ -9,8 +9,7 @@ import 'package:flutter/material.dart';
 //      "widgetId": 176,
 //      "name": 'Dismissible基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【child】 : 子组件   【Widget】\n"
+//      "subtitle": "【child】 : 子组件   【Widget】\n"
 //          "【background】 : 左底  【Widget】\n"
 //          "【secondaryBackground】 : 右底  【Widget】\n"
 //          "【key】 : 键  【Key】\n"
@@ -18,30 +17,32 @@ import 'package:flutter/material.dart';
 //          "【onDismissed】 : 消失回调  【DismissDirectionCallback】\n",
 //    }
 class CustomDismissible extends StatefulWidget {
+  const CustomDismissible({Key? key}) : super(key: key);
+
   @override
   _CustomDismissibleState createState() => _CustomDismissibleState();
 }
 
 class _CustomDismissibleState extends State<CustomDismissible> {
-  var data = <Color>[
-    Colors.purple[50],
-    Colors.purple[100],
-    Colors.purple[200],
-    Colors.purple[300],
-    Colors.purple[400],
-    Colors.purple[500],
-    Colors.purple[600],
-    Colors.purple[700],
-    Colors.purple[800],
-    Colors.purple[900],
+  final List<Color> data = [
+    Colors.purple[50]!,
+    Colors.purple[100]!,
+    Colors.purple[200]!,
+    Colors.purple[300]!,
+    Colors.purple[400]!,
+    Colors.purple[500]!,
+    Colors.purple[600]!,
+    Colors.purple[700]!,
+    Colors.purple[800]!,
+    Colors.purple[900]!,
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         children: data.map((color) => _buildItem(color)).toList(),
       ),
     );
@@ -51,15 +52,15 @@ class _CustomDismissibleState extends State<CustomDismissible> {
     return Dismissible(
       background: Container(
         color: Colors.green,
-        alignment: Alignment(-0.9, 0),
-        child: Icon(
+        alignment: const Alignment(-0.9, 0),
+        child: const Icon(
           Icons.check,
           color: Colors.white,
         ),
       ),
       secondaryBackground: Container(
-        alignment: Alignment(0.9, 0),
-        child: Icon(
+        alignment: const Alignment(0.9, 0),
+        child: const Icon(
           Icons.close,
           color: Colors.white,
         ),
@@ -82,8 +83,12 @@ class _CustomDismissibleState extends State<CustomDismissible> {
         color: color,
         child: Text(
           colorString(color),
-          style: TextStyle(color: Colors.white, shadows: [
-            Shadow(color: Colors.black, offset: Offset(.5, .5), blurRadius: 2)
+          style: const TextStyle(color: Colors.white, shadows: [
+            Shadow(
+              color: Colors.black,
+              offset: Offset(.5, .5),
+              blurRadius: 2,
+            )
           ]),
         ),
       ),

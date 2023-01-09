@@ -10,23 +10,23 @@ import 'package:flutter/material.dart';
 //      "widgetId": 331,
 //      "name": 'SliderTheme对Slider的样式定制',
 //      "priority": 2,
-//      "subtitle":
-//          "通过thumbShape和valueIndicatorShape可以对Slider进行样式定制。"
+//      "subtitle": "通过thumbShape和valueIndicatorShape可以对Slider进行样式定制。"
 //          "注: 本例参考flutter-gallery中的SlideDemo",
 //    }
 
 class DIYSliderTheme extends StatefulWidget {
+  const DIYSliderTheme({Key? key}) : super(key: key);
+
   @override
   _DIYSliderThemeState createState() => _DIYSliderThemeState();
 }
 
 class _DIYSliderThemeState extends State<DIYSliderTheme> {
-  var _bliss = 0.5;
+  double _bliss = 0.5;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-
     return SliderTheme(
       data: theme.sliderTheme.copyWith(
         activeTrackColor: Colors.deepPurple,
@@ -38,14 +38,14 @@ class _DIYSliderThemeState extends State<DIYSliderTheme> {
         valueIndicatorColor: Colors.deepPurpleAccent,
         thumbShape: _CustomThumbShape(),
         valueIndicatorShape: _CustomValueIndicatorShape(),
-        valueIndicatorTextStyle: theme.accentTextTheme.body2
+        valueIndicatorTextStyle: theme.accentTextTheme.bodyText2!
             .copyWith(color: theme.colorScheme.onSurface),
       ),
       child: Slider(
         min: 0.0,
         max: 200.0,
         divisions: 10,
-        label: "${_bliss.toStringAsFixed(1)}",
+        label: _bliss.toStringAsFixed(1),
         onChanged: (double value) {
           setState(() {
             _bliss = value;
@@ -74,17 +74,20 @@ class _CustomThumbShape extends SliderComponentShape {
   );
 
   @override
-  void paint(PaintingContext context, Offset center,
-      {Animation<double> activationAnimation,
-      Animation<double> enableAnimation,
-      bool isDiscrete,
-      TextPainter labelPainter,
-      RenderBox parentBox,
-      SliderThemeData sliderTheme,
-      TextDirection textDirection,
-      double value,
-      double textScaleFactor,
-      Size sizeWithOverflow}) {
+  void paint(
+    PaintingContext context,
+    Offset center, {
+    required Animation<double> activationAnimation,
+    required Animation<double> enableAnimation,
+    required bool isDiscrete,
+    required TextPainter labelPainter,
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required TextDirection textDirection,
+    required double value,
+    required double textScaleFactor,
+    required Size sizeWithOverflow,
+  }) {
     final Canvas canvas = context.canvas;
     final ColorTween colorTween = ColorTween(
       begin: sliderTheme.disabledThumbColor,
@@ -92,8 +95,8 @@ class _CustomThumbShape extends SliderComponentShape {
     );
     final double size = _thumbSize * sizeTween.evaluate(enableAnimation);
     final Path thumbPath = _downTriangle(size, center);
-    canvas.drawPath(
-        thumbPath, Paint()..color = colorTween.evaluate(enableAnimation));
+    canvas.drawPath(thumbPath,
+        Paint()..color = colorTween.evaluate(enableAnimation) ?? Colors.blue);
   }
 }
 
@@ -132,16 +135,16 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
 
   @override
   void paint(PaintingContext context, Offset center,
-      {Animation<double> activationAnimation,
-      Animation<double> enableAnimation,
-      bool isDiscrete,
-      TextPainter labelPainter,
-      RenderBox parentBox,
-      SliderThemeData sliderTheme,
-      TextDirection textDirection,
-      double value,
-      double textScaleFactor,
-      Size sizeWithOverflow}) {
+      {required Animation<double> activationAnimation,
+      required Animation<double> enableAnimation,
+      required bool isDiscrete,
+      required TextPainter labelPainter,
+      required RenderBox parentBox,
+      required SliderThemeData sliderTheme,
+      required TextDirection textDirection,
+      required double value,
+      required double textScaleFactor,
+      required Size sizeWithOverflow}) {
     final Canvas canvas = context.canvas;
     final ColorTween enableColor = ColorTween(
       begin: sliderTheme.disabledThumbColor,
@@ -156,8 +159,9 @@ class _CustomValueIndicatorShape extends SliderComponentShape {
         Offset(0.0, -slideUpTween.evaluate(activationAnimation));
     final Path thumbPath = _upTriangle(size, center + slideUpOffset);
     final Color paintColor = enableColor
-        .evaluate(enableAnimation)
-        .withAlpha((255.0 * activationAnimation.value).round());
+            .evaluate(enableAnimation)
+            ?.withAlpha((255.0 * activationAnimation.value).round()) ??
+        Colors.black;
     canvas.drawPath(
       thumbPath,
       Paint()..color = paintColor,

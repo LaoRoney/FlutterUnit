@@ -13,9 +13,11 @@ import 'package:flutter/material.dart';
 //          "【backgroundColor】: 背景颜色   【Color】",
 //    }
 class ShadowText extends StatelessWidget {
+  const ShadowText({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       "张风捷特烈",
       style: TextStyle(
           fontSize: 50,

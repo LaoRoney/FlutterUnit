@@ -15,20 +15,22 @@ import 'package:flutter/material.dart';
 //          "【onPressed】: 点击事件   【Function(int)】",
 //    }
 class CustomToggleButtons extends StatefulWidget {
+  const CustomToggleButtons({Key? key}) : super(key: key);
+
   @override
   _CustomToggleButtonsState createState() => _CustomToggleButtonsState();
 }
 
 class _CustomToggleButtonsState extends State<CustomToggleButtons> {
-  var _isSelected = [true, false, false];
+  List<bool> _isSelected = [true, false, false];
 
   @override
   Widget build(BuildContext context) {
     return ToggleButtons(
-      children: <Widget>[
-        Icon(Icons.skip_previous),
-        Icon(Icons.pause),
-        Icon(Icons.skip_next),
+      children: const <Widget>[
+         Icon(Icons.skip_previous),
+         Icon(Icons.pause),
+         Icon(Icons.skip_next),
       ],
       borderWidth: 1,
       borderRadius: BorderRadius.circular(10),
@@ -38,6 +40,5 @@ class _CustomToggleButtonsState extends State<CustomToggleButtons> {
         _isSelected[value] = true;
       }),
     );
-
   }
 }

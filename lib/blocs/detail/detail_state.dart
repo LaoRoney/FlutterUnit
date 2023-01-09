@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_unit/model/node_model.dart';
-import 'package:flutter_unit/model/widget_model.dart';
+import 'package:widget_repository/widget_repository.dart';
+
 
 
 /// create by 张风捷特烈 on 2020-03-03
@@ -20,7 +19,7 @@ class DetailWithData extends DetailState {
   final List<WidgetModel> links;
   final List<NodeModel> nodes;
 
-  const DetailWithData({this.widgetModel, this.nodes,this.links});
+  const DetailWithData({required this.widgetModel,required this.nodes,required this.links});
 
   @override
   List<Object> get props => [widgetModel,nodes];

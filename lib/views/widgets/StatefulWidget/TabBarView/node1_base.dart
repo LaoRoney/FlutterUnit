@@ -6,19 +6,27 @@ import 'package:flutter/material.dart';
 //      "widgetId": 59,
 //      "name": 'TabBarView需要与TabBar联用',
 //      "priority": 1,
-//      "subtitle":
-//          "【controller】 : 控制器   【TabController】\n"
+//      "subtitle": "【controller】 : 控制器   【TabController】\n"
 //          "【children】 : 孩子们   【指示器颜色】\n"
 //          "【physics】 : 表现   【ScrollPhysics】",
 //    }
 class CustomTabBarView extends StatefulWidget {
+  const CustomTabBarView({Key? key}) : super(key: key);
+
   @override
   _CustomTabBarViewState createState() => _CustomTabBarViewState();
 }
 
 class _CustomTabBarViewState extends State<CustomTabBarView> with SingleTickerProviderStateMixin {
-  final tabs = ['风画庭', '雨韵舍', '雷鸣殿', '电疾堂', '霜寒阁', '雪月楼'];
-  TabController _tabController;
+  final List<String> tabs = const [
+    '风画庭',
+    '雨韵舍',
+    '雷鸣殿',
+    '电疾堂',
+    '霜寒阁',
+    '雪月楼',
+  ];
+  late TabController _tabController;
 
   @override
   void initState() {
@@ -34,37 +42,40 @@ class _CustomTabBarViewState extends State<CustomTabBarView> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          _buildTabBar(),
-          Container(
-              color: Colors.purple,
-              width: MediaQuery.of(context).size.width,
-              height: 200,
-              child: _buildTableBarView())
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        _buildTabBar(),
+        Container(
+            color: Colors.purple,
+            width: MediaQuery.of(context).size.width,
+            height: 200,
+            child: _buildTableBarView())
+      ],
     );
   }
 
   Widget _buildTabBar() => TabBar(
-      onTap: (tab) => print(tab),
-      labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-      unselectedLabelStyle: TextStyle(fontSize: 16),
-      isScrollable: true,
-      controller: _tabController,
-      labelColor: Colors.blue,
-      indicatorWeight: 3,
-      indicatorPadding: EdgeInsets.symmetric(horizontal: 10),
-      unselectedLabelColor: Colors.grey,
-      indicatorColor: Colors.orangeAccent,
-      tabs: tabs.map((e) => Tab(text: e)).toList(),
-    );
+        onTap: (tab) => print(tab),
+        labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        unselectedLabelStyle: const TextStyle(fontSize: 16),
+        isScrollable: true,
+        controller: _tabController,
+        labelColor: Colors.blue,
+        indicatorWeight: 3,
+        indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
+        unselectedLabelColor: Colors.grey,
+        indicatorColor: Colors.orangeAccent,
+        tabs: tabs.map((e) => Tab(text: e)).toList(),
+      );
 
   Widget _buildTableBarView() => TabBarView(
       controller: _tabController,
       children: tabs.map((e) => Center(
-                  child: Text(e, style: TextStyle(color: Colors.white, fontSize: 20),
+                  child: Text(
+                e,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
               ))).toList());
 }

@@ -7,14 +7,15 @@ import 'package:flutter/material.dart';
 //      "widgetId": 224 ,
 //      "name": 'AnimatedTheme基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【data】 : 主题数据   【ThemeData】\n"
+//      "subtitle": "【data】 : 主题数据   【ThemeData】\n"
 //          "【duration】 : 动画时长   【Duration】\n"
 //          "【onEnd】 : 动画结束回调   【Function()】\n"
 //          "【curve】 : 动画曲线   【Duration】\n"
 //          "【child】 : 子组件   【Widget】",
 //    }
 class AnimatedThemeDemo extends StatefulWidget {
+  const AnimatedThemeDemo({Key? key}) : super(key: key);
+
   @override
   _AnimatedThemeDemoState createState() => _AnimatedThemeDemoState();
 }
@@ -22,20 +23,24 @@ class AnimatedThemeDemo extends StatefulWidget {
 class _AnimatedThemeDemoState extends State<AnimatedThemeDemo> {
   ThemeData startThem = ThemeData(
       primaryColor: Colors.blue,
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
         headline1: TextStyle(
-            color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+          color: Colors.white,
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
       ));
 
   ThemeData endThem = ThemeData(
       primaryColor: Colors.red,
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
           headline1: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-              fontWeight: FontWeight.normal)));
+        color: Colors.black,
+        fontSize: 16,
+        fontWeight: FontWeight.normal,
+      )));
 
-  ThemeData them;
+  late ThemeData them;
 
   @override
   void initState() {
@@ -50,12 +55,12 @@ class _AnimatedThemeDemoState extends State<AnimatedThemeDemo> {
         _buildSwitch(),
         AnimatedTheme(
           data: them,
-          duration: Duration(seconds: 2),
+          duration: const Duration(seconds: 2),
           curve: Curves.fastOutSlowIn,
           onEnd: () {
             print('----onEnd---');
           },
-          child: ChildContent(),
+          child: const ChildContent(),
         ),
       ],
     );
@@ -74,6 +79,8 @@ class _AnimatedThemeDemoState extends State<AnimatedThemeDemo> {
 }
 
 class ChildContent extends StatelessWidget {
+  const ChildContent({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -81,10 +88,10 @@ class ChildContent extends StatelessWidget {
       height: 60,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
+        borderRadius: const BorderRadius.all(Radius.circular(5)),
         color: Theme.of(context).primaryColor,
       ),
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Text(
         'Flutter Unit',
         style: Theme.of(context).textTheme.headline1,

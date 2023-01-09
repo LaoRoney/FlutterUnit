@@ -8,29 +8,30 @@ import 'package:flutter/material.dart';
 //      "widgetId": 326,
 //      "name": 'ButtonTheme使用',
 //      "priority": 1,
-//      "subtitle":
-//          "属性参数同MaterialButton，可以通过ButtonTheme.of获取按钮主题数据，"
+//      "subtitle": "属性参数同MaterialButton，可以通过ButtonTheme.of获取按钮主题数据，"
 //          "也可以为ButtonTheme【后代】的按钮组件设置默认样式，包括颜色、形状、尺寸等。",
 //    }
 
 
 class ButtonThemeDemo extends StatelessWidget {
+  const ButtonThemeDemo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ButtonTheme(
       buttonColor: Colors.orange,
       splashColor: Colors.blue,
       minWidth: 40,
-      shape: CircleBorder(
-        side: BorderSide(width: 2.0, color: Color(0xFFFFDFDFDF)),
+      shape: const CircleBorder(
+        side: BorderSide(width: 2.0, color: Color(0xFFDFDFDF)),
       ),
       child: Wrap(
         spacing: 10,
         children: <Widget>[
-          RaisedButton(onPressed: (){},child: Icon(Icons.add)),
-          FlatButton(onPressed: (){},child: Icon(Icons.add)),
-          OutlineButton(onPressed: (){},child: Icon(Icons.add)),
-          MaterialButton(onPressed: (){},child: Icon(Icons.add)),
+          ElevatedButton(onPressed: (){},child: const Icon(Icons.add)),
+          TextButton(onPressed: (){},child: const Icon(Icons.add)),
+          OutlinedButton(onPressed: (){},child: const Icon(Icons.add)),
+          MaterialButton(onPressed: (){},child: const Icon(Icons.add)),
         ],
       ),
     );

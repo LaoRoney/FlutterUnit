@@ -1,5 +1,3 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// create by 张风捷特烈 on 2020/7/22
@@ -13,6 +11,8 @@ import 'package:flutter/material.dart';
 //    }
 
 class InteractiveViewerDemo3 extends StatefulWidget {
+  const InteractiveViewerDemo3({Key? key}) : super(key: key);
+
   @override
   _InteractiveViewerDemo3State createState() => _InteractiveViewerDemo3State();
 }
@@ -21,14 +21,13 @@ class _InteractiveViewerDemo3State extends State<InteractiveViewerDemo3>
     with SingleTickerProviderStateMixin {
   final TransformationController _transformationController =
       TransformationController();
-  Animation<Matrix4> _animationReset;
-  AnimationController _controllerReset;
+  late Animation<Matrix4> _animationReset;
+  late AnimationController _controllerReset;
 
   void _onAnimateReset() {
     _transformationController.value = _animationReset.value;
     if (!_controllerReset.isAnimating) {
-      _animationReset?.removeListener(_onAnimateReset);
-      _animationReset = null;
+      _animationReset.removeListener(_onAnimateReset);
       _controllerReset.reset();
     }
   }
@@ -45,8 +44,7 @@ class _InteractiveViewerDemo3State extends State<InteractiveViewerDemo3>
 
   void _animateResetStop() {
     _controllerReset.stop();
-    _animationReset?.removeListener(_onAnimateReset);
-    _animationReset = null;
+    _animationReset.removeListener(_onAnimateReset);
     _controllerReset.reset();
   }
 
@@ -83,14 +81,12 @@ class _InteractiveViewerDemo3State extends State<InteractiveViewerDemo3>
           height: 150,
           color: Colors.grey.withAlpha(33),
           child: InteractiveViewer(
-            boundaryMargin: EdgeInsets.all(40),
+            boundaryMargin: const EdgeInsets.all(40),
             transformationController: _transformationController,
             minScale: 0.1,
             maxScale: 1.8,
             onInteractionStart: _onInteractionStart,
-            child: Container(
-              child: Image.asset('assets/images/caver.webp'),
-            ),
+            child: Image.asset('assets/images/caver.webp'),
           ),
         ),
         Row(
@@ -107,28 +103,28 @@ class _InteractiveViewerDemo3State extends State<InteractiveViewerDemo3>
 
   Widget _buildButton() {
     return MaterialButton(
-        child: Icon(
+        child: const Icon(
           Icons.refresh,
           color: Colors.white,
         ),
         color: Colors.green,
-        shape: CircleBorder(
-          side: BorderSide(width: 2.0, color: Color(0xFFFFDFDFDF)),
+        shape: const CircleBorder(
+          side: BorderSide(width: 2.0, color: Color(0xFFDFDFDF)),
         ),
         onPressed: _animateResetInitialize);
   }
 
-  var _x = 0.0;
+  final double _x = 0.0;
 
   Widget _buildButton2() {
     return MaterialButton(
-        child: Icon(
+        child: const Icon(
           Icons.navigate_before,
           color: Colors.white,
         ),
         color: Colors.green,
-        shape: CircleBorder(
-          side: BorderSide(width: 2.0, color: Color(0xFFFFDFDFDF)),
+        shape: const CircleBorder(
+          side: BorderSide(width: 2.0, color: Color(0xFFDFDFDF)),
         ),
         onPressed: () {
           var temp = _transformationController.value.clone();
@@ -139,13 +135,13 @@ class _InteractiveViewerDemo3State extends State<InteractiveViewerDemo3>
 
   Widget _buildButton3() {
     return MaterialButton(
-        child: Icon(
+        child: const Icon(
           Icons.navigate_next,
           color: Colors.white,
         ),
         color: Colors.green,
-        shape: CircleBorder(
-          side: BorderSide(width: 2.0, color: Color(0xFFFFDFDFDF)),
+        shape: const CircleBorder(
+          side: BorderSide(width: 2.0, color: Color(0xFFDFDFDF)),
         ),
         onPressed: () {
           var temp = _transformationController.value.clone();

@@ -13,19 +13,21 @@ import 'package:flutter/material.dart';
 //          "下面依次是:left、right、center、justify、start、end ",
 //    }
 class TextAlignText extends StatelessWidget {
+  const TextAlignText({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
       spacing: 10,
       runSpacing: 10,
       children: TextAlign.values
-          .map((e) => Container(
+          .map((TextAlign textAlign) => Container(
         width: 120,
         color: Colors.cyanAccent.withAlpha(33),
         height: 120 * 0.618,
         child: Text(
           " 张风捷特烈 toly " * 3,
-          textAlign: e,
+          textAlign: textAlign,
         ),
       ))
           .toList(),

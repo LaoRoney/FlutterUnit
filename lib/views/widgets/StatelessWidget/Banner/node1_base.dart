@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 /// create by 张风捷特烈 on 2020/4/30
 /// contact me by email 1981462002@qq.com
 /// 说明:
@@ -12,35 +14,37 @@
 //          "【textStyle】: 文字样式   【TextStyle】",
 //    }
 
-import 'package:flutter/material.dart';
-
 class CustomBanner extends StatelessWidget {
+  CustomBanner({Key? key}) : super(key: key);
+
+  final Map<BannerLocation, Color> data = {
+    BannerLocation.topStart: Colors.red,
+    BannerLocation.topEnd: Colors.blue,
+    BannerLocation.bottomStart: Colors.green,
+    BannerLocation.bottomEnd: Colors.yellow,
+  };
+
   @override
   Widget build(BuildContext context) {
-    var data = {
-      BannerLocation.topStart: Colors.red,
-      BannerLocation.topEnd: Colors.blue,
-      BannerLocation.bottomStart: Colors.green,
-      BannerLocation.bottomEnd: Colors.yellow,
-    };
-
     return Wrap(
         spacing: 10,
         runSpacing: 10,
-        children: data.keys.map((e) =>
-            Container(
-              color: Color(0xffD8F5FF),
-              width: 150,
-              height: 150 * 0.618,
-              child: Banner(
-                message: "Flutter 1.12发布",
-                location: e,
-                color: data[e],
-                child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: FlutterLogo(textColor: Colors.blue,
-                      style: FlutterLogoStyle.horizontal,)),
-              ),
-            )).toList());
+        children: data.keys
+            .map((BannerLocation location) => Container(
+          color: const Color(0xffD8F5FF),
+                  width: 150,
+                  height: 150 * 0.618,
+                  child: Banner(
+                    message: "Flutter 2.2.3发布",
+                    location: location,
+                    color: data[location]!,
+                    child: const Padding(
+                        padding: EdgeInsets.all(20),
+                        child: FlutterLogo(
+                          textColor: Colors.blue,
+                          style: FlutterLogoStyle.horizontal,
+                        )),
+                  ),
+        )).toList());
   }
 }

@@ -15,9 +15,11 @@ import 'package:flutter/material.dart';
 //          "【onPopPage】 : 出栈回调   【PopPageCallback】",
 //    }
 class NavigatorDemo extends StatelessWidget {
+  const NavigatorDemo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       width: 300,
       child: Navigator(
@@ -33,18 +35,18 @@ class NavigatorDemo extends StatelessWidget {
     switch (settings.name) {
       case '/home-content':
         return MaterialPageRoute(
-            builder: (_) => HomeContent(), settings: settings);
+            builder: (_) => const HomeContent(), settings: settings);
       case "/red":
-        return MaterialPageRoute(builder: (_) => RedPage(), settings: settings);
+        return MaterialPageRoute(builder: (_) => const RedPage(), settings: settings);
       case "/yellow":
         return MaterialPageRoute(
-            builder: (_) => YellowPage(), settings: settings);
+            builder: (_) => const YellowPage(), settings: settings);
       case "/green":
         return MaterialPageRoute(
-            builder: (_) => GreenPage(), settings: settings);
+            builder: (_) => const GreenPage(), settings: settings);
       default:
         return MaterialPageRoute(
-            builder: (_) => HomeContent(), settings: settings);
+            builder: (_) => const HomeContent(), settings: settings);
     }
   }
 
@@ -57,7 +59,7 @@ class NavigatorDemo extends StatelessWidget {
 //路由监听器
 class TolyNavigatorObservers extends NavigatorObserver {
   @override
-  void didPush(Route<dynamic> route, Route<dynamic> previousRoute) {
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
     print(
         '--didPush:--route:--${route.settings}--previousRoute:--${previousRoute?.settings}');
   }
@@ -68,71 +70,91 @@ class TolyNavigatorObservers extends NavigatorObserver {
   }
 
   @override
-  void didStartUserGesture(Route<dynamic> route, Route<dynamic> previousRoute) {
+  void didStartUserGesture(Route<dynamic> route, Route<dynamic>? previousRoute) {
     print(
-        '--didStartUserGesture:--route:--${route.settings}--previousRoute:--${previousRoute.settings}');
+        '--didStartUserGesture:--route:--${route.settings}--previousRoute:--${previousRoute?.settings}');
   }
 
   @override
-  void didReplace({Route<dynamic> newRoute, Route<dynamic> oldRoute}) {
+  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
     print(
-        '--didReplace:--newRoute:--${newRoute.settings}--oldRoute:--${oldRoute.settings}');
+        '--didReplace:--newRoute:--${newRoute?.settings}--oldRoute:--${oldRoute?.settings}');
   }
 
   @override
-  void didRemove(Route<dynamic> route, Route<dynamic> previousRoute) {
+  void didRemove(Route<dynamic>? route, Route<dynamic>? previousRoute) {
     print(
-        '--didRemove:--route:--${route.settings}--previousRoute:--${previousRoute.settings}');
+        '--didRemove:--route:--${route?.settings}--previousRoute:--${previousRoute?.settings}');
   }
 
   @override
-  void didPop(Route<dynamic> route, Route<dynamic> previousRoute) {
+  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
     print(
-        '--didPop:--route:--${route.settings}--previousRoute:--${previousRoute.settings}');
+        '--didPop:--route:--${route.settings}--previousRoute:--${previousRoute?.settings}');
   }
 }
 
 class HomeContent extends StatelessWidget {
+  const HomeContent({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              RaisedButton(
-                color: Colors.red,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/red');
-                },
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            ElevatedButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.red,
+                shape: const CircleBorder(
+                  side: BorderSide(width: 2.0, color: Color(0xFFDFDFDF)),
+                ),
               ),
-              RaisedButton(
-                color: Colors.yellow,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/yellow');
-                },
+              child: const Text('to red'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/red');
+              },
+            ),
+            ElevatedButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.yellow,
+                shape: const CircleBorder(
+                  side: BorderSide(width: 2.0, color: Color(0xFFDFDFDF)),
+                ),
               ),
-              RaisedButton(
-                color: Colors.green,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/green');
-                },
-              )
-            ],
-          ),
-        ],
-      ),
+              child: const Text('to yellow'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/yellow');
+              },
+            ),
+            ElevatedButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.green,
+                shape: const CircleBorder(
+                  side: BorderSide(width: 2.0, color: Color(0xFFDFDFDF)),
+                ),
+              ),
+              child: const Text('to yellow'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/green');
+              },
+            )
+          ],
+        ),
+      ],
     );
   }
 }
 
 class RedPage extends StatelessWidget {
+  const RedPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("RedPage"),
+        title: const Text("RedPage"),
       ),
       body: Container(
         color: Colors.red,
@@ -142,11 +164,13 @@ class RedPage extends StatelessWidget {
 }
 
 class YellowPage extends StatelessWidget {
+  const YellowPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("YellowPage"),
+        title: const Text("YellowPage"),
       ),
       body: Container(
         color: Colors.yellow,
@@ -156,11 +180,13 @@ class YellowPage extends StatelessWidget {
 }
 
 class GreenPage extends StatelessWidget {
+  const GreenPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("GreenPage"),
+        title: const Text("GreenPage"),
       ),
       body: Container(
         color: Colors.green,

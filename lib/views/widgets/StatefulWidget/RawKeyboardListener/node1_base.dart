@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -9,14 +8,15 @@ import 'package:flutter/services.dart';
 //      "widgetId": 254,
 //      "name": 'RawGestureDetector基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【onKey】 : 键盘事件   【ValueChanged<RawKeyEvent>】\n"
+//      "subtitle": "【onKey】 : 键盘事件   【ValueChanged<RawKeyEvent>】\n"
 //          "【focusNode】 : 焦点   【FocusNode】\n"
 //          "【autofocus】 : 是否自动聚焦   【bool】\n"
 //          "【child】 : 子组件   【Widget】",
 //    }
 
 class RawKeyboardListenerDemo extends StatefulWidget {
+  const RawKeyboardListenerDemo({Key? key}) : super(key: key);
+
   @override
   _RawKeyboardListenerDemoState createState() => _RawKeyboardListenerDemoState();
 }
@@ -31,20 +31,19 @@ class _RawKeyboardListenerDemoState extends State<RawKeyboardListenerDemo> {
     return RawKeyboardListener(
       focusNode: node,
       onKey: _onKey,
-
-      child: Container(
+      child: SizedBox(
         width: 300,
         child: Row(
           children: [
-            Expanded(
+            const Expanded(
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder()
                 ),
               ),
             ),
-            SizedBox(width: 20,),
-            Text('$_info')
+            const SizedBox(width: 20,),
+            Text(_info)
           ],
         ),
       ),

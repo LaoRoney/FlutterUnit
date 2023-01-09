@@ -12,25 +12,27 @@ import 'package:flutter/material.dart';
 //          "【controller】 : 页面控制器   【PageController】",
 //    }
 class CtrlPageView extends StatefulWidget {
+  const CtrlPageView({Key? key}) : super(key: key);
+
   @override
   _CtrlPageViewState createState() => _CtrlPageViewState();
 }
 
 class _CtrlPageViewState extends State<CtrlPageView> {
-  final data = <Color>[
-    Colors.orange[50],
-    Colors.orange[100],
-    Colors.orange[200],
-    Colors.orange[300],
-    Colors.orange[400],
-    Colors.orange[500],
-    Colors.orange[600],
-    Colors.orange[700],
-    Colors.orange[800],
-    Colors.orange[900],
+  final List<Color> data = [
+    Colors.orange[50]!,
+    Colors.orange[100]!,
+    Colors.orange[200]!,
+    Colors.orange[300]!,
+    Colors.orange[400]!,
+    Colors.orange[500]!,
+    Colors.orange[600]!,
+    Colors.orange[700]!,
+    Colors.orange[800]!,
+    Colors.orange[900]!,
   ];
 
-  PageController _controller;
+  late PageController _controller;
 
   @override
   void dispose() {
@@ -45,12 +47,18 @@ class _CtrlPageViewState extends State<CtrlPageView> {
       viewportFraction: 0.8,
       initialPage: (data.length/2).round()
     );
-
   }
-
+  TextStyle get textStyle =>
+      const TextStyle(color: Colors.white, fontSize: 24, shadows: [
+        Shadow(
+          color: Colors.black,
+          offset: Offset(.5, .5),
+          blurRadius: 2,
+        ),
+      ]);
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 150,
       child: PageView(
         controller: _controller,
@@ -65,13 +73,7 @@ class _CtrlPageViewState extends State<CtrlPageView> {
               color: color,
               child: Text(
                 colorString(color),
-                style: TextStyle(color: Colors.white,
-                    fontSize: 24, shadows: [
-                      Shadow(
-                          color: Colors.black,
-                          offset: Offset(.5, .5),
-                          blurRadius: 2)
-                    ]),
+                style: textStyle,
               ),
             ))
             .toList(),

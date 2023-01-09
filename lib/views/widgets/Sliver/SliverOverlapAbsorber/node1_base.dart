@@ -8,18 +8,19 @@ import 'package:flutter/material.dart';
 //      "widgetId": 307,
 //      "name": 'SliverOverlapAbsorber基本使用',
 //      "priority": 1,
-//      "subtitle":
-//          "【sliver】 : 子组件   【Widget】\n"
+//      "subtitle": "【sliver】 : 子组件   【Widget】\n"
 //          "【handle】 : *处理器   【SliverOverlapAbsorberHandle】\n"
 //          "如果不使用SliverOverlapAbsorber和SliverOverlapInjector组件,NestedScrollView的内容会和头部栏重叠。",
 //    }
 
 class SliverOverlapAbsorberDemo extends StatelessWidget {
-  final _tabs = ['风神传', '封妖志', "幻将录", "永恒传说"];
+  const SliverOverlapAbsorberDemo({Key? key}) : super(key: key);
+
+  final List<String> _tabs = const ['风神传', '封妖志', "幻将录", "永恒传说"];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height - 200,
         child: Scaffold(
@@ -70,22 +71,10 @@ class SliverOverlapAbsorberDemo extends StatelessWidget {
                 key: PageStorageKey<String>(name),
                 slivers: <Widget>[
                   SliverOverlapInjector(
-                    handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                    handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                        context),
                   ),
-                  SliverPadding(
-                    padding: const EdgeInsets.all(8.0),
-                    sliver: SliverFixedExtentList(
-                      itemExtent: 48.0,
-                      delegate: SliverChildBuilderDelegate(
-                            (BuildContext context, int index) {
-                          return ListTile(
-                            title: Text('《$name》 第 $index章'),
-                          );
-                        },
-                        childCount: 50,
-                      ),
-                    ),
-                  ),
+                  buildContent(name),
                 ],
               );
             },
@@ -94,4 +83,19 @@ class SliverOverlapAbsorberDemo extends StatelessWidget {
       }).toList(),
     );
   }
+
+  Widget buildContent(String name) => SliverPadding(
+        padding: const EdgeInsets.all(8.0),
+        sliver: SliverFixedExtentList(
+          itemExtent: 48.0,
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              return ListTile(
+                title: Text('《$name》 第 $index章'),
+              );
+            },
+            childCount: 50,
+          ),
+        ),
+      );
 }
